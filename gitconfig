@@ -1,0 +1,12 @@
+[user]
+  name = defntvdm
+  email = defntvdm@gmail.com
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:'%C(yellow)%h%C(reset) %s %Cgreen[%an]%C(reset) %C(bold red)%d%C(reset)' --graph
+  type = cat-file -t
+  dump = cat-file -p
+
