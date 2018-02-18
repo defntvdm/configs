@@ -1,12 +1,14 @@
 [user]
-  name = defntvdm
+  name = Vadim Nikolaev
   email = defntvdm@gmail.com
+[core]
+  editor = nano
 [alias]
   co = checkout
   ci = commit
   st = status
   br = branch
-  hist = log --pretty=format:'%C(yellow)%h%C(reset) %s %Cgreen[%an]%C(reset) %C(bold red)%d%C(reset)' --graph
+  hist = log --pretty=format:'%C(yellow)%h %C(bold blue)%ad%C(reset) %s %Cgreen[%an]%C(reset)%C(bold red)%d%C(reset)' --graph --date=short
   type = cat-file -t
   dump = cat-file -p
 
