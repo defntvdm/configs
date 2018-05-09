@@ -3,7 +3,7 @@
   email = defntvdm@gmail.com
 [core]
   editor = nano
-  exludefiles = ~/.gitignore_global
+  excludesfiles = ~/.gitignore_global
 [alias]
   co = checkout
   ci = commit
