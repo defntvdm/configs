@@ -1,6 +1,6 @@
-export ZSH="/home/defntvdm/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="fishy"
+ZSH_THEME="mytheme"
 CASE_SENSITIVE="true"
 
 plugins=(
