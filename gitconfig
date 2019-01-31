@@ -1,6 +1,6 @@
 [user]
   name = Vadim Nikolaev
-  email = defntvdm@gmail.com
+  email = defntvdm@protonmail.com
 [core]
   editor = nano
   excludesfile = ~/.gitignore_global
