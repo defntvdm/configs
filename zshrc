@@ -8,6 +8,10 @@ plugins=(
 )
 
 alias copy='xclip -selection c'
+alias http='http -v --style monokai'
+alias vpnon='sudo systemctl start wg-quick@wg0'
+alias vpnoff='sudo systemctl stop wg-quick@wg0'
+
 export CCPREFIX=arm-linux-gnueabihf-
 export CCPREFIX64=aarch64-linux-gnu-
 export GOPATH=$HOME/go

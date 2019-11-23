@@ -1,8 +1,8 @@
 [user]
   name = Vadim Nikolaev
-  email = defntvdm@protonmail.com
+  email = defntvdm@gmail.com
 [core]
-  editor = nano
+  editor = vim
   excludesfile = ~/.gitignore_global
 [alias]
   co = checkout
