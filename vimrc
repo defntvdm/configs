@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Change color scheme
