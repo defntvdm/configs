@@ -13,8 +13,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
-"Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " Change color scheme
