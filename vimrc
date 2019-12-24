@@ -6,12 +6,14 @@ set shiftwidth=4
 set expandtab
 set background=dark
 set t_Co=256
+set cursorline
 
 " Don't forgive install vim-plug
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
+"Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
