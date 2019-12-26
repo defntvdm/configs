@@ -14,6 +14,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'davidhalter/jedi-vim'
 call plug#end()
 
