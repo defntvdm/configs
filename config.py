@@ -7,3 +7,7 @@ c.url.searchengines = {
     's': 'https://www.shodan.io/search?query={}'
 }
 
+# ad-block list
+# https://easylist.to/easylist/easylist.txt
+c.content.host_blocking.lists.append(str(config.configdir) + '/blockedHosts')
+

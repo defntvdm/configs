@@ -7,6 +7,7 @@ set expandtab
 set background=dark
 set t_Co=256
 set cursorline
+set diffopt+=vertical
 
 " Don't forgive install vim-plug
 call plug#begin('~/.vim/plugged')
