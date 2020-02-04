@@ -10,6 +10,7 @@ set cursorline
 set diffopt+=vertical
 set hlsearch
 set updatetime=1000
+set colorcolumn=120
 
 " Don't forgive install vim-plug
 " ctags package for tagbar
@@ -35,9 +36,16 @@ call plug#end()
 " Change color scheme
 colorscheme gruvbox
 
+" NERDTree
 map <C-n> :NERDTreeToggle<CR>
 map <F8> :TagbarToggle<CR>
+
+" Ack
 nnoremap <leader>a :Ack!<Space>
+
+" Files
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
+" vim-go
+let g:go_auto_sameids = 1
