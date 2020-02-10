@@ -1,5 +1,6 @@
 syntax on
 set number
+set relativenumber
 set smartindent
 set tabstop=4
 set shiftwidth=4
@@ -31,6 +32,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'gko/vim-coloresque'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 " Change color scheme
@@ -48,4 +50,4 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
 " vim-go
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
