@@ -53,3 +53,6 @@ nnoremap <leader>h :History:<CR>
 
 " vim-go
 " let g:go_auto_sameids = 1
+
+" replace selected
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
