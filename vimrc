@@ -34,7 +34,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'honza/vim-snippets'
 call plug#end()
 
 " Change color scheme
