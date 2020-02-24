@@ -17,6 +17,7 @@ set colorcolumn=120
 " ctags package for tagbar
 " ack for ack.vim
 " fzf for fzf.vim
+" python3 install.py --clang-completer for ycm
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
@@ -34,6 +35,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 " Change color scheme
@@ -50,8 +52,10 @@ nnoremap <leader>a :Ack!<Space>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
-" vim-go
-" let g:go_auto_sameids = 1
+" YCM
+let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
