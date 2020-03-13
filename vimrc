@@ -48,14 +48,20 @@ map <F8> :TagbarToggle<CR>
 " Ack
 nnoremap <leader>a :Ack!<Space>
 
-" Files
+" fzf
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
+
+" vim-go
+let g:go_auto_sameids = 1
+autocmd FileType go nmap <leader>r :GoReferrers<CR>
+autocmd FileType go nmap <leader>i :GoImplements<CR>
 
 " YCM
 let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
