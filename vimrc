@@ -36,6 +36,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'psf/black', { 'tag': '19.10b0' }
 call plug#end()
 
 " Change color scheme
@@ -62,6 +63,12 @@ let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" black python
+let g:black_linelength = 120
+let g:black_skip_string_normalization = 1
+let g:black_fast = 1
+autocmd FileType python nmap <F9> :Black<CR>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
