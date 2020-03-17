@@ -70,5 +70,9 @@ let g:black_skip_string_normalization = 1
 let g:black_fast = 1
 autocmd FileType python nmap <F9> :Black<CR>
 
+" gitgutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
