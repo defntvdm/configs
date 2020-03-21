@@ -6,9 +6,11 @@ int main(int argc, char **argv) {
 endsnippet
 
 snippet #inc "include" b
-#include <${0:iostream}>
+#include <${1:iostream}>
+${0}
 endsnippet
 
 snippet usi "using namespce std" b
-using namespace std;
+using namespace ${1:std};
+${0}
 endsnippet

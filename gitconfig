@@ -5,6 +5,7 @@
   editor = vim
   excludesfile = ~/.gitignore_global
 [alias]
+  rt = restore
   co = checkout
   ci = commit
   st = status
