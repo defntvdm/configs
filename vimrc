@@ -17,7 +17,7 @@ set colorcolumn=120
 " ctags package for tagbar
 " ack for ack.vim
 " fzf for fzf.vim
-" python3 install.py --clang-completer for ycm
+" python3 install.py --clang-completer --js-completer --ts-completer for ycm
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
@@ -37,6 +37,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'psf/black', { 'tag': '19.10b0' }
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " Change color scheme
@@ -73,6 +74,9 @@ autocmd FileType python nmap <F9> :Black<CR>
 " gitgutter
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
+
+" jedi-vim
+let g:jedi#popup_on_dot = 0
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
