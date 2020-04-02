@@ -55,7 +55,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
 " vim-go
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 autocmd FileType go nmap <leader>r :GoReferrers<CR>
 autocmd FileType go nmap <leader>i :GoImplements<CR>
 
