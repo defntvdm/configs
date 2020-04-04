@@ -40,6 +40,10 @@ Plug 'tpope/vim-surround'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+" :CocInstall coc-tsserver coc-json
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " tab sizes for c, cpp, js
