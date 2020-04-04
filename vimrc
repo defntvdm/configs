@@ -40,6 +40,11 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
+" tab sizes for c, cpp, js
+autocmd FileType c set tabstop=2|set shiftwidth=2
+autocmd FileType cpp set tabstop=2|set shiftwidth=2
+autocmd FileType javascript set tabstop=2|set shiftwidth=2
+
 " Change color scheme
 colorscheme gruvbox
 
