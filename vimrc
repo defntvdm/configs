@@ -15,12 +15,14 @@ set colorcolumn=120
 
 " Don't forgive install vim-plug
 " ctags package for tagbar
+" ttf-nerd-fonts-symbols for devicons
 " ack for ack.vim
 " fzf for fzf.vim
 " python3 install.py --clang-completer --js-completer --ts-completer for ycm
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
