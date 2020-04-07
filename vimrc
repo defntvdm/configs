@@ -53,7 +53,6 @@ colorscheme gruvbox
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind %<CR>
 
 " Tagbar
 map <F8> :TagbarToggle<CR>
