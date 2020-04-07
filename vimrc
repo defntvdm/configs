@@ -18,7 +18,7 @@ set colorcolumn=120
 " ttf-nerd-fonts-symbols for devicons
 " ack for ack.vim
 " fzf for fzf.vim
-" python3 install.py --clang-completer --js-completer --ts-completer for ycm
+" python3 install.py --all
 call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'scrooloose/nerdtree'
@@ -42,8 +42,6 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-" :CocInstall coc-tsserver coc-json
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " tab sizes for c, cpp, js
@@ -88,6 +86,9 @@ nmap [h <Plug>GitGutterPrevHunk
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
+let g:jedi#goto_command = "gd"
+let g:jedi#usages_command = "<leader>r"
+let g:jedi#rename_command = "<leader>n"
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
