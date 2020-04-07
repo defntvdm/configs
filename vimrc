@@ -34,7 +34,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'gko/vim-coloresque'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-syntastic/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'ycm-core/YouCompleteMe'
@@ -54,6 +53,9 @@ colorscheme gruvbox
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind %<CR>
+
+" Tagbar
 map <F8> :TagbarToggle<CR>
 
 " Ack
