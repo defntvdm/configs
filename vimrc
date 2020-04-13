@@ -61,6 +61,7 @@ map <F8> :TagbarToggle<CR>
 nnoremap <leader>a :Ack!<Space>
 
 " fzf
+let $FZF_DEFAULT_COMMAND='find .'
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
