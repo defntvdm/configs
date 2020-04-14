@@ -67,8 +67,10 @@ nnoremap <leader>h :History:<CR>
 
 " vim-go
 let g:go_auto_sameids = 0
+let g:go_rename_command = 'gopls'
 autocmd FileType go nmap <leader>r :GoReferrers<CR>
 autocmd FileType go nmap <leader>i :GoImplements<CR>
+autocmd FileType go nmap <leader>n :GoRename<CR>
 
 " YCM
 let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
