@@ -20,7 +20,7 @@ set colorcolumn=120
 " fzf for fzf.vim
 " python3 install.py --all
 call plug#begin('~/.vim/plugged')
-Plug 'rafi/awesome-vim-colorschemes'
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
