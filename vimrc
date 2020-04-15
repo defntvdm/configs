@@ -44,9 +44,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
 " tab sizes for c, cpp, js
-autocmd FileType c set tabstop=2|set shiftwidth=2
-autocmd FileType cpp set tabstop=2|set shiftwidth=2
-autocmd FileType javascript set tabstop=2|set shiftwidth=2
+autocmd FileType c,cpp,javascript set tabstop=2|set shiftwidth=2
 
 " Change color scheme
 colorscheme gruvbox
@@ -96,3 +94,9 @@ let g:jedi#rename_command = "<leader>n"
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" comment/uncomment lines
+autocmd FileType python vnoremap <leader>u :'<,'>norm ^x<CR>
+autocmd FileType python vnoremap <leader>c :'<,'>norm I#<CR>
+autocmd FileType c,cpp,js,go vnoremap <leader>c :'<,'>norm I//<CR>
+autocmd FileType c,cpp,javascript,go vnoremap <leader>u :'<,'>norm ^xx<CR>
