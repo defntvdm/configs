@@ -43,8 +43,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 call plug#end()
 
-" tab sizes for c, cpp, js
-autocmd FileType c,cpp,javascript set tabstop=2|set shiftwidth=2
+" tab sizes for c, cpp, js, ...
+autocmd FileType c,cpp,javascript,html,json,yaml set tabstop=2|set shiftwidth=2
 
 " Change color scheme
 colorscheme gruvbox
