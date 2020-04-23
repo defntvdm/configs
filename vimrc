@@ -19,6 +19,7 @@ set colorcolumn=120
 " ack for ack.vim
 " fzf for fzf.vim
 " python3 install.py --all
+" Run :CocInstall coc-json coc-tsserver
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -41,6 +42,7 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " tab sizes for c, cpp, js, ...

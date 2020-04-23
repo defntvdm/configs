@@ -27,7 +27,7 @@ font:
     family: FiraCode
     style: Bold Italic
 
-  size: 11.0
+  size: 9.0
 
 colors:
   primary:
