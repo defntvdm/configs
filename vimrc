@@ -42,7 +42,7 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ternjs/tern_for_vim'
 call plug#end()
 
 " tab sizes for c, cpp, js, ...
@@ -93,6 +93,11 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
+
+" ternjs
+autocmd FileType javascript nmap gd :TernDef<CR>
+autocmd FileType javascript nmap <leader>r :TernRefs<CR>
+autocmd FileType javascript nmap <leader>n :TernRename<CR>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
