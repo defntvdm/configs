@@ -2,8 +2,8 @@ syntax on
 set number
 set relativenumber
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set background=dark
 set t_Co=256
@@ -12,6 +12,12 @@ set diffopt+=vertical
 set hlsearch
 set updatetime=1000
 set colorcolumn=120
+
+set guifont=Fira\ Code\ 12
+set guioptions-=T " Removes toolbar in gvim
+set guioptions-=m " Removes menubar in gvim
+set guioptions-=r " Removes right scrollbar in gvim
+set guioptions-=L " Removes left scrollbar in gvim
 
 " Don't forgive install vim-plug
 " ctags package for tagbar
@@ -45,8 +51,8 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'ternjs/tern_for_vim'
 call plug#end()
 
-" tab sizes for c, cpp, js, ...
-autocmd FileType c,cpp,javascript,html,json,yaml set tabstop=2|set shiftwidth=2
+" tab sizes for python
+autocmd FileType python set tabstop=4|set shiftwidth=4
 
 " Change color scheme
 colorscheme gruvbox
@@ -102,8 +108,12 @@ autocmd FileType javascript nmap <leader>n :TernRename<CR>
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
+" copy/paste from system clipboard
+noremap <leader>y "+y
+noremap <leader>p "+P
+
 " comment/uncomment lines
 autocmd FileType python vnoremap <leader>u :'<,'>norm ^x<CR>
 autocmd FileType python vnoremap <leader>c :'<,'>norm I#<CR>
-autocmd FileType c,cpp,js,go vnoremap <leader>c :'<,'>norm I//<CR>
 autocmd FileType c,cpp,javascript,go vnoremap <leader>u :'<,'>norm ^xx<CR>
+autocmd FileType c,cpp,javascript,go vnoremap <leader>c :'<,'>norm I//<CR>
