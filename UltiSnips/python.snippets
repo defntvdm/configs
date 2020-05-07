@@ -14,14 +14,19 @@ def ${1:funcname}(${2:args}):
 	${0:pass}
 endsnippet
 
-snippet async "async def" b
-def ${1:funcname}(${2:args}):
+snippet adef "async def" b
+async def ${1:funcname}(${2:args}):
 	${0:pass}
 endsnippet
 
 snippet with "with" b
 with ${1:context} as ${2:var}:
 	${0:pass}
+endsnippet
+
+snippet awith "async with" b
+async with ${1:context} as ${2:var}:
+	pass
 endsnippet
 
 snippet if "if" b
@@ -55,6 +60,11 @@ endsnippet
 snippet for "for" b
 for ${1:item} in ${2:iterable}:
 	${0:pass}
+endsnippet
+
+snippet afor "async for"
+async for ${1:item} in ${2:iterable}:
+	pass
 endsnippet
 
 snippet from "from" b
