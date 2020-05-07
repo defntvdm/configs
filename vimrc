@@ -12,8 +12,9 @@ set diffopt+=vertical
 set hlsearch
 set updatetime=1000
 set colorcolumn=120
+set completeopt+=noinsert
 
-set guifont=Fira\ Code\ 12
+set guifont=Fira\ Code\ 13
 set guioptions-=T " Removes toolbar in gvim
 set guioptions-=m " Removes menubar in gvim
 set guioptions-=r " Removes right scrollbar in gvim
@@ -79,6 +80,7 @@ autocmd FileType go nmap <leader>i :GoImplements<CR>
 autocmd FileType go nmap <leader>n :GoRename<CR>
 
 " YCM
+let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
