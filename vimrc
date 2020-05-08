@@ -13,6 +13,7 @@ set hlsearch
 set updatetime=1000
 set colorcolumn=120
 set completeopt+=noinsert
+set encoding=utf-8
 
 set guifont=Fira\ Code\ 13
 set guioptions-=T " Removes toolbar in gvim
