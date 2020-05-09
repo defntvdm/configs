@@ -61,6 +61,10 @@ colorscheme gruvbox
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+" Fix devicons half if gvim
+if has("gui_running")
+  set ambiwidth=double
+endif
 
 " Tagbar
 map <F8> :TagbarToggle<CR>
