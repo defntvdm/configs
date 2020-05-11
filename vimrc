@@ -61,9 +61,8 @@ colorscheme gruvbox
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-" Fix devicons half if gvim
 if has("gui_running")
-  set ambiwidth=double
+  set ambiwidth=double  " Fix devicons half if gvim
 endif
 
 " Tagbar
@@ -86,10 +85,15 @@ autocmd FileType go nmap <leader>n :GoRename<CR>
 
 " YCM
 let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_key_list_select_completion = ['<C-o>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_key_list_select_completion = ['<Tab>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<Tab>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+" Ultisnips bindings
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 " black python
 let g:black_linelength = 120
@@ -107,10 +111,10 @@ let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
 
-" ternjs
-autocmd FileType javascript nmap gd :TernDef<CR>
-autocmd FileType javascript nmap <leader>r :TernRefs<CR>
-autocmd FileType javascript nmap <leader>n :TernRename<CR>
+" js, ts ycm bindings
+autocmd FileType javascript,typescript nmap gd :YcmCompleter GoTo<CR>
+autocmd FileType javascript,typescript nmap <leader>r :YcmCompleter GoToReferences<CR>
+autocmd FileType javascript,typescript nmap <leader>n :YcmCompleter RefactorRename<CR>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
