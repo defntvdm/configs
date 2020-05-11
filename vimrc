@@ -111,10 +111,10 @@ let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
 
-" js, ts ycm bindings
-autocmd FileType javascript,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
-autocmd FileType javascript,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
-autocmd FileType javascript,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename<CR>
+" c,cpp,h,chh, js, ts ycm bindings
+autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
+autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename<CR>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
