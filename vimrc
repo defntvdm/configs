@@ -1,19 +1,20 @@
 syntax on
-set number
-set relativenumber
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
 set background=dark
-set t_Co=256
-set cursorline
-set diffopt+=vertical
-set hlsearch
-set updatetime=1000
 set colorcolumn=120
 set completeopt+=noinsert
+set cursorline
+set diffopt+=vertical
 set encoding=utf-8
+set expandtab
+set hlsearch
+set incsearch
+set number
+set relativenumber
+set shiftwidth=2
+set smartindent
+set t_Co=256
+set tabstop=2
+set updatetime=1000
 
 set guifont=Fira\ Code\ 13
 set guioptions-=T " Removes toolbar in gvim
@@ -27,7 +28,6 @@ set guioptions-=L " Removes left scrollbar in gvim
 " ack for ack.vim
 " fzf for fzf.vim
 " python3 install.py --all
-" Run :CocInstall coc-json coc-tsserver
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -50,7 +50,6 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ternjs/tern_for_vim'
 call plug#end()
 
 " tab sizes for python
