@@ -72,7 +72,7 @@ map <F8> :TagbarToggle<CR>
 nnoremap <leader>a :Ack!<Space>
 
 " fzf
-let $FZF_DEFAULT_COMMAND='find .'
+let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor \) -prune -o -print'
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
@@ -112,9 +112,9 @@ let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
 
 " js, ts ycm bindings
-autocmd FileType javascript,typescript nmap gd :YcmCompleter GoTo<CR>
-autocmd FileType javascript,typescript nmap <leader>r :YcmCompleter GoToReferences<CR>
-autocmd FileType javascript,typescript nmap <leader>n :YcmCompleter RefactorRename<CR>
+autocmd FileType javascript,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
+autocmd FileType javascript,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
+autocmd FileType javascript,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename<CR>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
