@@ -16,7 +16,7 @@ set t_Co=256
 set tabstop=2
 set updatetime=1000
 
-set guifont=Fira\ Code\ 13
+set guifont=JetBrains\ Mono\ 13
 " Удаляем всякие вспомогательные окна
 set guioptions=
 
