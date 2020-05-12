@@ -17,10 +17,8 @@ set tabstop=2
 set updatetime=1000
 
 set guifont=Fira\ Code\ 13
-set guioptions-=T " Removes toolbar in gvim
-set guioptions-=m " Removes menubar in gvim
-set guioptions-=r " Removes right scrollbar in gvim
-set guioptions-=L " Removes left scrollbar in gvim
+" Удаляем всякие вспомогательные окна
+set guioptions=
 
 " Don't forgive install vim-plug
 " ctags package for tagbar
@@ -74,6 +72,7 @@ nnoremap <leader>h :History:<CR>
 " vim-go
 let g:go_auto_sameids = 0
 let g:go_rename_command = 'gopls'
+let g:go_fmt_command = 'goimports'
 autocmd FileType go nmap <leader>r :GoReferrers<CR>
 autocmd FileType go nmap <leader>i :GoImplements<CR>
 autocmd FileType go nmap <leader>n :GoRename<CR>
