@@ -84,8 +84,8 @@ let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<Tab>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
-" Ultisnips bindings
-let g:UltiSnipsExpandTrigger="<C-Space>"
+" Ultisnips binding
+let g:UltiSnipsExpandTrigger="<leader>e"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
