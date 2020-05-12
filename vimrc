@@ -128,3 +128,6 @@ autocmd FileType python vnoremap <leader>u :'<,'>norm ^x<CR>
 autocmd FileType python vnoremap <leader>c :'<,'>norm I#<CR>
 autocmd FileType c,cpp,javascript,go vnoremap <leader>u :'<,'>norm ^xx<CR>
 autocmd FileType c,cpp,javascript,go vnoremap <leader>c :'<,'>norm I//<CR>
+
+" new tab
+nmap <C-t> :tabnew<CR>
