@@ -31,7 +31,6 @@ set guioptions-=L " Removes left scrollbar in gvim
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -50,6 +49,7 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'ternjs/tern_for_vim'
 call plug#end()
 
 " tab sizes for python
@@ -60,16 +60,12 @@ colorscheme gruvbox
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-if has("gui_running")
-  set ambiwidth=double  " Fix devicons half if gvim
-endif
 
 " Tagbar
 map <F8> :TagbarToggle<CR>
 
 " Ack
 nnoremap <leader>a :Ack!<Space>
-
 " fzf
 let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor \) -prune -o -print'
 nnoremap <leader>f :Files<CR>
@@ -90,7 +86,7 @@ let g:SuperTabDefaultCompletionType = '<Tab>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 " Ultisnips bindings
-let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
