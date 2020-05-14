@@ -65,7 +65,7 @@ map <F8> :TagbarToggle<CR>
 " Ack
 nnoremap <leader>a :Ack!<Space>
 " fzf
-let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor \) -prune -o -print'
+let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor -o -path .mypy_cache\) -prune -o -print'
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>h :History:<CR>
 
