@@ -14,7 +14,8 @@ mkdir -p ~/.oh-my-zsh/themes
 cp ./mytheme.zsh-theme ~/.oh-my-zsh/themes/mytheme.zsh-theme
 cp ./tern-config ~/.tern-config
 cp ./tmux.conf ~/.tmux.conf
-cp ./vimrc ~/.vimrc
+mkdir -p ~/.config/nvim
+cp ./init.vim ~/.config/nvim/init.vim
 cp ./ycm_extra_conf.py ~/.ycm_extra_conf.py
 cp ./zshrc ~/.zshrc
-cp -r ./UltiSnips ~/.vim/
+cp -r ./UltiSnips ~/.config/nvim/

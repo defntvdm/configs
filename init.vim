@@ -21,14 +21,13 @@ set guifont=JetBrains\ Mono\ 13
 set guioptions=
 
 " Don't forgive install vim-plug
-" ctags package for tagbar
-" ttf-nerd-fonts-symbols for devicons
-" ack for ack.vim
-" fzf for fzf.vim
-" python3 install.py --all
-call plug#begin('~/.vim/plugged')
+" sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim
+" YCM - python3 install.py --all
+call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -64,6 +63,7 @@ map <F8> :TagbarToggle<CR>
 
 " Ack
 nnoremap <leader>a :Ack!<Space>
+
 " fzf
 let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor -o -path .mypy_cache \) -prune -o -print'
 nnoremap <leader>f :Files<CR>
