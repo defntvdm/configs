@@ -78,11 +78,12 @@ autocmd FileType go nmap <leader>i :GoImplements<CR>
 autocmd FileType go nmap <leader>n :GoRename<CR>
 
 " YCM
+let g:python3_host_prog = '/usr/bin/python3'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_key_list_select_completion = ['<Tab>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<Tab>'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:SuperTabDefaultCompletionType = '<Tab>'
 
 " Ultisnips binding
 let g:UltiSnipsExpandTrigger="<leader>e"
