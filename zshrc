@@ -13,6 +13,7 @@ alias vpnon='sudo systemctl start wg-quick@wg0'
 alias vpnoff='sudo systemctl stop wg-quick@wg0'
 alias http='http -v -s monokai'
 alias tmux='tmux a || tmux'
+alias vim='nvim'
 
 # cross compiling
 export CCPREFIX=arm-linux-gnueabihf-
