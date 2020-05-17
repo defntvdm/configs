@@ -2,7 +2,7 @@
   name = Vadim Nikolaev
   email = defntvdm@gmail.com
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 [alias]
   rt = restore
