@@ -16,11 +16,6 @@ set t_Co=256
 set tabstop=2
 set updatetime=1000
 
-set guifont=JetBrains\ Mono\ 13
-" Удаляем всякие вспомогательные окна
-set guioptions=
-
-" Don't forgive install vim-plug
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim
 " YCM - python3 install.py --all
@@ -41,12 +36,12 @@ Plug 'gko/vim-coloresque'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --ts-completer' }
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 call plug#end()
 
 " tab sizes for python
@@ -86,7 +81,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:SuperTabDefaultCompletionType = '<Tab>'
 
 " Ultisnips binding
-let g:UltiSnipsExpandTrigger="<leader>e"
+let g:UltiSnipsExpandTrigger="<C-k>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
@@ -101,7 +96,7 @@ nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 
 " jedi-vim
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 1
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
