@@ -81,7 +81,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:SuperTabDefaultCompletionType = '<Tab>'
 
 " Ultisnips binding
-let g:UltiSnipsExpandTrigger="<C-k>"
+let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
@@ -100,11 +100,12 @@ let g:jedi#popup_on_dot = 1
 let g:jedi#goto_command = "gd"
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = "<leader>n"
+let g:jedi#completions_command = ""
 
-" c,cpp,h,chh, js, ts ycm bindings
-autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
-autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
-autocmd FileType c,cpp,h,chh,javascript,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename 
+" c,cpp,h,chh,js,ts ycm bindings
+autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
+autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename<Space>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
