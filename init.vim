@@ -17,8 +17,7 @@ set tabstop=2
 set updatetime=1000
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-" yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim
-" YCM - python3 install.py --all
+" yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -41,8 +40,13 @@ Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'voldikss/vim-floaterm'
 call plug#end()
+
+"vim-floaterm
+let g:floaterm_keymap_toggle = '<F12>'
 
 " tab sizes for python
 autocmd FileType python set tabstop=4|set shiftwidth=4
