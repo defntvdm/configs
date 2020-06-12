@@ -18,6 +18,7 @@ set updatetime=1000
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn
+" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -25,7 +26,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'davidhalter/jedi-vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
@@ -35,15 +35,23 @@ Plug 'gko/vim-coloresque'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clang-completer --go-completer --ts-completer --rust-completer' }
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'ternjs/tern_for_vim', { 'do': 'yarn install' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'voldikss/vim-floaterm'
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
 call plug#end()
+
+" coc.nvim
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <leader>r <Plug>(coc-references)
+nmap <leader>n <Plug>(coc-rename)
+
+let g:python3_host_prog = '/usr/bin/python3'
+let g:SuperTabDefaultCompletionType = '<Tab>'
 
 "vim-floaterm
 let g:floaterm_keymap_toggle = '<F12>'
@@ -80,14 +88,6 @@ autocmd FileType go nmap <leader>r :GoReferrers<CR>
 autocmd FileType go nmap <leader>i :GoImplements<CR>
 autocmd FileType go nmap <leader>n :GoRename<CR>
 
-" YCM
-let g:python3_host_prog = '/usr/bin/python3'
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_key_list_select_completion = ['<Tab>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<S-Tab>', '<Up>']
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:SuperTabDefaultCompletionType = '<Tab>'
-
 " Ultisnips binding
 let g:UltiSnipsExpandTrigger="<C-Space>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
@@ -102,18 +102,6 @@ autocmd FileType python nmap <F9> :Black<CR>
 " gitgutter
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
-
-" jedi-vim
-let g:jedi#popup_on_dot = 1
-let g:jedi#goto_command = "gd"
-let g:jedi#usages_command = "<leader>r"
-let g:jedi#rename_command = "<leader>n"
-let g:jedi#completions_command = ""
-
-" c,cpp,h,chh,js,ts ycm bindings
-autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap gd :YcmCompleter GoTo<CR>
-autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap <leader>r :YcmCompleter GoToReferences<CR>
-autocmd FileType c,cpp,h,chh,javascript,javascriptreact,typescript,typescriptreact nmap <leader>n :YcmCompleter RefactorRename<Space>
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
