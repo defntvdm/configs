@@ -36,10 +36,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'psf/black', { 'tag': '19.10b0' }
-Plug 'jiangmiao/auto-pairs'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'voldikss/vim-floaterm'
+Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
 call plug#end()
 
@@ -49,9 +49,8 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <leader>n <Plug>(coc-rename)
-
-let g:python3_host_prog = '/usr/bin/python3'
-let g:SuperTabDefaultCompletionType = '<Tab>'
+nmap <leader>i <Plug>(coc-implementation)
+inoremap <silent><expr> <c-space> coc#refresh()
 
 "vim-floaterm
 let g:floaterm_keymap_toggle = '<F12>'
@@ -78,20 +77,16 @@ nnoremap <leader>h :History:<CR>
 
 " vim-go
 let g:go_auto_sameids = 0
-let g:go_rename_command = 'gopls'
 let g:go_fmt_command = 'goimports'
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-autocmd FileType go nmap <leader>r :GoReferrers<CR>
-autocmd FileType go nmap <leader>i :GoImplements<CR>
-autocmd FileType go nmap <leader>n :GoRename<CR>
 
 " Ultisnips binding
-let g:UltiSnipsExpandTrigger="<C-Space>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
 " black python
 let g:black_linelength = 120
