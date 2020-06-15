@@ -52,6 +52,8 @@ nmap <leader>n <Plug>(coc-rename)
 nmap <leader>i <Plug>(coc-implementation)
 inoremap <silent><expr> <c-space> coc#refresh()
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 "vim-floaterm
 let g:floaterm_keymap_toggle = '<F12>'
 
