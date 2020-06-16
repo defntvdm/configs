@@ -40,7 +40,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'voldikss/vim-floaterm'
 Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
 " coc.nvim
