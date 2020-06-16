@@ -18,7 +18,7 @@ set updatetime=1000
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
-" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls
+" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -51,6 +51,9 @@ nmap <silent> <leader>r <Plug>(coc-references)
 nmap <leader>n <Plug>(coc-rename)
 nmap <leader>i <Plug>(coc-implementation)
 inoremap <silent><expr> <c-space> coc#refresh()
+nmap <silent> <leader>d :CocDiagnostics<CR>
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 let g:python3_host_prog = '/usr/bin/python3'
 
