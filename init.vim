@@ -100,8 +100,10 @@ let g:black_fast = 1
 autocmd FileType python nmap <F9> :Black<CR>
 
 " gitgutter
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
 
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
