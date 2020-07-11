@@ -46,6 +46,7 @@ call plug#end()
 " coc.nvim
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+nmap <silent> gc :CocCommand clangd.switchSourceHeader<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <leader>r <Plug>(coc-references)
 nmap <leader>n <Plug>(coc-rename)
