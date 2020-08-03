@@ -18,7 +18,7 @@ set updatetime=1000
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
-" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake
+" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake coc-emmet
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -31,17 +31,21 @@ Plug 'mileszs/ack.vim'
 Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'gko/vim-coloresque'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'voldikss/vim-floaterm'
+Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
+
+" emmet-vim
+let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
 
 " coc.nvim
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -57,9 +61,6 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 let g:python3_host_prog = '/usr/bin/python3'
-
-"vim-floaterm
-let g:floaterm_keymap_toggle = '<F12>'
 
 " tab sizes for python
 autocmd FileType python set tabstop=4|set shiftwidth=4
@@ -79,10 +80,11 @@ nnoremap <leader>a :Ack!<Space>
 " fzf
 let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor -o -path .mypy_cache \) -prune -o -print'
 nnoremap <leader>f :Files<CR>
-nnoremap <leader>h :History:<CR>
 
 " vim-go
 let g:go_auto_sameids = 0
+let g:go_gopls_enabled = 0
+let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = 'goimports'
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
