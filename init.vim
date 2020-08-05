@@ -124,3 +124,7 @@ autocmd FileType c,cpp,javascript,go vnoremap <leader>c :'<,'>norm I//<CR>
 
 " new tab
 nmap <C-t> :tabnew<CR>
+
+" save
+inoremap <F2> <ESC>:w<CR>
+nnoremap <F2> :w<CR>
