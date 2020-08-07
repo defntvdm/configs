@@ -18,7 +18,7 @@ set updatetime=1000
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
-" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake coc-emmet
+" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake coc-emmet coc-vetur
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -45,7 +45,7 @@ call plug#end()
 " emmet-vim
 let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
+autocmd FileType html,css,javascriptreact,typescriptreact,vue EmmetInstall
 
 " coc.nvim
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -94,7 +94,7 @@ let g:go_highlight_function_calls = 1
 " Ultisnips binding
 let g:UltiSnipsExpandTrigger="<C-e>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " black python
 let g:black_linelength = 120
