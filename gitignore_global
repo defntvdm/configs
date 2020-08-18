@@ -1,7 +1,7 @@
 .vscode
 .idea
 .venv
-*.lock
+Pipfile*
 __pycache__
 *.egg-info
 .mypy_cache
