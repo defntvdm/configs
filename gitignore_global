@@ -6,3 +6,4 @@ __pycache__
 *.egg-info
 .mypy_cache
 .vim
+compile_flags.txt
