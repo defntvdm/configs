@@ -5,8 +5,8 @@ CASE_SENSITIVE="true"
 
 plugins=(
   git
+  gh
   poetry
-  pyenv
 )
 
 # aliases
@@ -26,3 +26,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$(pyenv root)"
+
+source $PYENV_ROOT/completions/pyenv.zsh
