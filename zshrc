@@ -28,4 +28,4 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_ROOT="$(pyenv root)"
 
-source $PYENV_ROOT/completions/pyenv.zsh
+source /usr/share/zsh/site-functions/_pyenv
