@@ -1,3 +1,6 @@
+#######
+# ZSH #
+#######
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="mytheme"
@@ -5,27 +8,46 @@ CASE_SENSITIVE="true"
 
 plugins=(
   git
-  gh
-  poetry
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
-# aliases
+if [ ! -d $ZSH/custom/plugins/zsh-autosuggestions ];
+then
+  cp -r /usr/share/zsh/plugins/zsh-autosuggestions $ZSH/custom/plugins/
+fi
+
+if [ ! -d $ZSH/custom/plugins/zsh-syntax-highlighting ];
+then
+  cp -r /usr/share/zsh/plugins/zsh-syntax-highlighting $ZSH/custom/plugins/
+fi
+
+source $ZSH/oh-my-zsh.sh
+
+###########
+# aliases #
+###########
 alias copy='xclip -selection c'
 alias http='http -v -s monokai'
 alias tmux='tmux a || tmux'
 
-# golang
+##########
+# golang #
+##########
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# zsh extentions
-source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#########
+# pyenv #
+#########
 export PYENV_ROOT="$(pyenv root)"
 
-source /usr/share/zsh/site-functions/_pyenv
+if [ ! -f $PYENV_ROOT/comletions/pyenv.zsh ];
+then
+  mkdir -p $PYENV_ROOT/comletions/
+  cp /usr/share/zsh/site-functions/_pyenv $PYENV_ROOT/comletions/pyenv.zsh
+fi
+
+source $PYENV_ROOT/comletions/pyenv.zsh
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
