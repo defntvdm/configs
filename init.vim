@@ -40,7 +40,11 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'mbbill/undotree'
 call plug#end()
+
+" resource this file
+nnoremap <leader>so :source ~/.config/nvim/init.vim<CR>
 
 " fix nvim hangs on F3...F11
 inoremap <F3> <Nop>
@@ -51,7 +55,9 @@ inoremap <F7> <Nop>
 inoremap <F8> <Nop>
 inoremap <F9> <Nop>
 inoremap <F10> <Nop>
-inoremap <F11> <Nop>
+
+" undo-tree
+nnoremap <F11> :UndotreeToggle<CR>
 
 " emmet-vim
 let g:user_emmet_leader_key='<C-e>'
