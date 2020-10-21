@@ -54,7 +54,6 @@ inoremap <F5> <Nop>
 inoremap <F6> <Nop>
 inoremap <F7> <Nop>
 inoremap <F8> <Nop>
-inoremap <F9> <Nop>
 inoremap <F10> <Nop>
 
 " undo-tree
@@ -77,11 +76,14 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> <leader>d :CocDiagnostics<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" coc-todo
 nnoremap <leader>tdc :CocCommand todolist.create<CR>
 nnoremap <leader>tdu :CocCommand todolist.upload<CR>
 nnoremap <leader>tdd :CocCommand todolist.download<CR>
 nnoremap <leader>tdl :CocList todolist<CR>
+" coc-prettier
 command! -nargs=0 Prettify :CocCommand prettier.formatFile
+nnoremap <F9> :Prettify<CR>
 
 let g:python3_host_prog = '/usr/bin/python3'
 
