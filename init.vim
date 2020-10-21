@@ -19,7 +19,7 @@ set noswapfile
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
-" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-texlab coc-cmake coc-emmet coc-vetur coc-todolist
+" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-cmake coc-emmet coc-vetur coc-todolist coc-prettier
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -81,6 +81,7 @@ nnoremap <leader>tdc :CocCommand todolist.create<CR>
 nnoremap <leader>tdu :CocCommand todolist.upload<CR>
 nnoremap <leader>tdd :CocCommand todolist.download<CR>
 nnoremap <leader>tdl :CocList todolist<CR>
+command! -nargs=0 Prettify :CocCommand prettier.formatFile
 
 let g:python3_host_prog = '/usr/bin/python3'
 
