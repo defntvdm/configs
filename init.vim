@@ -16,6 +16,7 @@ set t_Co=256
 set tabstop=2
 set updatetime=1000
 set noswapfile
+set ignorecase
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
