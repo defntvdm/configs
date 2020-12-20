@@ -51,3 +51,9 @@ fi
 source $PYENV_ROOT/comletions/pyenv.zsh
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+
+############
+# Just env #
+############
+export VISUAL="nvim"
