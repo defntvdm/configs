@@ -10,10 +10,10 @@ set hlsearch
 set incsearch
 set number
 set relativenumber
-set shiftwidth=2
+set shiftwidth=4
 set smartindent
 set t_Co=256
-set tabstop=2
+set tabstop=4
 set updatetime=1000
 set noswapfile
 set ignorecase
@@ -51,7 +51,6 @@ nnoremap <leader>so :source ~/.config/nvim/init.vim<CR>
 " fix nvim hangs on F3...F11
 inoremap <F3> <Nop>
 inoremap <F4> <Nop>
-inoremap <F5> <Nop>
 inoremap <F6> <Nop>
 inoremap <F7> <Nop>
 inoremap <F8> <Nop>
@@ -59,6 +58,9 @@ inoremap <F10> <Nop>
 
 " undo-tree
 nnoremap <F11> :UndotreeToggle<CR>
+
+" Buffers
+nnoremap <F5> :buffers<CR>:buffer<Space>
 
 " emmet-vim
 let g:user_emmet_leader_key='<C-e>'
@@ -70,9 +72,10 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 nmap <silent> gc :CocCommand clangd.switchSourceHeader<CR>
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> <leader>r <Plug>(coc-references)
-nmap <leader>n <Plug>(coc-rename)
-nmap <leader>i <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <leader>r <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> <leader>d :CocDiagnostics<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -82,9 +85,6 @@ command! -nargs=0 Prettify :CocCommand prettier.formatFile
 nnoremap <F9> :Prettify<CR>
 
 let g:python3_host_prog = '/usr/bin/python3'
-
-" tab sizes for python
-autocmd FileType python set tabstop=4|set shiftwidth=4
 
 " Change color scheme
 colorscheme gruvbox
@@ -120,7 +120,7 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " black python
 let g:black_linelength = 120
 let g:black_skip_string_normalization = 1
-let g:black_fast = 1
+let g:black_fast = 0
 autocmd FileType python nmap <F9> :Black<CR>
 
 " gitgutter
@@ -149,3 +149,6 @@ nmap <C-t> :tabnew<CR>
 " save
 inoremap <F2> <ESC>:w<CR>
 nnoremap <F2> :w<CR>
+
+" copy directory of current file
+nmap <silent> cp :let @+=expand("%:p:h")<CR>
