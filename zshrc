@@ -42,13 +42,13 @@ export PATH=$PATH:$GOPATH/bin
 #########
 export PYENV_ROOT="$(pyenv root)"
 
-if [ ! -f $PYENV_ROOT/comletions/pyenv.zsh ];
+if [ ! -f $PYENV_ROOT/completions/pyenv.zsh ];
 then
-  mkdir -p $PYENV_ROOT/comletions/
-  cp /usr/share/zsh/site-functions/_pyenv $PYENV_ROOT/comletions/pyenv.zsh
+  mkdir -p $PYENV_ROOT/completions/
+  cp /usr/share/zsh/site-functions/_pyenv $PYENV_ROOT/completions/pyenv.zsh
 fi
 
-source $PYENV_ROOT/comletions/pyenv.zsh
+source $PYENV_ROOT/completions/pyenv.zsh
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
