@@ -22,7 +22,6 @@ highlight Comment cterm=italic
 
 " sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 " yaourt -S ctags ttf-nerd-fonts-symbols ack fzf python-pynvim nodejs yarn rustup
-" :CocInstall coc-json coc-tsserver coc-clangd coc-python coc-go coc-rls coc-cmake coc-emmet coc-vetur coc-prettier coc-yaml
 call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -48,6 +47,12 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/spacehi.vim'
 call plug#end()
+
+" Coc Extensions
+let g:coc_global_extensions = [
+            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rls",
+            \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml",
+            \]
 
 " resource this file
 nnoremap <leader>so :source ~/.config/nvim/init.vim<CR>
