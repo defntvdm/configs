@@ -46,6 +46,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/spacehi.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 
 " Coc Extensions
