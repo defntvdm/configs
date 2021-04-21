@@ -47,6 +47,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/spacehi.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 " Coc Extensions
@@ -158,3 +159,6 @@ nmap <C-t> :tabnew<CR>
 
 " copy directory of current file
 nmap <silent> cp :let @+=expand("%:p:h")<CR>
+
+" vim-clang-format
+autocmd FileType cpp nmap <F9> :ClangFormat<CR>
