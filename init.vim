@@ -52,7 +52,7 @@ call plug#end()
 
 " Coc Extensions
 let g:coc_global_extensions = [
-            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rls",
+            \"coc-json", "coc-tsserver", "coc-clangd", "coc-pyright", "coc-go", "coc-rls",
             \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml",
             \]
 
@@ -100,9 +100,9 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " coc-prettier
 command! -nargs=0 Prettify :CocCommand prettier.formatFile
-nnoremap <F9> :Prettify<CR>
+nnoremap <F9> :Prettify<CR>:w<CR>
 
-let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
 
 " Change color scheme
 colorscheme gruvbox
@@ -139,7 +139,7 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:black_linelength = 120
 let g:black_skip_string_normalization = 1
 let g:black_fast = 0
-autocmd FileType python nmap <F9> :Black<CR>
+autocmd FileType python nmap <F9> :Black<CR>:w<CR>
 
 " gitgutter
 nmap ]h <Plug>(GitGutterNextHunk)
@@ -161,4 +161,4 @@ nmap <C-t> :tabnew<CR>
 nmap <silent> cp :let @+=expand("%:p:h")<CR>
 
 " vim-clang-format
-autocmd FileType cpp nmap <F9> :ClangFormat<CR>
+autocmd FileType cpp nmap <F9> :ClangFormat<CR>:w<CR>
