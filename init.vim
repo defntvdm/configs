@@ -38,7 +38,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
-Plug 'psf/black', { 'tag': '20.8b1' }
+Plug 'psf/black', { 'tag': '21.5b1' }
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
@@ -52,7 +52,7 @@ call plug#end()
 
 " Coc Extensions
 let g:coc_global_extensions = [
-            \"coc-json", "coc-tsserver", "coc-clangd", "coc-pyright", "coc-go", "coc-rls",
+            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rls",
             \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml",
             \]
 
