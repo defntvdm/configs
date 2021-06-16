@@ -36,7 +36,6 @@ Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-airline/vim-airline'
-Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'psf/black', { 'tag': '21.5b1' }
 Plug 'pangloss/vim-javascript'
@@ -53,7 +52,7 @@ call plug#end()
 " Coc Extensions
 let g:coc_global_extensions = [
             \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rls",
-            \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml",
+            \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml", "coc-snippets",
             \]
 
 " resource this file
@@ -129,11 +128,6 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
-
-" Ultisnips binding
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " black python
 let g:black_linelength = 120
