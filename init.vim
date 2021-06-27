@@ -51,7 +51,7 @@ call plug#end()
 
 " Coc Extensions
 let g:coc_global_extensions = [
-            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rls",
+            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rust-analyzer",
             \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml", "coc-snippets",
             \]
 
