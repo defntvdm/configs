@@ -12,16 +12,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-if [ ! -d $ZSH/custom/plugins/zsh-autosuggestions ];
-then
-  cp -r /usr/share/zsh/plugins/zsh-autosuggestions $ZSH/custom/plugins/
-fi
-
-if [ ! -d $ZSH/custom/plugins/zsh-syntax-highlighting ];
-then
-  cp -r /usr/share/zsh/plugins/zsh-syntax-highlighting $ZSH/custom/plugins/
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 ###########
@@ -40,6 +30,7 @@ export PATH=$PATH:$GOPATH/bin
 #########
 # pyenv #
 #########
+export PATH=$PATH:$HOME/.local/bin
 export PYENV_ROOT="$(pyenv root)"
 
 if [ ! -f $PYENV_ROOT/completions/pyenv.zsh ];
@@ -48,8 +39,8 @@ then
   cp /usr/share/zsh/site-functions/_pyenv $PYENV_ROOT/completions/pyenv.zsh
 fi
 
-source $PYENV_ROOT/completions/pyenv.zsh
-eval "$(pyenv init -)"
+eval "$(pyenv init -)" > /dev/null
+eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 
