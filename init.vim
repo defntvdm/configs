@@ -49,6 +49,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/vcscommand.vim'
+Plug 'mhinz/vim-signify'
 call plug#end()
 
 " Coc Extensions
