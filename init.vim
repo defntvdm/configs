@@ -17,6 +17,8 @@ set tabstop=4
 set updatetime=1000
 set noswapfile
 set ignorecase
+set exrc
+set secure
 
 highlight Comment cterm=italic
 
@@ -28,8 +30,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'fatih/vim-go'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug '/usr/share/vim/vimfiles/plugin/fzf.vim'
@@ -47,11 +47,13 @@ Plug 'mbbill/undotree'
 Plug 'vim-scripts/spacehi.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
+Plug 'honza/vim-snippets'
+Plug 'vim-scripts/vcscommand.vim'
 call plug#end()
 
 " Coc Extensions
 let g:coc_global_extensions = [
-            \"coc-json", "coc-tsserver", "coc-clangd", "coc-jedi", "coc-go", "coc-rust-analyzer",
+            \"coc-json", "coc-tsserver", "coc-clangd", "coc-pyright", "coc-go", "coc-rust-analyzer",
             \"coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml", "coc-snippets",
             \]
 
@@ -144,9 +146,9 @@ nmap <leader>hs <Plug>(GitGutterStageHunk)
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
-" copy/paste from system clipboard
-noremap <leader>y "+y
-noremap <leader>p "+P
+" copy/paste using system clipboard
+vnoremap <C-c> "+y
+inoremap <C-v>v <ESC>l"+Pa
 
 " new tab
 nmap <C-t> :tabnew<CR>
