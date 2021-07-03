@@ -48,6 +48,7 @@ Plug 'vim-scripts/spacehi.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'honza/vim-snippets'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-scripts/vcscommand.vim'
 Plug 'mhinz/vim-signify'
 call plug#end()
@@ -138,17 +139,12 @@ let g:black_skip_string_normalization = 1
 let g:black_fast = 0
 autocmd FileType python nmap <F9> :Black<CR>:w<CR>
 
-" gitgutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-nmap <leader>hu <Plug>(GitGutterUndoHunk)
-nmap <leader>hs <Plug>(GitGutterStageHunk)
-
 " replace selected
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " copy/paste using system clipboard
-vnoremap <C-c> "+y
+vnoremap <C-c>c "+y
+noremap <C-v>v "+P
 inoremap <C-v>v <ESC>l"+Pa
 
 " new tab
