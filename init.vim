@@ -145,7 +145,6 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " copy/paste using system clipboard
 vnoremap <C-c>c "+y
 noremap <C-v>v "+P
-inoremap <C-v>v <ESC>l"+Pa
 
 " new tab
 nmap <C-t> :tabnew<CR>
