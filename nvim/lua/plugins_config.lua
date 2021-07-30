@@ -1,7 +1,8 @@
 -- coc.nvim
 vim.g.coc_global_extensions = {
     "coc-json", "coc-tsserver", "coc-clangd", "coc-pyright", "coc-go", "coc-rust-analyzer", 
-    "coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml", "coc-snippets"}
+    "coc-cmake", "coc-emmet", "coc-vetur", "coc-prettier", "coc-yaml", "coc-snippets"
+}
 
 -- vim.go
 vim.g.go_auto_sameids = 0

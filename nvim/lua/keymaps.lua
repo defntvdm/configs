@@ -29,7 +29,7 @@ set_km('n', '<f5>', [[:%s/\s\+$//e<cr>]], { noremap = true })
 -- f11 - undotree
 set_km('n', '<f11>', ':UndotreeToggle<cr>', { noremap = true })
 -- f12 - ctags
-set_km('n', '<f11>', ':TagbarToggle<cr>', { noremap = true })
+set_km('n', '<f12>', ':TagbarToggle<cr>', { noremap = true })
 -- noop
 set_km('i', '<f6>', '<nop>', { noremap = true })
 set_km('i', '<f7>', '<nop>', { noremap = true })
