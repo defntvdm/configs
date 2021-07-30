@@ -26,7 +26,8 @@ return require('packer').startup(function()
     use 'mbbill/undotree'
     use 'vim-scripts/spacehi.vim'
     use 'rhysd/vim-clang-format'
-    use { 'neoclide/coc.nvim', branch = 'release' }
+    use 'jackguo380/vim-lsp-cxx-highlight'
+    use { 'neoclide/coc.nvim', tag = 'v0.0.80' }
     use 'vim-scripts/vcscommand.vim'
     use 'mhinz/vim-signify'
 end)
