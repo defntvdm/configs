@@ -17,5 +17,6 @@ vim.o.swapfile = false
 vim.o.ignorecase = true
 vim.o.exrc = true
 vim.o.secure = true
+vim.o.termguicolors = true
 
 vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
