@@ -9,8 +9,47 @@ set_km('n', '<c-k>', '<c-w>k', { noremap = true, silent = true })
 set_km('n', '<c-l>', '<c-w>l', { noremap = true, silent = true })
 
 -- tab in completions
-set_km('i', '<tab>', [[pumvisible() ? "\<c-n>" : "\<tab>"]], { noremap = true, silent = true, expr = true })
-set_km('i', '<s-tab>', [[pumvisible() ? "\<c-p>" : "\<s-tab>"]], { noremap = true, silent = true, expr = true })
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+  local col = vim.fn.col '.' - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' then
+    return true
+  else
+    return false
+  end
+end
+
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t '<C-n>'
+  elseif check_back_space() then
+    return t '<Tab>'
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t '<C-p>'
+  else
+    return t '<S-Tab>'
+  end
+end
+
+set_km('i', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
+set_km('i', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
+set_km('s', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
+set_km('s', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
+set_km('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+set_km('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+set_km('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+set_km('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+set_km('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
+set_km('i', '<c-space>', 'compe#complete()', { expr = true })
 
 -- NERDTree
 set_km('n', '<c-n>', ':NERDTreeToggle<cr>', { noremap = true, silent = true })
@@ -35,19 +74,6 @@ set_km('i', '<f6>', '<nop>', { noremap = true })
 set_km('i', '<f7>', '<nop>', { noremap = true })
 set_km('i', '<f8>', '<nop>', { noremap = true })
 set_km('i', '<f10>', '<nop>', { noremap = true })
-
--- coc.nvim
-set_km('n', 'gc', ':CocCommand clangd.switchSourceHeader<cr>', { silent = true })
-set_km('n', 'gd', '<Plug>(coc-definition)', { silent = true })
-set_km('n', 'gi', '<Plug>(coc-implementation)', { silent = true })
-set_km('n', 'gr', '<Plug>(coc-references)', { silent = true })
-set_km('n', 'gy', '<Plug>(coc-type-definition)', { silent = true })
-set_km('n', '<leader>r', '<Plug>(coc-rename)', { silent = true })
-set_km('i', '<c-space>', 'coc#refresh()', { noremap = true, silent = true, expr = true })
-set_km('n', '<leader>d', ':CocDiagnostics<cr>', { silent = true })
-set_km('n', '[d', '<Plug>(coc-diagnostic-prev)', { silent = true })
-set_km('n', ']d', '<Plug>(coc-diagnostic-next)', { silent = true })
-set_km('n', '<f9>', ':CocCommand prettier.formatFile<cr>', { silent = true })
 
 -- ack
 set_km('n', '<leader>a', ':Ack!<space>', { noremap = true })

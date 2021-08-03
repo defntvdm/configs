@@ -1,4 +1,5 @@
 vim.cmd [[colorscheme gruvbox]]
+vim.o.completeopt = 'menuone,noinsert'
 vim.o.background = 'dark'
 vim.o.cursorline = true
 vim.o.diffopt = vim.o.diffopt .. ',vertical'
@@ -10,6 +11,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shiftwidth = 4
 vim.o.smartindent = true
+-- vim.o.t_Co = 256
 vim.o.tabstop = 4
 vim.o.updatetime = 1000
 vim.o.swapfile = false

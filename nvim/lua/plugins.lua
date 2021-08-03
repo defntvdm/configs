@@ -25,9 +25,10 @@ return require('packer').startup(function()
     use 'jiangmiao/auto-pairs'
     use 'mbbill/undotree'
     use 'vim-scripts/spacehi.vim'
-    use 'rhysd/vim-clang-format'
-    use 'jackguo380/vim-lsp-cxx-highlight'
-    use { 'neoclide/coc.nvim', tag = 'v0.0.80' }
+    use 'neovim/nvim-lspconfig'
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'hrsh7th/nvim-compe'
+    use 'L3MON4D3/LuaSnip'
     use 'vim-scripts/vcscommand.vim'
     use 'mhinz/vim-signify'
 end)
