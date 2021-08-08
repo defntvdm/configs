@@ -80,7 +80,7 @@ set_km('n', '<leader>a', ':Ack!<space>', { noremap = true })
 
 -- fzf
 vim.cmd([[let $FZF_DEFAULT_COMMAND='find . \( -path ./.git -o -path ./.venv -o -path vendor -o -path .mypy_cache \) -prune -o -print']])
-set_km('n', '<leader>f', ':Files!<cr>', { noremap = true })
+set_km('n', '<leader>f', ':Files<space>', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })

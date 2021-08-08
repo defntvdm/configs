@@ -17,6 +17,7 @@ return require('packer').startup(function()
     use 'fatih/vim-go'
     use 'majutsushi/tagbar'
     use 'mileszs/ack.vim'
+    use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
     use 'Glench/Vim-Jinja2-Syntax'
     use 'vim-airline/vim-airline'

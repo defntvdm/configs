@@ -33,7 +33,8 @@ end
 
 -- sudo npm i -g vscode-langservers-extracted typescript-language-server pyright vls
 -- yay -S clang gopls rust_analyzer lua-language-server
-local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "vuels" }
+-- sudo pip3 install cmake-language-server
+local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "html", "vuels", "cmake" }
 for _, server in pairs(servers) do
     nlsp[server].setup{
 		on_attach = on_attach,
@@ -95,4 +96,5 @@ vim.g.black_fast = 0
 
 vim.cmd([[
 autocmd FileType python nmap <F9> :Black<cr>
+autocmd FileType c,cpp nmap gc :ClangdSwitchSourceHeader<cr>
 ]])
