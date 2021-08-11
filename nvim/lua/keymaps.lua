@@ -2,12 +2,6 @@ local set_km = vim.api.nvim_set_keymap
 vim.g.mapleader = '\\'
 set_km('n', '<space>', '<nop>', { noremap = true, silent = true })
 
--- movement HJKL
-set_km('n', '<c-h>', '<c-w>h', { noremap = true, silent = true })
-set_km('n', '<c-j>', '<c-w>j', { noremap = true, silent = true })
-set_km('n', '<c-k>', '<c-w>k', { noremap = true, silent = true })
-set_km('n', '<c-l>', '<c-w>l', { noremap = true, silent = true })
-
 -- tab in completions
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
