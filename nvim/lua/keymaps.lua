@@ -57,7 +57,7 @@ set_km('n', '<f2>', ':w<cr>', { noremap = true })
 -- f4 - cut trailing whitespaces
 set_km('n', '<f4>', [[:%s/\s\+$//e<cr>]], { noremap = true })
 -- f5 - buffers
-set_km('n', '<f5>', [[:%s/\s\+$//e<cr>]], { noremap = true })
+set_km('n', '<f5>', ':Buffers<cr>', { noremap = true })
 -- f9 - different formatters
 -- f11 - undotree
 set_km('n', '<f11>', ':UndotreeToggle<cr>', { noremap = true })
