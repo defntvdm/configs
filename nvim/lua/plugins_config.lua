@@ -1,10 +1,13 @@
 -- nvim-lsp
 local nlsp = require'lspconfig'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+_G.lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
+lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
+_G.lsp_flags = {
+    debounce_text_changes = 500,
+}
 
-local on_attach = function(client, bufnr)
+function _G.lsp_on_attach(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -37,10 +40,9 @@ end
 local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "html", "vuels", "cmake", "dockerls" }
 for _, server in pairs(servers) do
     nlsp[server].setup{
-		on_attach = on_attach,
-        capabilities = capabilities,
+		on_attach = lsp_on_attach,
+        capabilities = lsp_capabilities,
 		flags = {
-		  debounce_text_changes = 150,
 		},
 	}
 end
@@ -48,9 +50,7 @@ nlsp.sumneko_lua.setup{
     cmd = { 'lua-language-server', },
     on_attach = on_attach,
     capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = lsp_flags,
 }
 
 -- nvim-compe
