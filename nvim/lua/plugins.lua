@@ -14,7 +14,6 @@ return require('packer').startup(function()
     use 'scrooloose/nerdtree'
     use 'preservim/nerdcommenter'
     use 'ryanoasis/vim-devicons'
-    use 'fatih/vim-go'
     use 'majutsushi/tagbar'
     use 'mileszs/ack.vim'
     use 'junegunn/fzf'

@@ -31,10 +31,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<f9>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
--- sudo npm i -g vscode-langservers-extracted typescript-language-server pyright vls
+-- sudo npm i -g vscode-langservers-extracted typescript-language-server pyright vls dockerfile-language-server-nodejs
 -- yay -S clang gopls rust_analyzer lua-language-server
 -- sudo pip3 install cmake-language-server
-local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "html", "vuels", "cmake" }
+local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "html", "vuels", "cmake", "dockerls" }
 for _, server in pairs(servers) do
     nlsp[server].setup{
 		on_attach = on_attach,
@@ -78,16 +78,6 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
-
--- vim.go
-vim.g.go_auto_sameids = 0
-vim.g.go_gopls_enabled = 0
-vim.g.go_def_mapping_enabled = 0
-vim.g.go_fmt_command = 'goimports'
-vim.g.go_highlight_types = 1
-vim.g.go_highlight_fields = 1
-vim.g.go_highlight_functions = 1
-vim.g.go_highlight_function_calls = 1
 
 -- black
 vim.g.black_linelength = 120
