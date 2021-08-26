@@ -4,7 +4,7 @@ local nlsp = require'lspconfig'
 _G.lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
 _G.lsp_flags = {
-    debounce_text_changes = 500,
+    debounce_text_changes = 150,
 }
 
 function _G.lsp_on_attach(client, bufnr)
@@ -42,8 +42,7 @@ for _, server in pairs(servers) do
     nlsp[server].setup{
 		on_attach = lsp_on_attach,
         capabilities = lsp_capabilities,
-		flags = {
-		},
+		flags = lsp_flags,
 	}
 end
 nlsp.sumneko_lua.setup{
