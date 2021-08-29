@@ -52,6 +52,13 @@ nlsp.sumneko_lua.setup{
     flags = lsp_flags,
 }
 
+--lualine.nvim
+require'lualine'.setup{
+    options = {
+        theme = 'gruvbox',
+    },
+}
+
 -- nvim-compe
 require'compe'.setup {
     source = {

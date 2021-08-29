@@ -19,7 +19,7 @@ return require('packer').startup(function()
     use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
     use 'Glench/Vim-Jinja2-Syntax'
-    use 'vim-airline/vim-airline'
+    use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
     use 'tpope/vim-surround'
     use { 'psf/black', tag = '21.5b1' }
     use 'jiangmiao/auto-pairs'
