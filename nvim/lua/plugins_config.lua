@@ -117,6 +117,11 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
+-- telescope
+require'telescope'.setup{
+    sorting_strategy = 'ascending',
+}
+
 -- black
 vim.g.black_linelength = 120
 vim.g.black_skip_string_normalization = 1

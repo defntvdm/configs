@@ -44,12 +44,10 @@ set_km('i', '<f7>', '<nop>', { noremap = true })
 set_km('i', '<f8>', '<nop>', { noremap = true })
 set_km('i', '<f10>', '<nop>', { noremap = true })
 
--- ack
-set_km('n', '<leader>a', ':Ack!<space>', { noremap = true })
-
 -- telescope
 set_km('n', '<leader>ff', ':Telescope find_files cwd=./', { noremap = true })
 set_km('n', '<leader>fb', ':Telescope buffers<cr>', { noremap = true })
+set_km('n', '<leader>fg', ':Telescope live_grep cwd=./', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })

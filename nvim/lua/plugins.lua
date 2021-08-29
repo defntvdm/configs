@@ -15,10 +15,9 @@ return require('packer').startup(function()
     use 'preservim/nerdcommenter'
     use 'ryanoasis/vim-devicons'
     use 'majutsushi/tagbar'
-    use 'mileszs/ack.vim'
-    use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+    use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
     use 'Glench/Vim-Jinja2-Syntax'
-    use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
+    use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
     use { 'blackCauldron7/surround.nvim', config = function() require'surround'.setup{} end}
     use { 'psf/black', tag = '21.5b1' }
     use 'jiangmiao/auto-pairs'
