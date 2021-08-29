@@ -16,18 +16,19 @@ return require('packer').startup(function()
     use 'ryanoasis/vim-devicons'
     use 'majutsushi/tagbar'
     use 'mileszs/ack.vim'
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
     use 'Glench/Vim-Jinja2-Syntax'
     use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true} }
-    use 'tpope/vim-surround'
+    use { 'blackCauldron7/surround.nvim', config = function() require'surround'.setup{} end}
     use { 'psf/black', tag = '21.5b1' }
     use 'jiangmiao/auto-pairs'
     use 'mbbill/undotree'
     use 'vim-scripts/spacehi.vim'
-    use 'neovim/nvim-lspconfig'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'hrsh7th/nvim-compe'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'vim-scripts/vcscommand.vim'
     use 'mhinz/vim-signify'

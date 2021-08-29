@@ -1,5 +1,4 @@
 vim.cmd [[colorscheme gruvbox]]
-vim.o.completeopt = 'menuone,noinsert'
 vim.o.background = 'dark'
 vim.o.cursorline = true
 vim.o.diffopt = vim.o.diffopt .. ',vertical'
