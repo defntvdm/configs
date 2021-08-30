@@ -1,123 +1,17 @@
--- nvim-lsp
-local nlsp = require'lspconfig'
+require'my.lsp' -- nvim-lsp
+require'my.cmp' -- nvim-cmp
+require'my.treesitter' -- nvim-treesitter
 
-_G.lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
-lsp_capabilities.textDocument.completion.completionItem.snippetSupport = true
-_G.lsp_flags = {
-    debounce_text_changes = 150,
-}
+require'surround'.setup{} -- surround.nvim
 
-function _G.lsp_on_attach(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  local opts = { noremap=true }
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<f9>", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-end
-
--- sudo npm i -g vscode-langservers-extracted typescript-language-server pyright vls dockerfile-language-server-nodejs
--- yay -S clang gopls rust_analyzer lua-language-server
--- sudo pip3 install cmake-language-server
-local servers = { "clangd", "gopls", "pyright", "rust_analyzer", "tsserver", "jsonls", "html", "vuels", "cmake", "dockerls" }
-for _, server in pairs(servers) do
-    nlsp[server].setup{
-		on_attach = lsp_on_attach,
-        capabilities = lsp_capabilities,
-		flags = lsp_flags,
-	}
-end
-nlsp.sumneko_lua.setup{
-    cmd = { 'lua-language-server', },
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = lsp_flags,
-}
-
---lualine.nvim
+-- lualine.nvim
 require'lualine'.setup{
     options = {
         theme = 'gruvbox',
     },
 }
 
--- nvim-cmp
-vim.o.completeopt = 'menuone,noselect'
-local luasnip = require'luasnip'
-local cmp = require'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-      elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-      elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
-
--- nvim-treesitter
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "bash", "c", "cmake", "cpp", "css", "dockerfile", "go", "gomod", "graphql", "html", "javascript", "json",
-        "lua", "python", "rust", "toml", "tsx", "typescript", "vue", "yaml",
-    },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
-
--- telescope
+-- telescope.nvim
 require'telescope'.setup{
     sorting_strategy = 'ascending',
 }
@@ -129,5 +23,4 @@ vim.g.black_fast = 0
 
 vim.cmd([[
 autocmd FileType python nmap <F9> :Black<cr>
-autocmd FileType c,cpp nmap gc :ClangdSwitchSourceHeader<cr>
 ]])

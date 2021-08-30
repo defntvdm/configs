@@ -17,8 +17,8 @@ return require('packer').startup(function()
     use 'majutsushi/tagbar'
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
     use 'Glench/Vim-Jinja2-Syntax'
-    use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
-    use { 'blackCauldron7/surround.nvim', config = function() require'surround'.setup{} end}
+    use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
+    use 'blackCauldron7/surround.nvim'
     use { 'psf/black', tag = '21.5b1' }
     use 'jiangmiao/auto-pairs'
     use 'mbbill/undotree'
