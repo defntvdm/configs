@@ -11,9 +11,8 @@ end
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use 'morhetz/gruvbox'
-    use 'scrooloose/nerdtree'
+    use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
     use 'preservim/nerdcommenter'
-    use 'ryanoasis/vim-devicons'
     use 'majutsushi/tagbar'
     use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
     use 'Glench/Vim-Jinja2-Syntax'

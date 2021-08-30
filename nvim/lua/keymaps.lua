@@ -21,8 +21,9 @@ set_km('i', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true
 set_km('s', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
 set_km('s', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
 
--- NERDTree
-set_km('n', '<c-n>', ':NERDTreeToggle<cr>', { noremap = true, silent = true })
+-- nvim-tree.lua
+set_km('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = true })
+set_km('n', 'ff', ':NvimTreeFindFile<cr>', { noremap = true, silent = true })
 
 -- FXX
 -- f1 - help
