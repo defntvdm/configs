@@ -1,1 +1,15 @@
-require'surround'.setup{}
+require'surround'.setup{
+    pairs = {
+        nestable = {
+            {"(", ")"},
+            {"[", "]"},
+            {"{", "}"},
+            {"<", ">"},
+        },
+        linear = {
+            {"'", "'"},
+            {'"', '"'}
+        },
+    },
+    brackets = {"(", "{", "[", "<"},
+}
