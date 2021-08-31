@@ -5,3 +5,4 @@ require'my.lualine' -- lualine.nvim
 require'my.surround' -- surround.nvim
 require'my.telescope' -- telescope.nvim
 require'my.treesitter' -- nvim-treesitter
+require'my.nvimtree' -- nvim-tree.nvim
