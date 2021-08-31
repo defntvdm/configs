@@ -45,10 +45,12 @@ set_km('i', '<f7>', '<nop>', { noremap = true })
 set_km('i', '<f8>', '<nop>', { noremap = true })
 set_km('i', '<f10>', '<nop>', { noremap = true })
 
--- telescope
-set_km('n', '<leader>ff', ':Telescope find_files cwd=./', { noremap = true })
-set_km('n', '<leader>fb', ':Telescope buffers<cr>', { noremap = true })
-set_km('n', '<leader>fg', ':Telescope live_grep cwd=./', { noremap = true })
+-- fzf.vim
+set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
+set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true })
+
+-- ack.vim
+set_km('n', '<leader>fg', ':Ack!<space>', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })

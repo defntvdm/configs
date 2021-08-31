@@ -14,7 +14,8 @@ return require('packer').startup(function()
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
     use 'preservim/nerdcommenter'
     use 'majutsushi/tagbar'
-    use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
+    use 'mileszs/ack.vim'
+    use { 'junegunn/fzf.vim', requires = { 'junegunn/fzf', run = 'fzf#install()' } }
     use 'Glench/Vim-Jinja2-Syntax'
     use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
     use 'blackCauldron7/surround.nvim'
