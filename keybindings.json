@@ -13,5 +13,15 @@
   {
     "key": "ctrl+n",
     "command": "workbench.action.toggleSidebarVisibility",
+  },
+  {
+    "key": "ctrl+]",
+    "command": "git.stageSelectedRanges",
+    "when": "isInDiffEditor"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "git.unstageSelectedRanges",
+    "when": "isInDiffEditor"
   }
 ]

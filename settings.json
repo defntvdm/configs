@@ -1,19 +1,31 @@
 {
-    // cpp
-    "C_Cpp.default.cStandard": "c17",
-    "C_Cpp.default.cppStandard": "c++20",
-    "C_Cpp.autocompleteAddParentheses": true,
-    "C_Cpp.clang_format_sortIncludes": true,
+    // clangd
+    "clangd.fallbackFlags": [
+        "-xc++"
+    ],
+    "clangd.arguments": [
+        "--background-index",
+        "--enable-config",
+        "--log=error"
+    ],
 
     // python
+    "python.defaultInterpreterPath": "/home/defntvdm/.pyenv/shims/python3",
+    "python.formatting.provider": "black",
     "python.formatting.blackPath": "/home/defntvdm/.pyenv/shims/black",
-    "python.formatting.blackArgs": ["-l", "120"],
+    "python.formatting.blackArgs": [
+        "-l",
+        "120",
+        "-S"
+    ],
+
+    // vim 
+    "vim.leader": "\\",
 
     // Just settings
     "json.maxItemsComputed": 0,
-    "workbench.colorTheme": "Gruvbox Dark Soft",
-    "cmake.configureOnOpen": true,
-    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Gruvbox Dark Medium",
     "security.workspace.trust.untrustedFiles": "open",
     "go.toolsManagement.autoUpdate": true,
+    "window.zoomLevel": 1,
 }
