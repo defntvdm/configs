@@ -33,7 +33,6 @@ set_km('n', '<f2>', ':w<cr>', { noremap = true })
 -- f3 - trailing space highlight
 -- f4 - cut trailing whitespaces
 set_km('n', '<f4>', [[:%s/\s\+$//e<cr>]], { noremap = true })
--- f9 - different formatters
 -- f11 - undotree
 set_km('n', '<f11>', ':UndotreeToggle<cr>', { noremap = true })
 -- f12 - ctags
@@ -43,14 +42,17 @@ set_km('i', '<f5>', '<nop>', { noremap = true })
 set_km('i', '<f6>', '<nop>', { noremap = true })
 set_km('i', '<f7>', '<nop>', { noremap = true })
 set_km('i', '<f8>', '<nop>', { noremap = true })
+set_km('i', '<f9>', '<nop>', { noremap = true })
 set_km('i', '<f10>', '<nop>', { noremap = true })
 
 -- fzf.vim
 set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
 set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true })
 
--- ack.vim
-set_km('n', '<leader>fg', ':Ack!<space>', { noremap = true })
+-- vimgrep
+set_km('n', '<leader>fg', ':vimgrep<space>', { noremap = true })
+set_km('n', '<leader>n', ':cnext<cr>', { noremap = true })
+set_km('n', '<leader>p', ':cprev<cr>', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })

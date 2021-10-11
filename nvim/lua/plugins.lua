@@ -14,13 +14,12 @@ return require('packer').startup(function()
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
     use 'preservim/nerdcommenter'
     use 'majutsushi/tagbar'
-    use 'mileszs/ack.vim'
     use { 'junegunn/fzf.vim', requires = { 'junegunn/fzf', run = 'fzf#install()' } }
     use 'Glench/Vim-Jinja2-Syntax'
     use { 'hoob3rt/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
-    use 'blackCauldron7/surround.nvim'
     use { 'psf/black', tag = '21.5b1' }
     use 'jiangmiao/auto-pairs'
+    use 'tpope/vim-surround'
     use 'mbbill/undotree'
     use 'vim-scripts/spacehi.vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

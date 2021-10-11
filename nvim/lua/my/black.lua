@@ -3,5 +3,5 @@ vim.g.black_skip_string_normalization = 1
 vim.g.black_fast = 0
 
 vim.cmd([[
-autocmd FileType python nmap <F9> :Black<cr>
+autocmd FileType python nmap <C-i> :Black<cr>
 ]])
