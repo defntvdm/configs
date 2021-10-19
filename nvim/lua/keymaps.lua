@@ -31,7 +31,8 @@ set_km('i', '<f11>', '<nop>', { noremap = true })
 
 -- fzf.vim
 set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
-set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true })
+set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true, silent = true })
+set_km('n', '<leader>ft', ':BTags<cr>', { noremap = true, silent = true })
 
 -- vimgrep
 set_km('n', '<leader>fg', ':vimgrep<space>', { noremap = true })

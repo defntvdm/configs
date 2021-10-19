@@ -26,3 +26,7 @@ vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
 require'plugins'
 require'keymaps'
 
+local local_vimrc = vim.fn.getcwd()..'/.localnvim'
+if vim.loop.fs_stat(local_vimrc) then
+  vim.cmd('source '..local_vimrc)
+end
