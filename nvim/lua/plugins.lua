@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
   use 'folke/lsp-colors.nvim'
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-path'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
   use {
@@ -38,13 +39,15 @@ return require('packer').startup(function(use)
     run = ':TSUpdate',
   }
   use 'nvim-treesitter/playground'
+  use {
+    'psf/black',
+    tag = '21.9b0',
+  }
 
   use 'preservim/tagbar'
-  -- use 'vim-scripts/vcscommand.vim'
-  -- use 'mhinz/vim-signify'
-  use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/signify'
-  use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/vcscommand'
-  use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/ya'
+
+  use 'vim-scripts/vcscommand.vim'
+  use 'mhinz/vim-signify'
 
   use 'kristijanhusak/orgmode.nvim'
 

@@ -54,3 +54,9 @@ set_km('n', '<c-t>', ':tabnew<cr>', { silent = true })
 
 -- copy directory of current file
 set_km('n', 'cp', [[:let @+=expand("%:p:h")<cr>]], { silent = true })
+
+-- black
+vim.g.black_linelength = 120
+vim.g.black_skip_string_normalization = true
+vim.g.black_quiet = true
+vim.cmd [[autocmd! FileType python nmap <space>f :Black<CR>]]

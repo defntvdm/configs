@@ -18,8 +18,9 @@ vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.updatetime = 1000
 
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd [[colorscheme gruvbox]]
 vim.cmd [[highlight Comment cterm=italic]]
+vim.cmd [[autocmd FileType go set noexpandtab]]
 
 vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
 
