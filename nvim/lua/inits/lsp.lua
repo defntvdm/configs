@@ -30,10 +30,32 @@ function _G.my_on_attach(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  if client.name == 'pyright' then
+    buf_set_keymap('n', '<space>f', ':Black<CR>', opts)
+  else
+    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  end
 end
 
-local servers = { 'clangd', 'gopls', 'pyright', 'rust_analyzer', 'tsserver' }
+-- yay -S bash-language-server clang
+-- pip install cmake-language-server
+-- npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs vls graphql-language-service-cli yaml-language-server
+local servers = {
+  'bashls',
+  'clangd',
+  'cmake',
+  'cssls',
+  'dockerls',
+  'gopls',
+  'graphql',
+  'jsonls',
+  'html',
+  'pyright',
+  'rust_analyzer',
+  'tsserver',
+  'vuels',
+  'yamlls',
+}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = my_on_attach,
@@ -43,50 +65,3 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
-
-vim.o.completeopt = 'menuone,noselect'
-local luasnip = require'luasnip'
-local cmp = require'cmp'
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end,
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'orgmode' },
-    { name = 'path' },
-  },
-}

@@ -25,6 +25,12 @@ vim.cmd [[autocmd FileType go set noexpandtab]]
 vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
 
 require'plugins'
+require'inits.nvim-tree'
+require'inits.lualine'
+require'inits.lsp'
+require'inits.cmp'
+require'inits.tree-sitter'
+require'inits.orgmode'
 require'keymaps'
 
 local local_vimrc = vim.fn.getcwd()..'/.localnvim'

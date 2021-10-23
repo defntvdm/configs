@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-buffer'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
   use {
@@ -50,14 +51,12 @@ return require('packer').startup(function(use)
   use 'mhinz/vim-signify'
 
   use 'kristijanhusak/orgmode.nvim'
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && npm i',
+  }
 
   if packer_bootstrap then
     require('packer').sync()
   end
-
-  require'inits.nvim-tree'
-  require'inits.lualine'
-  require'inits.lsp'
-  require'inits.tree-sitter'
-  require'inits.orgmode'
 end)
