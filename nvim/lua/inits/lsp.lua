@@ -31,7 +31,7 @@ function _G.my_on_attach(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   if client.name == 'pyright' then
-    buf_set_keymap('n', '<space>f', ':Black<CR>', opts)
+    buf_set_keymap('n', '<space>f', ':Black<CR>:PyrightOrganizeImports<CR>', opts)
   else
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   end
