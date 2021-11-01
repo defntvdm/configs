@@ -15,6 +15,7 @@ require'nvim-treesitter.configs'.setup {
     'json',
     'latex',
     'lua',
+    'org',
     'python',
     'rust',
     'scss',
@@ -28,5 +29,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
       enable = true,
       disable = {},
+      additional_vim_regex_highlighting = {'org'},
   }
 }
