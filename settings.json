@@ -1,4 +1,9 @@
 {
+    // color theme
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    // onsave newline and whitespace
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
     // clangd
     "clangd.fallbackFlags": [
         "-xc++"
@@ -8,7 +13,6 @@
         "--enable-config",
         "--log=error"
     ],
-
     // python
     "python.defaultInterpreterPath": "/home/defntvdm/.pyenv/shims/python3",
     "python.formatting.provider": "black",
@@ -16,16 +20,14 @@
     "python.formatting.blackArgs": [
         "-l",
         "120",
-        "-S"
+        "-S",
     ],
-
-    // vim 
+    // vim
     "vim.leader": "\\",
-
     // Just settings
-    "json.maxItemsComputed": 0,
-    "workbench.colorTheme": "Gruvbox Dark Medium",
     "security.workspace.trust.untrustedFiles": "open",
     "go.toolsManagement.autoUpdate": true,
     "window.zoomLevel": 1,
+    "editor.suggestSelection": "first",
+    "editor.fontFamily": "'Fira Mono', 'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 }
