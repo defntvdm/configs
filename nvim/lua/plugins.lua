@@ -50,10 +50,7 @@ return require('packer').startup(function(use)
   use 'vim-scripts/vcscommand.vim'
   use 'mhinz/vim-signify'
 
-  use {
-    'kristijanhusak/orgmode.nvim',
-    branch = 'tree-sitter',
-  }
+  use 'kristijanhusak/orgmode.nvim'
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && npm i',

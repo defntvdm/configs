@@ -1,3 +1,12 @@
+require'plugins'
+require'inits.nvim-tree'
+require'inits.lualine'
+require'inits.lsp'
+require'inits.cmp'
+require'inits.orgmode'
+require'inits.tree-sitter'
+require'keymaps'
+
 vim.o.background = 'dark'
 vim.o.colorcolumn = '120'
 vim.o.cursorline = true
@@ -23,15 +32,6 @@ vim.cmd [[highlight Comment cterm=italic]]
 vim.cmd [[autocmd FileType go set noexpandtab]]
 
 vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
-
-require'plugins'
-require'inits.nvim-tree'
-require'inits.lualine'
-require'inits.lsp'
-require'inits.cmp'
-require'inits.orgmode'
-require'inits.tree-sitter'
-require'keymaps'
 
 local local_vimrc = vim.fn.getcwd()..'/.localnvim'
 if vim.loop.fs_stat(local_vimrc) then
