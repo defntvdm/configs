@@ -14,20 +14,139 @@
         "--log=error"
     ],
     // python
-    "python.defaultInterpreterPath": "/home/defntvdm/.pyenv/shims/python3",
+    "python.defaultInterpreterPath": "/Users/defntvdm/.pyenv/shims/python3",
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/home/defntvdm/.pyenv/shims/black",
+    "python.formatting.blackPath": "/Users/defntvdm/.pyenv/shims/black",
     "python.formatting.blackArgs": [
         "-l",
         "120",
-        "-S",
+        "-S"
     ],
+    // go
+    "go.useLanguageServer": true,
+    "go.gopath": "/Users/defntvdm/go",
+    "go.formatTool": "goimports",
+    "gopls": {
+        "ui.completion.usePlaceholders": true,
+        "ui.diagnostic.staticcheck": false,
+    },
+    "[go]": {
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+        "editor.suggest.snippetsPreventQuickSuggestions": false
+    },
     // vim
     "vim.leader": "\\",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ],
+        },
+        {
+            "before": [
+                "<Space>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.organizeImports",
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<Space>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "f",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.focusSideBar",
+                "workbench.action.focusSideBar"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "fzf.find"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "b"
+            ],
+            "commands": [
+                "workbench.files.action.focusOpenEditorsView",
+                "workbench.files.action.focusOpenEditorsView"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "g"
+            ],
+            "commands": [
+                "workbench.action.findInFiles",
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<space>",
+                "r",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        }
+    ],
     // Just settings
     "security.workspace.trust.untrustedFiles": "open",
     "go.toolsManagement.autoUpdate": true,
     "window.zoomLevel": 1,
     "editor.suggestSelection": "first",
-    "editor.fontFamily": "'Fira Mono', 'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 12,
+    "editor.rulers": [
+        120
+    ],
+    "workbench.iconTheme": "material-icon-theme",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }

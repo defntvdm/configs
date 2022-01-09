@@ -23,5 +23,18 @@
     "key": "ctrl+[",
     "command": "git.unstageSelectedRanges",
     "when": "isInDiffEditor"
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.splitEditorRight",
+  },
+  {
+    "key": "ctrl+/",
+    "command": "workbench.action.splitEditorDown",
+  },
+  {
+    "key": "alt+o",
+    "command": "clangd.switchheadersource",
+    "when": "editorTextFocus"
   }
 ]
