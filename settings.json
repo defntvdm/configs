@@ -1,9 +1,4 @@
 {
-    // color theme
-    "workbench.colorTheme": "Gruvbox Dark Hard",
-    // onsave newline and whitespace
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
     // clangd
     "clangd.fallbackFlags": [
         "-xc++"
@@ -22,10 +17,12 @@
         "120",
         "-S"
     ],
+    "python.languageServer": "Pylance",
     // go
-    "go.useLanguageServer": true,
-    "go.gopath": "/Users/defntvdm/go",
     "go.formatTool": "goimports",
+    "go.gopath": "/Users/defntvdm/go",
+    "go.toolsManagement.autoUpdate": true,
+    "go.useLanguageServer": true,
     "gopls": {
         "ui.completion.usePlaceholders": true,
         "ui.diagnostic.staticcheck": false,
@@ -134,17 +131,18 @@
         }
     ],
     // Just settings
-    "security.workspace.trust.untrustedFiles": "open",
-    "go.toolsManagement.autoUpdate": true,
-    "window.zoomLevel": 1,
-    "editor.suggestSelection": "first",
     "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.unicodeHighlight.ambiguousCharacters": false,
-    "editor.minimap.enabled": false,
     "editor.fontSize": 12,
-    "editor.rulers": [
-        120
-    ],
+    "editor.minimap.enabled": false,
+    "editor.rulers": [120],
+    "editor.suggestSelection": "first",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.iconTheme": "material-icon-theme",
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
