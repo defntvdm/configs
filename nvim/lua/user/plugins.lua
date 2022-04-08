@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround' -- surround brackets
   use 'jiangmiao/auto-pairs' -- autopairs
 
+  use 'junegunn/fzf' -- fuzzy finder core
   use 'junegunn/fzf.vim' -- fuzzy finder
 
   use {
