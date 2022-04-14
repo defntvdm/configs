@@ -6,8 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- package manager
 
-  use 'ellisonleao/gruvbox.nvim' -- colorscheme
-  use 'rakr/vim-one' -- another colorscheme
+  use 'joshdick/onedark.vim' -- colorscheme
 
   use {
     'kyazdani42/nvim-tree.lua',

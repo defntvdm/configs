@@ -23,7 +23,7 @@ vim.cmd [[autocmd FileType go set noexpandtab]]
 vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
 
 require 'user.plugins'
-vim.cmd([[colorscheme one]])
+vim.cmd([[colorscheme onedark]])
 require 'user.lualine'
 require 'user.keymaps'
 require 'user.lsp'
