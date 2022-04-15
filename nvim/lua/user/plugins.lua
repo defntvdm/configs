@@ -6,7 +6,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- package manager
 
-  use 'joshdick/onedark.vim' -- colorscheme
+  use 'navarasu/onedark.nvim' -- colorscheme
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -45,6 +45,13 @@ return require('packer').startup(function(use)
   } -- telescope
 
   use 'gpanders/editorconfig.nvim' -- editorconfig
+
+  use {
+    'tanvirtin/vgit.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }, 
+  }
 
   use 'neovim/nvim-lspconfig' -- lsp clients
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin

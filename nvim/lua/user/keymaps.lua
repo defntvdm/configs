@@ -1,7 +1,6 @@
 local set_km = vim.api.nvim_set_keymap
 vim.g.mapleader = '\\'
 set_km('n', '<space>', '<nop>', { noremap = true, silent = true })
-set_km('n', '<c-P>', ':', { noremap = true })
 
 set_km('i', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
 set_km('i', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
@@ -19,6 +18,16 @@ set_km('n', '<m-7>', '7gt', { noremap = true, silent = true })
 set_km('n', '<m-8>', '8gt', { noremap = true, silent = true })
 set_km('n', '<m-9>', '9gt', { noremap = true, silent = true })
 set_km('n', '<m-0>', ':tablast<cr>', { noremap = true, silent = true })
+set_km('n', '¡', '1gt', { noremap = true, silent = true })
+set_km('n', '™', '2gt', { noremap = true, silent = true })
+set_km('n', '£', '3gt', { noremap = true, silent = true })
+set_km('n', '¢', '4gt', { noremap = true, silent = true })
+set_km('n', '∞', '5gt', { noremap = true, silent = true })
+set_km('n', '§', '6gt', { noremap = true, silent = true })
+set_km('n', '¶', '7gt', { noremap = true, silent = true })
+set_km('n', '•', '8gt', { noremap = true, silent = true })
+set_km('n', 'ª', '9gt', { noremap = true, silent = true })
+set_km('n', 'º', ':tablast<cr>', { noremap = true, silent = true })
 
 -- nvim-tree.lua
 set_km('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = true })
@@ -60,11 +69,6 @@ command! -nargs=* -complete=dir RG call RipgrepFzf(<f-args>)
 ]]
 set_km('n', '<leader>ft', ':BTags<cr>', { noremap = true, silent = true })
 set_km('n', '<leader>fg', ':RG<space>', { noremap = true })
-
--- vimgrep
--- set_km('n', '<leader>fg', ':vimgrep<space>', { noremap = true })
-set_km('n', '<leader>n', ':cnext<cr>', { noremap = true })
-set_km('n', '<leader>p', ':cprev<cr>', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })
