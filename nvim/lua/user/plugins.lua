@@ -33,6 +33,13 @@ return require('packer').startup(function(use)
   } -- treesitter
 
   use {
+    'numToStr/Comment.nvim',
+    config = function() require'Comment'.setup{} end,
+  } -- commenter
+
+  use 'sbdchd/neoformat' -- formatters
+
+  use {
     'nvim-orgmode/orgmode',
     config = function()
       require'orgmode'.setup{}

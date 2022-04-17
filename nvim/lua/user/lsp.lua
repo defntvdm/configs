@@ -34,6 +34,8 @@ function _G.custom_attach(client, bufnr)
 
   if client.name == 'pyright' then
     buf_set_keymap('n', '<space>f', ':PyrightOrganizeImports<CR>:Black<CR>', opts)
+  elseif client.name == 'vuels' then
+    buf_set_keymap('n', '<space>f', ':Neoformat<CR>', opts)
   else
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   end
@@ -46,7 +48,9 @@ end
 
 -- yay -S bash-language-server clang
 -- pip install cmake-language-server
--- npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs vls graphql-language-service-cli yaml-language-server
+-- npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs vls graphql-language-service-cli
+--          yaml-language-server prettier
+--
 local servers = {
   'bashls',
   'cmake',
@@ -60,7 +64,8 @@ local servers = {
   'rust_analyzer',
   'tsserver',
   'vimls',
-  'vls',
+  'vuels',
+  'yamlls',
 }
 
 for _, lsp in ipairs(servers) do

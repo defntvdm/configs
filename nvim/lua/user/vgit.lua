@@ -139,7 +139,7 @@ require('vgit').setup{
       },
     },
     symbols = {
-      void = '‚£ø',
+      void = '⣿',
     },
   }
 }
