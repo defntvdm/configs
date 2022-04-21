@@ -16,11 +16,12 @@ vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.updatetime = 1000
+vim.wo.signcolumn = 'yes'
 
 vim.cmd [[highlight Comment cterm=italic]]
 vim.cmd [[autocmd FileType go set noexpandtab]]
 
-vim.g.python3_host_prog = '/home/defntvdm/.pyenv/shims/python3'
+vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
 
 require 'user.plugins'
 require 'user.colorscheme'
