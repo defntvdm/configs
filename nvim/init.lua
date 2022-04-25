@@ -24,13 +24,14 @@ vim.cmd [[autocmd FileType go set noexpandtab]]
 vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
 
 require 'user.ft'
+require 'user.luasnip'
+require 'user.cmp'
 require 'user.plugins'
 require 'user.colorscheme'
 require 'user.vgit'
 require 'user.lualine'
 require 'user.keymaps'
 require 'user.lsp'
-require 'user.cmp'
 require 'user.orgmode'
 require 'user.treesitter'
 
