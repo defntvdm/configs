@@ -56,7 +56,6 @@ local servers = {
   'cmake',
   'cssls',
   'dockerls',
-  'gopls',
   'graphql',
   'html',
   'jsonls',
@@ -72,9 +71,6 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = custom_attach,
     capabilities = custom_capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    }
   }
 end
 
@@ -89,7 +85,18 @@ nvim_lsp.clangd.setup {
   },
   on_attach = custom_attach,
   capabilities = custom_capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
+}
+
+nvim_lsp.gopls.setup {
+  cmd = {'gopls', 'serve'},
+  on_attach = custom_attach,
+  capabilities = custom_capabilities,
+  settings = {
+    gopls = {
+      usePlaceholders = true,
+      expandWorkspaceToModule = false,
+      semanticTokens = true,
+      staticcheck = true,
+    }
+  }
 }
