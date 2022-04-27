@@ -1,4 +1,4 @@
-local set_km = vim.api.nvim_set_keymap
+local set_km = vim.keymap.set
 vim.g.mapleader = '\\'
 set_km('n', '<space>', '<nop>', { noremap = true, silent = true })
 
@@ -32,10 +32,6 @@ set_km('n', 'º', ':tablast<cr>', { noremap = true, silent = true })
 -- nvim-tree.lua
 set_km('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = true })
 set_km('n', 'ff', ':NvimTreeFindFile<cr>', { noremap = true, silent = true })
-vim.cmd[[
-autocmd FileType NvimTree nnoremap <buffer><silent> h :lua require'nvim-tree.actions'.on_keypress('close_node')<cr>
-autocmd FileType NvimTree nnoremap <buffer><silent> l :lua require'nvim-tree.actions'.on_keypress('edit')<cr>
-]]
 
 -- FXX
 -- f4 - cut trailing whitespaces

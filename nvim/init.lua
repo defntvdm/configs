@@ -19,11 +19,10 @@ vim.o.updatetime = 1000
 vim.wo.signcolumn = 'yes'
 
 vim.cmd [[highlight Comment cterm=italic]]
-vim.cmd [[autocmd FileType go set noexpandtab]]
 
 vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
 
-require 'user.ft'
+require 'user.au'
 require 'user.luasnip'
 require 'user.cmp'
 require 'user.plugins'

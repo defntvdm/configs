@@ -47,3 +47,5 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
 }
+
+vim.o.laststatus = 3
