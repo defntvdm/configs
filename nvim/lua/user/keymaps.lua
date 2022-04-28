@@ -33,14 +33,11 @@ set_km('n', 'º', ':tablast<cr>', { noremap = true, silent = true })
 set_km('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = true })
 set_km('n', 'ff', ':NvimTreeFindFile<cr>', { noremap = true, silent = true })
 
--- FXX
--- f4 - cut trailing whitespaces
-set_km('n', '<f4>', [[:%s/\s\+$//e<cr>]], { noremap = true })
--- f12 - ctags
-set_km('n', '<f12>', ':TagbarToggle<cr>', { noremap = true })
 -- noop
 set_km('i', '<f1>', '<nop>', { noremap = true })
 set_km('i', '<f2>', '<nop>', { noremap = true })
+set_km('i', '<f3>', '<nop>', { noremap = true })
+set_km('i', '<f4>', '<nop>', { noremap = true })
 set_km('i', '<f5>', '<nop>', { noremap = true })
 set_km('i', '<f6>', '<nop>', { noremap = true })
 set_km('i', '<f7>', '<nop>', { noremap = true })
@@ -48,6 +45,7 @@ set_km('i', '<f8>', '<nop>', { noremap = true })
 set_km('i', '<f9>', '<nop>', { noremap = true })
 set_km('i', '<f10>', '<nop>', { noremap = true })
 set_km('i', '<f11>', '<nop>', { noremap = true })
+set_km('i', '<f12>', '<nop>', { noremap = true })
 
 -- fzf.vim
 set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
@@ -82,3 +80,11 @@ set_km('n', 'cp', [[:let @+=expand("%:p:h")<cr>]], { silent = true })
 -- black
 vim.g.black_linelength = 120
 vim.g.black_skip_string_normalization = true
+
+-- dap
+set_km('n', '<F9>', require 'dap'.toggle_breakpoint, { noremap = true })
+set_km('n', '<F5>', require 'dap'.continue, { noremap = true })
+set_km('n', '<F10>', require 'dap'.step_over, { noremap = true })
+set_km('n', '<F11>', require 'dap'.step_into, { noremap = true })
+set_km('n', '<F12>', require 'dap'.repl.open, { noremap = true })
+set_km('n', '<leader>dq', require'dapui'.toggle, { noremap = true })

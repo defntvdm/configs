@@ -29,14 +29,6 @@ local events = {
             end,
 
         },
-        -- YANDEX >>>
-        {
-            pattern = 'ya.make',
-            callback = function()
-                vim.bo.filetype = 'yamake'
-            end,
-        }
-        -- YANDEX <<<
     },
     BufRead = {
         {
@@ -46,14 +38,6 @@ local events = {
             end,
 
         },
-        -- YANDEX >>>
-        {
-            pattern = 'ya.make',
-            callback = function()
-                vim.bo.filetype = 'yamake'
-            end,
-        }
-        -- YANDEX <<<
     },
 }
 

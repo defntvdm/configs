@@ -33,6 +33,7 @@ require 'user.keymaps'
 require 'user.lsp'
 require 'user.orgmode'
 require 'user.treesitter'
+require 'user.dap'
 
 local local_vimrc = vim.fn.getcwd()..'/.localnvim'
 if vim.loop.fs_stat(local_vimrc) then
