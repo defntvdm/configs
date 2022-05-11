@@ -7,7 +7,7 @@ local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', ':TroubleToggle<CR>', opts)
 
 function _G.custom_attach(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -32,14 +32,9 @@ function _G.custom_attach(client, bufnr)
     buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-    if client.name == 'pyright' then
-        buf_set_keymap('n', '<space>f', ':PyrightOrganizeImports<CR>:Black<CR>', opts)
-    elseif client.name == 'vuels' then
-        buf_set_keymap('n', '<space>f', ':Neoformat<CR>', opts)
-    else
-        buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    end
+    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    -- use null-ls
+    client.resolved_capabilities.document_formatting = false
 
     if client.name == 'clangd' then
         buf_set_keymap('n', '<M-o>', ':ClangdSwitchSourceHeader<cr>', { noremap = true, silent = true })

@@ -38,19 +38,12 @@ return require('packer').startup(function(use)
         config = function() require 'Comment'.setup {} end,
     } -- commenter
 
-    use 'sbdchd/neoformat' -- formatters
-
     use {
         'nvim-orgmode/orgmode',
         config = function()
             require 'orgmode'.setup {}
         end
     } -- todos
-
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim' }
-    } -- telescope
 
     use 'gpanders/editorconfig.nvim' -- editorconfig
 
@@ -69,11 +62,14 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
     use 'L3MON4D3/LuaSnip' -- Snippets plugin
     use 'rafamadriz/friendly-snippets' -- snippets
-
     use {
-        'psf/black',
-        tag = '22.3.0',
-    } -- python formatter
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+    } -- better lsp formatter
+    use {
+        'folke/trouble.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+    } -- better diagnostics
 
     use 'mfussenegger/nvim-dap' -- dap
     use 'rcarriga/nvim-dap-ui' -- dapui
