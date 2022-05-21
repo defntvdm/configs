@@ -6,7 +6,7 @@ require'trouble'.setup{
     mode = 'document_diagnostics',
     fold_open = '',
     fold_closed = '',
-    group = false,
+    group = true,
     padding = false,
     action_keys = {
         close = 'q',
@@ -30,7 +30,7 @@ require'trouble'.setup{
     indent_lines = true,
     auto_open = false,
     auto_close = false,
-    auto_preview = false,
+    auto_preview = true,
     auto_fold = false,
     auto_jump = {'lsp_definitions'},
     signs = {

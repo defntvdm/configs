@@ -26,10 +26,9 @@ local sources = {
             '--tab-width=2',
             '--end-of-line=lf',
             '--trailing-comma=all',
+            '--print-width=120',
         },
     }),
-    code_actions.eslint_d,
-    diagnostics.eslint_d,
     -- rust
     formatting.rustfmt,
 };

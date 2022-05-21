@@ -79,6 +79,7 @@ nvim_lsp.clangd.setup {
         '--header-insertion=never',
         '--log=error',
         '-j=8',
+        '--offset-encoding=utf-16',
     },
     on_attach = custom_attach,
     capabilities = custom_capabilities,
