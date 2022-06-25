@@ -18,6 +18,8 @@ local sources = {
             '-S',
         },
     }),
+    -- django
+    formatting.djhtml,
     -- js
     formatting.prettier.with({
         extra_args = {

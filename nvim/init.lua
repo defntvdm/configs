@@ -22,6 +22,7 @@ vim.wo.signcolumn = 'yes'
 vim.cmd [[highlight Comment cterm=italic]]
 
 vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
+vim.g.user_emmet_leader_key='<C-z>'
 
 require 'user.au'
 require 'user.luasnip'
@@ -34,6 +35,7 @@ require 'user.keymaps'
 require 'user.lsp'
 require 'user.orgmode'
 require 'user.treesitter'
+require 'user.neotest'
 require 'user.dap'
 require 'user.null-ls'
 require 'user.trouble'

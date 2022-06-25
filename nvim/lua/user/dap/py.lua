@@ -4,7 +4,7 @@ local dap = require('dap')
 
 dap.adapters.python = {
     type = 'executable';
-    command = '/home/defntvdm/.pyenv/shims/python';
+    command = '/Users/defntvdm/.pyenv/shims/python';
     args = { '-m', 'debugpy.adapter' };
 }
 
@@ -15,6 +15,6 @@ dap.configurations.python = {
         name = 'Launch file';
 
         program = '${file}';
-        pythonPath = '/home/defntvdm/.pyenv/shims/python3',
+        pythonPath = '/Users/defntvdm/.pyenv/shims/python3',
     },
 }
