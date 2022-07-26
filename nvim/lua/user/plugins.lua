@@ -14,7 +14,6 @@ return require('packer').startup(function(use)
         requires = {
             'kyazdani42/nvim-web-devicons',
         },
-        config = function() require 'nvim-tree'.setup {} end
     } -- explorer
 
     use {
@@ -37,13 +36,6 @@ return require('packer').startup(function(use)
         'numToStr/Comment.nvim',
         config = function() require 'Comment'.setup {} end,
     } -- commenter
-
-    use {
-        'nvim-orgmode/orgmode',
-        config = function()
-            require 'orgmode'.setup {}
-        end
-    } -- todos
 
     use 'gpanders/editorconfig.nvim' -- editorconfig
 

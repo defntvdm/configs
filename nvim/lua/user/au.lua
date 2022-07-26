@@ -6,20 +6,6 @@ local events = {
                 vim.bo.expandtab = false
             end
         },
-		{
-			pattern = 'NvimTree',
-			callback = function ()
-                local opt = { buffer = true }
-				vim.keymap.set('n', 'l', function ()
-					require'nvim-tree.actions'.on_keypress('edit')
-				end,
-                opt)
-				vim.keymap.set('n', 'h', function ()
-					require'nvim-tree.actions'.on_keypress('close_node')
-				end,
-                opt)
-			end
-		}
     },
     BufNewFile = {
         {

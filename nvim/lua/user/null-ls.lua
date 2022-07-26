@@ -20,7 +20,8 @@ local sources = {
     }),
     -- django
     formatting.djhtml,
-    -- js
+    -- html, css, js
+    diagnostics.tidy,
     formatting.prettier.with({
         extra_args = {
             '--single-quote',

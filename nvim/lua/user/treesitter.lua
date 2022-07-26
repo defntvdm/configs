@@ -10,7 +10,6 @@ require'nvim-treesitter.configs'.setup {
     'javascript',
     'json',
     'make',
-    'org',
     'python',
     'rust',
     'toml',
