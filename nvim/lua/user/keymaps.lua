@@ -52,7 +52,15 @@ set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
 set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true, silent = true })
 vim.cmd [[
 function! RipgrepFzf(directory)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case --ignore-case %s %s || true'
+  let command_fmt = 'rg --column --line-number --no-heading --color=always %s %s || true'
+  let initial_command = printf(command_fmt, '""', a:directory)
+  let reload_command = printf(command_fmt, '{q}', a:directory)
+  let spec = {'options': ['--phony', '--query', '', '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), 0)
+endfunction
+
+function! RipgrepIgnoreCaseFzf(directory)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --ignore-case %s %s || true'
   let initial_command = printf(command_fmt, '""', a:directory)
   let reload_command = printf(command_fmt, '{q}', a:directory)
   let spec = {'options': ['--phony', '--query', '', '--bind', 'change:reload:'.reload_command]}
@@ -60,9 +68,11 @@ function! RipgrepFzf(directory)
 endfunction
 
 command! -nargs=* -complete=dir RG call RipgrepFzf(<f-args>)
+command! -nargs=* -complete=dir RIG call RipgrepIgnoreCaseFzf(<f-args>)
 ]]
 set_km('n', '<leader>ft', ':BTags<cr>', { noremap = true, silent = true })
 set_km('n', '<leader>fg', ':RG<space>', { noremap = true })
+set_km('n', '<leader>fig', ':RIG<space>', { noremap = true })
 
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })
