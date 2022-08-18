@@ -57,5 +57,5 @@ dap.adapters.go = function(callback, config)
       request = "launch",
       mode = "test",
       program = "./${relativeFileDirname}"
-    } 
+    }
 }

@@ -42,27 +42,37 @@ function _G.custom_attach(client, bufnr)
     end
 end
 
--- yay -S bash-language-server clang
--- pip install cmake-language-server
--- npm i -g vscode-langservers-extracted dockerfile-language-server-nodejs vls graphql-language-service-cli
---          yaml-language-server prettier
---
 local servers = {
     'bashls',
+    'clangd',
     'cmake',
     'cssls',
     'dockerls',
+    'gopls',
     'graphql',
     'html',
     'jsonls',
     'pyright',
     'rust_analyzer',
     'sumneko_lua',
+    'taplo',
     'tsserver',
     'vimls',
     'vuels',
     'yamlls',
 }
+
+require'nvim-lsp-installer'.setup({
+    ensure_installed = servers,
+    automatic_installation = false,
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
@@ -114,3 +124,4 @@ nvim_lsp.pyright.setup {
         }
     }
 }
+

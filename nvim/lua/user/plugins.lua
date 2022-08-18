@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
 
     use 'mattn/emmet-vim' -- emmet
     use 'neovim/nvim-lspconfig' -- lsp clients
+    use 'williamboman/nvim-lsp-installer' -- lsp installer
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
     use 'hrsh7th/cmp-buffer' -- buffer completions
