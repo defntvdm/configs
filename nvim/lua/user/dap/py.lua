@@ -4,8 +4,8 @@ local dap = require('dap')
 
 dap.adapters.python = {
     type = 'executable';
-    command = '/Users/defntvdm/.pyenv/shims/python';
-    args = { '-m', 'debugpy.adapter' };
+    command = '/Users/defntvdm/.local/share/nvim/mason/bin/debugpy',
+    args = {};
 }
 
 dap.configurations.python = {

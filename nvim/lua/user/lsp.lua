@@ -44,15 +44,12 @@ end
 
 local servers = {
     'bashls',
-    'clangd',
     'cmake',
     'cssls',
     'dockerls',
-    'gopls',
     'graphql',
     'html',
     'jsonls',
-    'pyright',
     'rust_analyzer',
     'sumneko_lua',
     'taplo',
@@ -61,18 +58,6 @@ local servers = {
     'vuels',
     'yamlls',
 }
-
-require'nvim-lsp-installer'.setup({
-    ensure_installed = servers,
-    automatic_installation = false,
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
-    }
-})
 
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {

@@ -32,10 +32,7 @@ return require('packer').startup(function(use)
         run = ':TSUpdate'
     } -- treesitter
 
-    use {
-        'numToStr/Comment.nvim',
-        config = function() require 'Comment'.setup {} end,
-    } -- commenter
+    use 'numToStr/Comment.nvim' -- commenter
 
     use 'gpanders/editorconfig.nvim' -- editorconfig
 
@@ -47,8 +44,9 @@ return require('packer').startup(function(use)
     }
 
     use 'mattn/emmet-vim' -- emmet
-    use 'neovim/nvim-lspconfig' -- lsp clients
-    use 'williamboman/nvim-lsp-installer' -- lsp installer
+    use 'williamboman/mason.nvim' -- tools installer
+    use 'williamboman/mason-lspconfig.nvim' -- lsp installer
+    use 'neovim/nvim-lspconfig' -- lsp config
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
     use 'hrsh7th/cmp-buffer' -- buffer completions

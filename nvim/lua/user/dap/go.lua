@@ -12,7 +12,7 @@ dap.adapters.go = function(callback, config)
       args = {"dap", "-l", "127.0.0.1:" .. port},
       detached = true
     }
-    handle, pid_or_err = vim.loop.spawn("dlv", opts, function(code)
+    handle, pid_or_err = vim.loop.spawn("/Users/defntvdm/.local/share/nvim/mason/bin/dlv", opts, function(code)
       stdout:close()
       handle:close()
       if code ~= 0 then

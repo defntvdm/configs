@@ -8,7 +8,7 @@ dap.adapters.codelldb = {
     host = '127.0.0.1',
     port = 13000,
     executable = {
-        command = '/Users/defntvdm/.dap-adapters/codelldb/adapter/codelldb',
+        command = '/Users/defntvdm/.local/share/nvim/mason/bin/codelldb',
         args = {"--port", "13000"},
         -- detached = false,
     }
