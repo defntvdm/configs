@@ -25,6 +25,7 @@ vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
 vim.g.user_emmet_leader_key='<C-z>'
 
 require 'user.plugins'
+require 'user.todos'
 require 'user.lualine'
 require 'user.comment'
 require 'user.nvim-tree'

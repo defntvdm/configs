@@ -13,7 +13,6 @@ local events = {
             callback = function()
                 vim.bo.filetype = 'vim'
             end,
-
         },
     },
     BufRead = {
@@ -22,7 +21,6 @@ local events = {
             callback = function()
                 vim.bo.filetype = 'vim'
             end,
-
         },
     },
 }

@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-lua/plenary.nvim'
         },
-    }
+    } -- git highlight
 
     use 'mattn/emmet-vim' -- emmet
     use 'williamboman/mason.nvim' -- tools installer
@@ -75,9 +75,9 @@ return require('packer').startup(function(use)
             'nvim-neotest/neotest-python',
             'nvim-neotest/neotest-go',
         }
-    }
-
-    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/vcscommand'
-    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/ya/make'
-    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/signify'
+    } -- code tests
+    use {
+        'defntvdm/todos.nvim',
+        config = function() require'todos'.setup() end
+    } -- my simple todo plugin
 end)
