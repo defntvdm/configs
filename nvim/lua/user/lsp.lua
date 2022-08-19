@@ -51,7 +51,6 @@ local servers = {
     'html',
     'jsonls',
     'rust_analyzer',
-    'sumneko_lua',
     'taplo',
     'tsserver',
     'vimls',
@@ -110,3 +109,17 @@ nvim_lsp.pyright.setup {
     }
 }
 
+nvim_lsp.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            ['workspace.library'] = {
+                ['/usr/share/nvim/runtime/lua'] = true,
+                ['/usr/share/nvim/runtime/lua/vim'] = true,
+                ['/usr/share/nvim/runtime/lua/vim/lsp'] = true,
+            },
+            diagnostics = {
+                globals = { "vim" }
+            },
+        },
+    }
+}

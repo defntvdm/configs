@@ -76,4 +76,8 @@ return require('packer').startup(function(use)
             'nvim-neotest/neotest-go',
         }
     }
+
+    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/vcscommand'
+    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/ya/make'
+    use '/home/defntvdm/arcadia/devtools/vim/plugin_bundles/signify'
 end)
