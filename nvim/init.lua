@@ -22,7 +22,7 @@ vim.wo.signcolumn = 'yes'
 vim.cmd [[highlight Comment cterm=italic]]
 
 vim.g.python3_host_prog = '/Users/defntvdm/.pyenv/shims/python3'
-vim.g.user_emmet_leader_key='<C-z>'
+vim.g.user_emmet_leader_key='<C-e>'
 
 require 'user.plugins'
 require 'user.todos'
