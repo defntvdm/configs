@@ -2,10 +2,10 @@ local set_km = vim.keymap.set
 vim.g.mapleader = '\\'
 set_km('n', '<space>', '<nop>', { noremap = true, silent = true })
 
-set_km('i', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
-set_km('i', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
-set_km('s', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<cr>]], { silent = true })
-set_km('s', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<cr>]], { silent = true })
+set_km('i', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<CR>]], { silent = true })
+set_km('i', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<CR>]], { silent = true })
+set_km('s', '<c-j>', [[<cmd>lua require'luasnip'.jump(1)<CR>]], { silent = true })
+set_km('s', '<c-k>', [[<cmd>lua require'luasnip'.jump(-1)<CR>]], { silent = true })
 
 -- tabs
 set_km('n', '<m-1>', '1gt', { noremap = true, silent = true })
@@ -17,7 +17,7 @@ set_km('n', '<m-6>', '6gt', { noremap = true, silent = true })
 set_km('n', '<m-7>', '7gt', { noremap = true, silent = true })
 set_km('n', '<m-8>', '8gt', { noremap = true, silent = true })
 set_km('n', '<m-9>', '9gt', { noremap = true, silent = true })
-set_km('n', '<m-0>', ':tablast<cr>', { noremap = true, silent = true })
+set_km('n', '<m-0>', '<cmd>tablast<CR>', { noremap = true, silent = true })
 set_km('n', '¡', '1gt', { noremap = true, silent = true })
 set_km('n', '™', '2gt', { noremap = true, silent = true })
 set_km('n', '£', '3gt', { noremap = true, silent = true })
@@ -27,11 +27,11 @@ set_km('n', '§', '6gt', { noremap = true, silent = true })
 set_km('n', '¶', '7gt', { noremap = true, silent = true })
 set_km('n', '•', '8gt', { noremap = true, silent = true })
 set_km('n', 'ª', '9gt', { noremap = true, silent = true })
-set_km('n', 'º', ':tablast<cr>', { noremap = true, silent = true })
+set_km('n', 'º', '<cmd>tablast<CR>', { noremap = true, silent = true })
 
 -- nvim-tree.lua
-set_km('n', '<c-n>', ':NvimTreeToggle<cr>', { noremap = true, silent = true })
-set_km('n', 'ff', ':NvimTreeFindFile<cr>', { noremap = true, silent = true })
+set_km('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
+set_km('n', 'ff', '<cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
 
 -- noop
 set_km('i', '<f1>', '<nop>', { noremap = true })
@@ -48,8 +48,8 @@ set_km('i', '<f11>', '<nop>', { noremap = true })
 set_km('i', '<f12>', '<nop>', { noremap = true })
 
 -- fzf.vim
-set_km('n', '<leader>ff', ':Files<space>', { noremap = true })
-set_km('n', '<leader>fb', ':Buffers<cr>', { noremap = true, silent = true })
+set_km('n', '<leader>ff', ':Files ', { noremap = true })
+set_km('n', '<leader>fb', '<cmd>Buffers<CR>', { noremap = true, silent = true })
 vim.cmd [[
 function! RipgrepFzf(directory)
   let command_fmt = 'rg --column --line-number --no-heading --color=always %s %s || true'
@@ -70,7 +70,7 @@ endfunction
 command! -nargs=* -complete=dir RG call RipgrepFzf(<f-args>)
 command! -nargs=* -complete=dir RIG call RipgrepIgnoreCaseFzf(<f-args>)
 ]]
-set_km('n', '<leader>ft', ':BTags<cr>', { noremap = true, silent = true })
+set_km('n', '<leader>ft', '<cmd>BTags<CR>', { noremap = true, silent = true })
 set_km('n', '<leader>fg', ':RG<space>', { noremap = true })
 set_km('n', '<leader>fig', ':RIG<space>', { noremap = true })
 
@@ -82,10 +82,10 @@ set_km('v', '<c-c>c', '"+y', { noremap = true })
 set_km('n', '<c-v>v', '"+P', { noremap = true })
 
 -- new tab
-set_km('n', '<c-t>', ':tabnew<cr>', { silent = true })
+set_km('n', '<c-t>', '<cmd>tabnew<CR>', { silent = true })
 
 -- copy directory of current file
-set_km('n', 'cp', [[:let @+=expand("%:p:h")<cr>]], { silent = true })
+set_km('n', 'cp', [[:let @+=expand("%:p:h")<CR>]], { silent = true })
 
 -- dap
 set_km('n', '<F9>', require 'dap'.toggle_breakpoint, { noremap = true })
