@@ -47,6 +47,7 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim' -- tools installer
     use 'williamboman/mason-lspconfig.nvim' -- lsp installer
     use 'neovim/nvim-lspconfig' -- lsp config
+    use 'simrat39/symbols-outline.nvim' -- symbols from lsp
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
     use 'hrsh7th/cmp-buffer' -- buffer completions
@@ -76,8 +77,5 @@ return require('packer').startup(function(use)
             'nvim-neotest/neotest-go',
         }
     } -- code tests
-    use {
-        'defntvdm/todos.nvim',
-        config = function() require'todos'.setup() end
-    } -- my simple todo plugin
+    use 'defntvdm/todos.nvim' -- my simple todo plugin
 end)

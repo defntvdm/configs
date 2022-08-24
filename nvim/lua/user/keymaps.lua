@@ -29,10 +29,6 @@ set_km('n', '•', '8gt', { noremap = true, silent = true })
 set_km('n', 'ª', '9gt', { noremap = true, silent = true })
 set_km('n', 'º', '<cmd>tablast<CR>', { noremap = true, silent = true })
 
--- nvim-tree.lua
-set_km('n', '<c-n>', '<cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
-set_km('n', 'ff', '<cmd>NvimTreeFindFile<CR>', { noremap = true, silent = true })
-
 -- noop
 set_km('i', '<f1>', '<nop>', { noremap = true })
 set_km('i', '<f2>', '<nop>', { noremap = true })
@@ -86,11 +82,3 @@ set_km('n', '<c-t>', '<cmd>tabnew<CR>', { silent = true })
 
 -- copy directory of current file
 set_km('n', 'cp', [[:let @+=expand("%:p:h")<CR>]], { silent = true })
-
--- dap
-set_km('n', '<F9>', require 'dap'.toggle_breakpoint, { noremap = true })
-set_km('n', '<F5>', require 'dap'.continue, { noremap = true })
-set_km('n', '<F10>', require 'dap'.step_over, { noremap = true })
-set_km('n', '<F11>', require 'dap'.step_into, { noremap = true })
-set_km('n', '<F12>', require 'dap'.repl.open, { noremap = true })
-set_km('n', '<leader>dq', require'dapui'.toggle, { noremap = true })
