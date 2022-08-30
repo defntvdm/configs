@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
     use 'williamboman/mason-lspconfig.nvim' -- lsp installer
     use 'neovim/nvim-lspconfig' -- lsp config
     use 'simrat39/symbols-outline.nvim' -- symbols from lsp
+    use 'ray-x/lsp_signature.nvim' -- lsp signatures
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
     use 'hrsh7th/cmp-buffer' -- buffer completions
