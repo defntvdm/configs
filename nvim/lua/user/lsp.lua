@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap('n', ' e', '<cmd>lua vim.diagnostic.open_float()<CR>', o
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', ' q', '<cmd>TroubleToggle<CR>', opts)
-vim.api.nvim_set_keymap('n', ' f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+vim.api.nvim_set_keymap('n', ' f', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', opts)
 
 function _G.custom_attach(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -34,7 +34,7 @@ function _G.custom_attach(client, bufnr)
     buf_set_keymap('n', ' rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', ' ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     -- use null-ls
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
 
     if client.name == 'clangd' then
         buf_set_keymap('n', '<M-o>', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
@@ -50,7 +50,6 @@ local servers = {
     'graphql',
     'html',
     'jsonls',
-    'rust_analyzer',
     'taplo',
     'tsserver',
     'vimls',
@@ -64,6 +63,18 @@ for _, lsp in ipairs(servers) do
         capabilities = custom_capabilities,
     }
 end
+
+nvim_lsp.rust_analyzer.setup {
+    on_attach = custom_attach,
+    capabilities = custom_capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            checkOnSave = {
+                command = 'clippy'
+            }
+        }
+    }
+}
 
 nvim_lsp.clangd.setup {
     cmd = {
