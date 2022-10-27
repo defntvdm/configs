@@ -1,7 +1,6 @@
 local nvim_lsp = require 'lspconfig'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-_G.custom_capabilities = require 'cmp_nvim_lsp'.update_capabilities(capabilities)
+_G.custom_capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap('n', ' e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)

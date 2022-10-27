@@ -11,7 +11,6 @@ cp ./i3status.config ~/.config/i3status/config
 mkdir -p ~/.oh-my-zsh/themes
 cp ./mytheme.zsh-theme ~/.oh-my-zsh/themes/mytheme.zsh-theme
 cp ./tmux.conf ~/.tmux.conf
-mkdir -p ~/.config/nvim
-cp ./init.vim ~/.config/nvim/init.vim
+cp -r nvim ~/.config/nvim
 cp ./zshrc ~/.zshrc
 cp ./flake8 ~/.config/
