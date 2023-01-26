@@ -43,6 +43,7 @@ end
 
 local servers = {
     'bashls',
+    'bufls',
     'cmake',
     'cssls',
     'dockerls',

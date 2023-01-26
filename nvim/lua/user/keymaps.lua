@@ -70,6 +70,9 @@ set_km('n', '<leader>ft', '<cmd>BTags<CR>', { noremap = true, silent = true })
 set_km('n', '<leader>fg', ':RG<space>', { noremap = true })
 set_km('n', '<leader>fig', ':RIG<space>', { noremap = true })
 
+-- markdown-preview.nvim
+set_km('n', '<leader>mm', ':MarkdownPreviewToggle<CR>', { noremap = true, silent = true })
+
 -- replace selected
 set_km('v', '<c-r>', [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })
 

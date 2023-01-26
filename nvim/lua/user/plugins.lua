@@ -24,6 +24,14 @@ return require('packer').startup(function(use)
     use 'tpope/vim-surround' -- surround brackets
     use 'jiangmiao/auto-pairs' -- autopairs
 
+    use {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.0',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        }
+    } -- telescope
+
     use 'junegunn/fzf' -- fuzzy finder core
     use 'junegunn/fzf.vim' -- fuzzy finder
 
@@ -78,5 +86,19 @@ return require('packer').startup(function(use)
             'nvim-neotest/neotest-go',
         }
     } -- code tests
+
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = 'cd app && npm install',
+        setup = function()
+            vim.g.mkdp_filetypes = {
+                'markdown',
+            }
+        end,
+        ft = {
+            'markdown',
+        },
+    } -- markdown preview
+
     use 'defntvdm/todos.nvim' -- my simple todo plugin
 end)

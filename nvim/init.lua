@@ -10,6 +10,7 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.number = true
+vim.o.mouse = false
 vim.o.secure = true
 vim.o.shiftwidth = 4
 vim.o.smarttab = true
@@ -27,6 +28,7 @@ vim.g.user_emmet_leader_key='<C-e>'
 require 'user.plugins'
 require 'user.todos'
 require 'user.lualine'
+require 'user.telescope'
 require 'user.comment'
 require 'user.nvim-tree'
 require 'user.au'
