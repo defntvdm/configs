@@ -21,7 +21,7 @@ function _G.custom_attach(client, bufnr)
     local opts = { noremap = false, silent = false }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gd', ':Telescope definitions<CR>', opts)
+    buf_set_keymap('n', 'gd', ':Telescope lsp_definitions<CR>', opts)
     buf_set_keymap('n', 'gD', ':Telescope lsp_type_definitions<CR>', opts)
     buf_set_keymap('n', 'gi', ':Telescope lsp_implementations<CR>', opts)
     buf_set_keymap('n', 'gr', ':Telescope lsp_references<CR>', opts)
