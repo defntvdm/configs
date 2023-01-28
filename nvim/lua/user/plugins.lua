@@ -29,11 +29,9 @@ return require('packer').startup(function(use)
         tag = '0.1.0',
         requires = {
             'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         }
     } -- telescope
-
-    use 'junegunn/fzf' -- fuzzy finder core
-    use 'junegunn/fzf.vim' -- fuzzy finder
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -88,17 +86,25 @@ return require('packer').startup(function(use)
     } -- code tests
 
     use {
-        'iamcco/markdown-preview.nvim',
-        run = 'cd app && npm install',
-        setup = function()
-            vim.g.mkdp_filetypes = {
-                'markdown',
-            }
-        end,
-        ft = {
-            'markdown',
+        'renerocksai/telekasten.nvim',
+        requires = {
+            'renerocksai/calendar-vim',
+            {
+                'iamcco/markdown-preview.nvim',
+                run = 'cd app && npm install',
+                setup = function()
+                    vim.g.mkdp_filetypes = {
+                        'markdown',
+                    }
+                end,
+                ft = {
+                    'markdown',
+                },
+            },
+            'mzlogin/vim-markdown-toc',
+            'nvim-telescope/telescope-symbols.nvim'
         },
-    } -- markdown preview
+    } -- telekasten.nvim
 
     use 'defntvdm/todos.nvim' -- my simple todo plugin
 end)

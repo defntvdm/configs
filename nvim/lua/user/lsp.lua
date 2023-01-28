@@ -21,15 +21,16 @@ function _G.custom_attach(client, bufnr)
     local opts = { noremap = false, silent = false }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', 'gd', ':Telescope definitions<CR>', opts)
+    buf_set_keymap('n', 'gD', ':Telescope lsp_type_definitions<CR>', opts)
+    buf_set_keymap('n', 'gi', ':Telescope lsp_implementations<CR>', opts)
+    buf_set_keymap('n', 'gr', ':Telescope lsp_references<CR>', opts)
     buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', ' lic', ':Telescope lsp_incoming_calls<CR>', opts)
+    buf_set_keymap('n', ' loc', ':Telescope lsp_outgoing_calls<CR>', opts)
     buf_set_keymap('n', ' wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
     buf_set_keymap('n', ' wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
     buf_set_keymap('n', ' wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', ' D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
     buf_set_keymap('n', ' rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     buf_set_keymap('n', ' ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     -- use null-ls
