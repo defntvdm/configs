@@ -30,6 +30,9 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            'nvim-telescope/telescope-ui-select.nvim',
+            'nvim-telescope/telescope-symbols.nvim',
+            'edolphin-ydf/goimpl.nvim'
         }
     } -- telescope
 
@@ -102,7 +105,6 @@ return require('packer').startup(function(use)
                 },
             },
             'mzlogin/vim-markdown-toc',
-            'nvim-telescope/telescope-symbols.nvim'
         },
     } -- telekasten.nvim
 

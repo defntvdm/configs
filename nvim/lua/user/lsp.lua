@@ -40,6 +40,10 @@ function _G.custom_attach(client, bufnr)
         buf_set_keymap('n', '<M-o>', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
         buf_set_keymap('n', 'ø', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
     end
+
+    if client.name == 'gopls' then
+        buf_set_keymap('n', ' im', ':Telescope goimpl<CR>', { noremap = true, silent = true })
+    end
 end
 
 local servers = {
