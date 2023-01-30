@@ -18,7 +18,7 @@ function _G.custom_attach(client, bufnr)
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    local opts = { noremap = false, silent = false }
+    local opts = { noremap = false, silent = true }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     buf_set_keymap('n', 'gd', ':Telescope lsp_definitions<CR>', opts)
