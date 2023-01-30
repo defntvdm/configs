@@ -1,4 +1,4 @@
-local home = vim.fn.expand("~/telekasten")
+local home = '/Users/defntvdm/Google Drive/My Drive/zettelkasten'
 require 'telekasten'.setup({
     home                        = home,
     take_over_my_home           = true,
@@ -8,9 +8,10 @@ require 'telekasten'.setup({
     templates                   = home .. '/' .. 'templates',
     image_subdir                = 'img',
     extension                   = '.md',
-    new_note_filename           = "title",
-    uuid_type                   = "%Y%m%d%H%M",
-    uuid_sep                    = "-",
+    new_note_filename           = 'uuid-title',
+    uuid_type                   = '%Y%m%d%H%M',
+    uuid_sep                    = '-',
+    filename_space_subst        = nil,
     follow_creates_nonexisting  = true,
     dailies_create_nonexisting  = true,
     weeklies_create_nonexisting = true,
@@ -29,8 +30,8 @@ require 'telekasten'.setup({
     close_after_yanking         = false,
     insert_after_inserting      = true,
     tag_notation                = '#tag',
-    command_palette_theme       = 'ivy',
-    show_tags_theme             = 'ivy',
+    command_palette_theme       = 'dropdown',
+    show_tags_theme             = 'dropdown',
     subdirs_in_links            = true,
     template_handling           = 'smart',
     new_note_location           = 'smart',
@@ -41,5 +42,5 @@ require 'telekasten'.setup({
         },
     },
     media_previewer             = 'catimg-previewer',
-    follow_url_fallback = nil,
+    follow_url_fallback         = nil,
 })
