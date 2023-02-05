@@ -1,6 +1,6 @@
-local telescope = require 'telescope'
+local telescope = require("telescope")
 
-telescope.setup {
+telescope.setup({
     extensions = {
         fzf = {
             fuzzy = true,
@@ -8,11 +8,11 @@ telescope.setup {
             override_file_sorter = true,
             case_mode = "smart_case",
         },
-        ["ui-select"] = {
-        },
+        ["ui-select"] = {},
     },
-}
+})
 
-telescope.load_extension('fzf')
-telescope.load_extension('ui-select')
-telescope.load_extension('goimpl')
+telescope.load_extension("fzf")
+telescope.load_extension("ui-select")
+telescope.load_extension("goimpl")
+telescope.load_extension("file_browser")

@@ -1,3 +1,3 @@
-require'symbols-outline'.setup()
+require("symbols-outline").setup()
 
-vim.keymap.set('n', '<leader>fr', '<cmd>SymbolsOutline<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fr", "<cmd>SymbolsOutline<CR>", { noremap = true, silent = true })

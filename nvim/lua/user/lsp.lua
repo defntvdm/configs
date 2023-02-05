@@ -1,102 +1,105 @@
-local nvim_lsp = require 'lspconfig'
+local nvim_lsp = require("lspconfig")
 
-_G.custom_capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', ' e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', ' q', '<cmd>TroubleToggle<CR>', opts)
-vim.api.nvim_set_keymap('n', ' f', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', opts)
+vim.api.nvim_set_keymap("n", " e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+vim.api.nvim_set_keymap("n", " q", "<cmd>TroubleToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
 
 function _G.custom_attach(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    local opts = { noremap = false, silent = true }
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap('n', 'gd', ':Telescope lsp_definitions<CR>', opts)
-    buf_set_keymap('n', 'gD', ':Telescope lsp_type_definitions<CR>', opts)
-    buf_set_keymap('n', 'gi', ':Telescope lsp_implementations<CR>', opts)
-    buf_set_keymap('n', 'gr', ':Telescope lsp_references<CR>', opts)
-    buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    buf_set_keymap('n', ' lic', ':Telescope lsp_incoming_calls<CR>', opts)
-    buf_set_keymap('n', ' loc', ':Telescope lsp_outgoing_calls<CR>', opts)
-    buf_set_keymap('n', ' wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', ' wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    buf_set_keymap('n', ' wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    buf_set_keymap('n', ' rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    buf_set_keymap('n', ' ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    -- use null-ls
-    client.server_capabilities.documentFormattingProvider = false
-
-    if client.name == 'clangd' then
-        buf_set_keymap('n', '<M-o>', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
-        buf_set_keymap('n', 'ø', '<cmd>ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
-    if client.name == 'gopls' then
-        buf_set_keymap('n', ' im', ':Telescope goimpl<CR>', { noremap = true, silent = true })
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    -- Enable completion triggered by <c-x><c-o>
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    buf_set_keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts)
+    buf_set_keymap("n", "gD", ":Telescope lsp_type_definitions<CR>", opts)
+    buf_set_keymap("n", "gi", ":Telescope lsp_implementations<CR>", opts)
+    buf_set_keymap("n", "gr", ":Telescope lsp_references<CR>", opts)
+    buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", " lic", ":Telescope lsp_incoming_calls<CR>", opts)
+    buf_set_keymap("n", " loc", ":Telescope lsp_outgoing_calls<CR>", opts)
+    buf_set_keymap("n", " wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", " wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+    buf_set_keymap("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    buf_set_keymap("n", " rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    -- buf_set_keymap("n", " ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    -- use null-ls
+    client.server_capabilities.documentFormattingProvider = false
+    print(vim.inspect(client.server_capabilities))
+
+    if client.name == "clangd" then
+        buf_set_keymap("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
+        buf_set_keymap("n", "ø", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
+    end
+
+    if client.name == "gopls" then
+        buf_set_keymap("n", " im", ":Telescope goimpl<CR>", { noremap = true, silent = true })
     end
 end
 
 local servers = {
-    'bashls',
-    'bufls',
-    'cmake',
-    'cssls',
-    'dockerls',
-    'graphql',
-    'html',
-    'jsonls',
-    'taplo',
-    'tsserver',
-    'vimls',
-    'vuels',
-    'yamlls',
+    "bashls",
+    "bufls",
+    "cmake",
+    "cssls",
+    "dockerls",
+    "graphql",
+    "html",
+    "jsonls",
+    "taplo",
+    "tsserver",
+    "vimls",
+    "vuels",
+    "yamlls",
 }
 
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
+    nvim_lsp[lsp].setup({
         on_attach = custom_attach,
         capabilities = custom_capabilities,
-    }
+    })
 end
 
-nvim_lsp.rust_analyzer.setup {
+nvim_lsp.rust_analyzer.setup({
     on_attach = custom_attach,
     capabilities = custom_capabilities,
     settings = {
-        ['rust-analyzer'] = {
+        ["rust-analyzer"] = {
             checkOnSave = {
-                command = 'clippy'
-            }
-        }
-    }
-}
+                command = "clippy",
+            },
+        },
+    },
+})
 
-nvim_lsp.clangd.setup {
+nvim_lsp.clangd.setup({
     cmd = {
-        'clangd',
-        '--background-index',
-        '--clang-tidy',
-        '--header-insertion=never',
-        '--log=error',
-        '-j=8',
-        '--offset-encoding=utf-16',
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=never",
+        "--log=error",
+        "-j=8",
+        "--offset-encoding=utf-16",
     },
     on_attach = custom_attach,
     capabilities = custom_capabilities,
-}
+})
 
-nvim_lsp.gopls.setup {
-    cmd = { 'gopls', 'serve' },
+nvim_lsp.gopls.setup({
+    cmd = { "gopls", "serve" },
     on_attach = custom_attach,
     capabilities = custom_capabilities,
     settings = {
@@ -105,37 +108,37 @@ nvim_lsp.gopls.setup {
             expandWorkspaceToModule = false,
             semanticTokens = true,
             staticcheck = true,
-        }
-    }
-}
+        },
+    },
+})
 
-nvim_lsp.pyright.setup {
-    cmd = { 'pyright-langserver', '--stdio' },
+nvim_lsp.pyright.setup({
+    cmd = { "pyright-langserver", "--stdio" },
     on_attach = custom_attach,
     capabilities = custom_capabilities,
     settings = {
         python = {
-            pythonPath = '/Users/defntvdm/.pyenv/shims/python',
+            pythonPath = "/Users/defntvdm/.pyenv/shims/python",
             analysis = {
                 autoSearchPaths = true,
-                diagnosticMode = 'workspace',
-                useLibraryCodeForTypes = true
-            }
-        }
-    }
-}
-
-nvim_lsp.sumneko_lua.setup {
-    settings = {
-        Lua = {
-            ['workspace.library'] = {
-                ['/usr/share/nvim/runtime/lua'] = true,
-                ['/usr/share/nvim/runtime/lua/vim'] = true,
-                ['/usr/share/nvim/runtime/lua/vim/lsp'] = true,
-            },
-            diagnostics = {
-                globals = { "vim" }
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
             },
         },
-    }
-}
+    },
+})
+
+nvim_lsp.sumneko_lua.setup({
+    settings = {
+        Lua = {
+            ["workspace.library"] = {
+                ["/usr/share/nvim/runtime/lua"] = true,
+                ["/usr/share/nvim/runtime/lua/vim"] = true,
+                ["/usr/share/nvim/runtime/lua/vim/lsp"] = true,
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+        },
+    },
+})

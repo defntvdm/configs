@@ -1,31 +1,21 @@
-require'mason'.setup{
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    }
-}
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
 
-require'mason-lspconfig'.setup{
-    ensure_installed = {
-        'bashls',
-        'clangd',
-        'cmake',
-        'cssls',
-        'dockerls',
-        'gopls',
-        'graphql',
-        'html',
-        'jsonls',
-        'pyright',
-        'rust_analyzer',
-        'sumneko_lua',
-        'taplo',
-        'tsserver',
-        'vimls',
-        'vuels',
-        'yamlls',
-    }
-}
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+})
+
+require("mason-null-ls").setup({
+	automatic_installation = true,
+})
+
+require("mason-nvim-dap").setup({
+	automatic_installation = true,
+})
