@@ -7,7 +7,13 @@ local code_actions = null_ls.builtins.code_actions
 local sources = {
     -- formatting
     formatting.isort,
-    formatting.black,
+    formatting.black.with({
+        extra_args = {
+            "-S",
+            "-l120",
+            "--fast",
+        },
+    }),
     formatting.djlint,
     formatting.rustfmt,
     formatting.goimports,
@@ -28,7 +34,7 @@ local sources = {
     -- diagnostics
     diagnostics.flake8,
     diagnostics.mypy,
-    diagnostics.ruff,
+    -- diagnostics.ruff,
     diagnostics.golangci_lint,
     diagnostics.eslint_d,
     -- code_actions

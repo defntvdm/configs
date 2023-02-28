@@ -18,6 +18,8 @@ vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.updatetime = 1000
+vim.o.splitright = true
+vim.o.splitbelow = true
 vim.wo.signcolumn = "yes"
 
 vim.cmd([[highlight Comment cterm=italic]])
@@ -32,7 +34,8 @@ require("user.telescope")
 require("user.gitsigns")
 require("user.telekasten")
 require("user.comment")
-require("user.nvim-tree")
+require("user.window-picker")
+require("user.neo-tree")
 require("user.au")
 require("user.luasnip")
 require("user.cmp")

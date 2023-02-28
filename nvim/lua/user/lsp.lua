@@ -34,10 +34,8 @@ function _G.custom_attach(client, bufnr)
     buf_set_keymap("n", " wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
     buf_set_keymap("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     buf_set_keymap("n", " rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    -- buf_set_keymap("n", " ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     -- use null-ls
     client.server_capabilities.documentFormattingProvider = false
-    print(vim.inspect(client.server_capabilities))
 
     if client.name == "clangd" then
         buf_set_keymap("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
@@ -128,7 +126,7 @@ nvim_lsp.pyright.setup({
     },
 })
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
     settings = {
         Lua = {
             ["workspace.library"] = {

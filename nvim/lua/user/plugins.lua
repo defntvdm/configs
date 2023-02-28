@@ -10,9 +10,16 @@ return require("packer").startup(function(use)
     use("navarasu/onedark.nvim") -- colorscheme
 
     use({
-        "kyazdani42/nvim-tree.lua",
+        "s1n7ax/nvim-window-picker",
+        tag = "v1.*",
+    }) -- picker for neotree
+    use({
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         requires = {
+            "nvim-lua/plenary.nvim",
             "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
         },
     }) -- explorer
 
@@ -88,6 +95,7 @@ return require("packer").startup(function(use)
             "antoinemadec/FixCursorHold.nvim",
             "nvim-neotest/neotest-python",
             "nvim-neotest/neotest-go",
+            "rouge8/neotest-rust",
         },
     }) -- code tests
 
