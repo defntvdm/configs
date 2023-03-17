@@ -4,7 +4,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 end
 
-return require("packer").startup(function(use)
+local packer = require("packer")
+
+packer.init({
+    max_jobs = 10,
+})
+
+packer.startup(function(use)
     use("wbthomason/packer.nvim") -- package manager
 
     use("navarasu/onedark.nvim") -- colorscheme
@@ -39,7 +45,6 @@ return require("packer").startup(function(use)
             { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
             "nvim-telescope/telescope-ui-select.nvim",
             "nvim-telescope/telescope-symbols.nvim",
-            "nvim-telescope/telescope-file-browser.nvim",
             "edolphin-ydf/goimpl.nvim",
         },
     }) -- telescope
