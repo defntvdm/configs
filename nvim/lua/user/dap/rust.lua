@@ -4,27 +4,27 @@ local dap = require("dap")
 -- extension folder
 
 dap.adapters.codelldb = {
-	type = "server",
-	host = "127.0.0.1",
-	port = 13000,
-	executable = {
-		command = "/Users/defntvdm/.local/share/nvim/mason/bin/codelldb",
-		args = { "--port", "13000" },
-		-- detached = false,
-	},
+    type = "server",
+    host = "127.0.0.1",
+    port = 13000,
+    executable = {
+        command = "/Users/defntvdm/.local/share/nvim/mason/bin/codelldb",
+        args = { "--port", "13000" },
+        -- detached = false,
+    },
 }
 
 dap.configurations.c = {
-	{
-		type = "codelldb",
-		request = "launch",
-		name = "Launch file",
-		program = function()
-			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopOnEntry = true,
-	},
+    {
+        type = "codelldb",
+        request = "launch",
+        name = "Launch file",
+        program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+    },
 }
 
 dap.configurations.cpp = dap.configurations.c

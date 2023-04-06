@@ -10,13 +10,15 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.number = true
-vim.o.mouse = false
+vim.o.mouse = true
+vim.o.relativenumber = true
 vim.o.secure = true
 vim.o.shiftwidth = 4
 vim.o.smarttab = true
 vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
+vim.o.title = true
 vim.o.updatetime = 1000
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -31,8 +33,6 @@ require("user.plugins")
 require("user.todos")
 require("user.lualine")
 require("user.telescope")
-require("user.gitsigns")
-require("user.telekasten")
 require("user.comment")
 require("user.window-picker")
 require("user.neo-tree")

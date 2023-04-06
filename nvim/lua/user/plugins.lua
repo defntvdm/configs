@@ -11,6 +11,7 @@ packer.init({
 })
 
 packer.startup(function(use)
+    use("sindrets/diffview.nvim") -- git diff
     use("wbthomason/packer.nvim") -- package manager
 
     use("navarasu/onedark.nvim") -- colorscheme
@@ -32,7 +33,7 @@ packer.startup(function(use)
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    }) -- status line
+    })                       -- status line
 
     use("tpope/vim-surround") -- surround brackets
     use("jiangmiao/auto-pairs") -- autopairs
@@ -55,31 +56,29 @@ packer.startup(function(use)
             "nvim-treesitter/playground",
         },
         run = ":TSUpdate",
-    }) -- treesitter
+    })                                          -- treesitter
+    use("nvim-treesitter/nvim-treesitter-context") -- context
 
-    use("numToStr/Comment.nvim") -- commenter
+    use("numToStr/Comment.nvim")                -- commenter
 
-    use("gpanders/editorconfig.nvim") -- editorconfig
+    use("gpanders/editorconfig.nvim")           -- editorconfig
+    use("tpope/vim-fugitive")                   -- git
 
-    use({
-        "lewis6991/gitsigns.nvim",
-    }) -- git
-
-    use("mattn/emmet-vim") -- emmet
-    use("williamboman/mason.nvim") -- tools installer
-    use("williamboman/mason-lspconfig.nvim") -- lsp installer
-    use("jay-babu/mason-null-ls.nvim") -- tools installer
-    use("jay-babu/mason-nvim-dap.nvim") -- dap installer
-    use("neovim/nvim-lspconfig") -- lsp config
-    use("simrat39/symbols-outline.nvim") -- symbols from lsp
-    use("ray-x/lsp_signature.nvim") -- lsp signatures
-    use("hrsh7th/nvim-cmp") -- Autocompletion plugin
-    use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
-    use("hrsh7th/cmp-buffer") -- buffer completions
-    use("hrsh7th/cmp-path") -- path completions
-    use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
-    use("L3MON4D3/LuaSnip") -- Snippets plugin
-    use("rafamadriz/friendly-snippets") -- snippets
+    use("mattn/emmet-vim")                      -- emmet
+    use("williamboman/mason.nvim")              -- tools installer
+    use("williamboman/mason-lspconfig.nvim")    -- lsp installer
+    use("jay-babu/mason-null-ls.nvim")          -- tools installer
+    use("jay-babu/mason-nvim-dap.nvim")         -- dap installer
+    use("neovim/nvim-lspconfig")                -- lsp config
+    use("simrat39/symbols-outline.nvim")        -- symbols from lsp
+    use("ray-x/lsp_signature.nvim")             -- lsp signatures
+    use("hrsh7th/nvim-cmp")                     -- Autocompletion plugin
+    use("hrsh7th/cmp-nvim-lsp")                 -- LSP source for nvim-cmp
+    use("hrsh7th/cmp-buffer")                   -- buffer completions
+    use("hrsh7th/cmp-path")                     -- path completions
+    use("saadparwaiz1/cmp_luasnip")             -- Snippets source for nvim-cmp
+    use("L3MON4D3/LuaSnip")                     -- Snippets plugin
+    use("rafamadriz/friendly-snippets")         -- snippets
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
@@ -87,7 +86,7 @@ packer.startup(function(use)
     use({
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-    }) -- better diagnostics
+    })                        -- better diagnostics
 
     use("mfussenegger/nvim-dap") -- dap
     use("rcarriga/nvim-dap-ui") -- dapui
@@ -102,27 +101,7 @@ packer.startup(function(use)
             "nvim-neotest/neotest-go",
             "rouge8/neotest-rust",
         },
-    }) -- code tests
-
-    use({
-        "renerocksai/telekasten.nvim",
-        requires = {
-            "renerocksai/calendar-vim",
-            {
-                "iamcco/markdown-preview.nvim",
-                run = "cd app && npm install",
-                setup = function()
-                    vim.g.mkdp_filetypes = {
-                        "markdown",
-                    }
-                end,
-                ft = {
-                    "markdown",
-                },
-            },
-            "mzlogin/vim-markdown-toc",
-        },
-    }) -- telekasten.nvim
+    })                      -- code tests
 
     use("defntvdm/todos.nvim") -- my simple todo plugin
 end)
