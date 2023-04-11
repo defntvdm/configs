@@ -29,6 +29,7 @@ set_km("n", "¶", ":BufferGoto 7<CR>", opts)
 set_km("n", "•", ":BufferGoto 8<CR>", opts)
 set_km("n", "ª", ":BufferGoto 9<CR>", opts)
 set_km("n", "º", "<cmd>tablast<CR>", opts)
+set_km("n", " bd", ":BufferClose<CR>", opts)
 
 -- noop
 set_km("i", "<f1>", "<nop>", { noremap = true })
