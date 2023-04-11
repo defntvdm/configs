@@ -33,10 +33,11 @@ packer.startup(function(use)
     use({
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    })                       -- status line
+    })                                                         -- status line
+    use({ "romgrk/barbar.nvim", requires = "nvim-web-devicons" }) -- tabbar
 
-    use("tpope/vim-surround") -- surround brackets
-    use("jiangmiao/auto-pairs") -- autopairs
+    use("tpope/vim-surround")                                  -- surround brackets
+    use("jiangmiao/auto-pairs")                                -- autopairs
 
     use({
         "nvim-telescope/telescope.nvim",
