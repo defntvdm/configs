@@ -39,7 +39,6 @@ local sources = {
     diagnostics.eslint_d,
     -- code_actions
     code_actions.eslint_d,
-    code_actions.gitsigns,
     code_actions.gomodifytags,
     code_actions.ltrs,
 }

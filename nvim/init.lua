@@ -32,6 +32,7 @@ vim.g.user_emmet_leader_key = "<C-e>"
 require("user.plugins")
 require("user.todos")
 require("user.lualine")
+require("user.luatab")
 require("user.telescope")
 require("user.comment")
 require("user.window-picker")
