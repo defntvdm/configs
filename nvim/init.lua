@@ -1,5 +1,5 @@
 vim.o.background = "dark"
-vim.o.colorcolumn = "120"
+vim.o.colorcolumn = "150"
 vim.o.cursorline = true
 vim.o.diffopt = vim.o.diffopt .. ",vertical"
 vim.o.encoding = "utf-8"
@@ -45,6 +45,7 @@ require("user.keymaps")
 require("user.dap")
 require("user.null-ls")
 require("user.mason")
+require("user.inlay-hints")
 require("user.lsp")
 require("user.symbols-outline")
 require("user.lsp-signature")

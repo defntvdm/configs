@@ -9,6 +9,8 @@ vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", op
 vim.api.nvim_set_keymap("n", " q", "<cmd>TroubleToggle<CR>", opts)
 vim.api.nvim_set_keymap("n", " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
 
+local ih = require("lsp-inlayhints")
+
 function _G.custom_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -17,6 +19,9 @@ function _G.custom_attach(client, bufnr)
     local function buf_set_option(...)
         vim.api.nvim_buf_set_option(bufnr, ...)
     end
+
+    -- enable inlay hints
+    ih.on_attach(client, bufnr)
 
     -- Enable completion triggered by <c-x><c-o>
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -106,6 +111,15 @@ nvim_lsp.gopls.setup({
             expandWorkspaceToModule = false,
             semanticTokens = true,
             staticcheck = true,
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
         },
     },
 })
