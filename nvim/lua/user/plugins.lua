@@ -76,7 +76,7 @@ packer.startup(function(use)
     use("neovim/nvim-lspconfig")          -- lsp config
     use("lvimuser/lsp-inlayhints.nvim")   -- lsp inlay hints
     use("simrat39/symbols-outline.nvim")  -- symbols from lsp
-    use("ray-x/lsp_signature.nvim")       -- lsp signatures
+    use("hrsh7th/cmp-nvim-lsp-signature-help") -- lsp signatures
     use("hrsh7th/nvim-cmp")               -- Autocompletion plugin
     use("hrsh7th/cmp-nvim-lsp")           -- LSP source for nvim-cmp
     use("hrsh7th/cmp-buffer")             -- buffer completions
