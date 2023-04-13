@@ -65,7 +65,7 @@ packer.startup(function(use)
     use("gpanders/editorconfig.nvim")           -- editorconfig
     use({
         "tpope/vim-fugitive",
-        -- requires = { "mhinz/vim-signify" },
+        requires = { "mhinz/vim-signify" },
     })                                    -- git
 
     use("mattn/emmet-vim")                -- emmet

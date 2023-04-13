@@ -7,6 +7,10 @@ set_km("i", "<c-j>", [[<cmd>lua require'luasnip'.jump(1)<CR>]], opts)
 set_km("i", "<c-k>", [[<cmd>lua require'luasnip'.jump(-1)<CR>]], opts)
 set_km("s", "<c-j>", [[<cmd>lua require'luasnip'.jump(1)<CR>]], opts)
 set_km("s", "<c-k>", [[<cmd>lua require'luasnip'.jump(-1)<CR>]], opts)
+set_km("n", "<c-j>", '<c-w>j', opts)
+set_km("n", "<c-k>", '<c-w>k', opts)
+set_km("n", "<c-h>", '<c-w>h', opts)
+set_km("n", "<c-l>", '<c-w>l', opts)
 
 -- tabs
 set_km("n", "<m-1>", "1gt", opts)
