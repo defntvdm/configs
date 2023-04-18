@@ -36,7 +36,7 @@ packer.startup(function(use)
     })                                                                             -- status line
     use({ "alvarosevilla95/luatab.nvim", requires = "kyazdani42/nvim-web-devicons" }) -- tabbar
 
-    use("tpope/vim-surround")                                                      -- surround brackets
+    use("kylechui/nvim-surround")                                                  -- surround brackets
     use("jiangmiao/auto-pairs")                                                    -- autopairs
 
     use({
@@ -66,24 +66,24 @@ packer.startup(function(use)
     use({
         "tpope/vim-fugitive",
         requires = { "mhinz/vim-signify" },
-    })                                    -- git
+    })                                      -- git
 
-    use("mattn/emmet-vim")                -- emmet
-    use("williamboman/mason.nvim")        -- tools installer
+    use("mattn/emmet-vim")                  -- emmet
+    use("williamboman/mason.nvim")          -- tools installer
     use("williamboman/mason-lspconfig.nvim") -- lsp installer
-    use("jay-babu/mason-null-ls.nvim")    -- tools installer
-    use("jay-babu/mason-nvim-dap.nvim")   -- dap installer
-    use("neovim/nvim-lspconfig")          -- lsp config
-    use("lvimuser/lsp-inlayhints.nvim")   -- lsp inlay hints
-    use("simrat39/symbols-outline.nvim")  -- symbols from lsp
+    use("jay-babu/mason-null-ls.nvim")      -- tools installer
+    use("jay-babu/mason-nvim-dap.nvim")     -- dap installer
+    use("neovim/nvim-lspconfig")            -- lsp config
+    use("lvimuser/lsp-inlayhints.nvim")     -- lsp inlay hints
+    use("simrat39/symbols-outline.nvim")    -- symbols from lsp
     use("hrsh7th/cmp-nvim-lsp-signature-help") -- lsp signatures
-    use("hrsh7th/nvim-cmp")               -- Autocompletion plugin
-    use("hrsh7th/cmp-nvim-lsp")           -- LSP source for nvim-cmp
-    use("hrsh7th/cmp-buffer")             -- buffer completions
-    use("hrsh7th/cmp-path")               -- path completions
-    use("saadparwaiz1/cmp_luasnip")       -- Snippets source for nvim-cmp
-    use("L3MON4D3/LuaSnip")               -- Snippets plugin
-    use("rafamadriz/friendly-snippets")   -- snippets
+    use("hrsh7th/nvim-cmp")                 -- Autocompletion plugin
+    use("hrsh7th/cmp-nvim-lsp")             -- LSP source for nvim-cmp
+    use("hrsh7th/cmp-buffer")               -- buffer completions
+    use("hrsh7th/cmp-path")                 -- path completions
+    use("saadparwaiz1/cmp_luasnip")         -- Snippets source for nvim-cmp
+    use("L3MON4D3/LuaSnip")                 -- Snippets plugin
+    use("rafamadriz/friendly-snippets")     -- snippets
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
