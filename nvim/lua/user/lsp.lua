@@ -8,6 +8,7 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", op
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", " q", "<cmd>TroubleToggle<CR>", opts)
 vim.api.nvim_set_keymap("n", " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
+vim.api.nvim_set_keymap("v", " f", "<cmd>lua vim.lsp.buf.format{async = false}<CR>", opts)
 
 local ih = require("lsp-inlayhints")
 

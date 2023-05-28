@@ -33,7 +33,7 @@ local sources = {
     formatting.buf,
     -- diagnostics
     diagnostics.flake8,
-    diagnostics.mypy,
+    -- diagnostics.mypy,
     -- diagnostics.ruff,
     diagnostics.golangci_lint,
     diagnostics.eslint_d,

@@ -106,7 +106,8 @@ packer.startup(function(use)
             "nvim-neotest/neotest-go",
             "rouge8/neotest-rust",
         },
-    })                      -- code tests
+    })                             -- code tests
 
-    use("defntvdm/todos.nvim") -- my simple todo plugin
+    use("dhruvasagar/vim-table-mode") -- tables
+    use("defntvdm/todos.nvim")     -- my simple todo plugin
 end)
