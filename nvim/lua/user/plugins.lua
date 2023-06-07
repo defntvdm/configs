@@ -106,8 +106,19 @@ packer.startup(function(use)
             "nvim-neotest/neotest-go",
             "rouge8/neotest-rust",
         },
-    })                             -- code tests
+    }) -- code tests
 
-    use("dhruvasagar/vim-table-mode") -- tables
-    use("defntvdm/todos.nvim")     -- my simple todo plugin
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    })
+
+    use({
+        "renerocksai/telekasten.nvim",
+        requires = { "nvim-telescope/telescope.nvim" },
+    }) -- notes
 end)
