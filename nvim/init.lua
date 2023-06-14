@@ -30,6 +30,7 @@ vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
 vim.g.user_emmet_leader_key = "<C-e>"
 
 require("user.plugins")
+require("user.indent-blankline")
 require("user.lualine")
 require("user.luatab")
 require("user.surround")

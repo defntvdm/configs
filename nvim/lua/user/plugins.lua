@@ -109,6 +109,10 @@ packer.startup(function(use)
     }) -- code tests
 
     use({
+        "lukas-reineke/indent-blankline.nvim",
+    })
+
+    use({
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
         setup = function()
