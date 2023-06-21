@@ -125,4 +125,11 @@ packer.startup(function(use)
         "renerocksai/telekasten.nvim",
         requires = { "nvim-telescope/telescope.nvim" },
     }) -- notes
+
+    use({
+        "ThePrimeagen/harpoon",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    }) -- marks harpoon
 end)
