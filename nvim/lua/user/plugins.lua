@@ -132,4 +132,10 @@ packer.startup(function(use)
             "nvim-lua/plenary.nvim",
         },
     }) -- marks harpoon
+
+    use({
+        "saecki/crates.nvim",
+        tag = "v0.3.0",
+        requires = { "nvim-lua/plenary.nvim" },
+    }) -- rust crates
 end)
