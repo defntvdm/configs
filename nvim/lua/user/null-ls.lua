@@ -1,5 +1,6 @@
 local null_ls = require("null-ls")
 
+local completion = null_ls.builtins.completion
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
@@ -33,11 +34,9 @@ local sources = {
     formatting.buf,
     -- diagnostics
     diagnostics.flake8,
-    -- diagnostics.mypy,
-    -- diagnostics.ruff,
-    diagnostics.buf,
     diagnostics.golangci_lint,
     diagnostics.eslint_d,
+    diagnostics.ltrs,
     -- code_actions
     code_actions.eslint_d,
     code_actions.gomodifytags,

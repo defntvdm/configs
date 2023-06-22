@@ -81,9 +81,6 @@ set_km("n", "<c-t>", "<cmd>tabnew<CR>", { silent = true })
 -- copy directory of current file
 set_km("n", "cp", [[:let @+=expand("%:p:h")<CR>]], { silent = true })
 
--- code actions
-set_km("n", " ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-
 -- quickfix navigation
 set_km("n", "[q", ":cprev<cr>", { silent = true, noremap = true })
 set_km("n", "]q", ":cnext<cr>", { silent = true, noremap = true })

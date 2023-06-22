@@ -21,53 +21,47 @@ require("lspconfig.ui.windows").default_options = {
 _G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", " e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-vim.api.nvim_set_keymap("n", " q", "<cmd>TroubleToggle<CR>", opts)
-vim.api.nvim_set_keymap("n", " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
-vim.api.nvim_set_keymap("v", " f", "<cmd>lua vim.lsp.buf.format{async = false}<CR>", opts)
+vim.keymap.set("n", " e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", " q", "<cmd>TroubleToggle<CR>", opts)
+vim.keymap.set({ "n", "v" }, " ca", vim.lsp.buf.code_action, opts)
+vim.keymap.set({ "n", "v" }, " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
 
 local ih = require("lsp-inlayhints")
 
 function _G.custom_attach(client, bufnr)
-    local function buf_set_keymap(...)
-        vim.api.nvim_buf_set_keymap(bufnr, ...)
-    end
-
-    local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-    end
+    local opts = { silent = true, noremap = true, buffer = bufnr }
 
     -- enable inlay hints
     ih.on_attach(client, bufnr)
 
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts)
-    buf_set_keymap("n", "gD", ":Telescope lsp_type_definitions<CR>", opts)
-    buf_set_keymap("n", "gi", ":Telescope lsp_implementations<CR>", opts)
-    buf_set_keymap("n", "gr", ":Telescope lsp_references<CR>", opts)
-    buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", " lic", ":Telescope lsp_incoming_calls<CR>", opts)
-    buf_set_keymap("n", " loc", ":Telescope lsp_outgoing_calls<CR>", opts)
-    buf_set_keymap("n", " wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", " wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-    buf_set_keymap("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-    buf_set_keymap("n", " rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+    vim.keymap.set("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+    vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+    vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", " lic", "<cmd>Telescope lsp_incoming_calls<CR>", opts)
+    vim.keymap.set("n", " loc", "<cmd>Telescope lsp_outgoing_calls<CR>", opts)
+    vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
     -- use null-ls
     client.server_capabilities.documentFormattingProvider = false
 
     if client.name == "clangd" then
-        buf_set_keymap("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
-        buf_set_keymap("n", "ø", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, silent = true })
+        vim.keymap.set("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+        vim.keymap.set("n", "ø", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
     end
 
     if client.name == "gopls" then
-        buf_set_keymap("n", " im", ":Telescope goimpl<CR>", { noremap = true, silent = true })
+        vim.keymap.set("n", " im", "<cmd>Telescope goimpl<CR>", opts)
     end
 end
 
