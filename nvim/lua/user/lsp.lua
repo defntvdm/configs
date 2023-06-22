@@ -116,6 +116,7 @@ nvim_lsp.clangd.setup({
         "-j=8",
         "--offset-encoding=utf-16",
     },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
     on_attach = custom_attach,
     capabilities = custom_capabilities,
 })

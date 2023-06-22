@@ -35,6 +35,7 @@ local sources = {
     diagnostics.flake8,
     -- diagnostics.mypy,
     -- diagnostics.ruff,
+    diagnostics.buf,
     diagnostics.golangci_lint,
     diagnostics.eslint_d,
     -- code_actions
