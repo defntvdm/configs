@@ -36,12 +36,10 @@ local sources = {
     diagnostics.flake8,
     diagnostics.golangci_lint,
     diagnostics.eslint_d,
-    diagnostics.ltrs,
     -- code_actions
     code_actions.eslint_d,
     code_actions.gomodifytags,
     code_actions.impl,
-    code_actions.ltrs,
 }
 
 null_ls.setup({
