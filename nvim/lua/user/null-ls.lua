@@ -41,6 +41,7 @@ local sources = {
     -- code_actions
     code_actions.eslint_d,
     code_actions.gomodifytags,
+    code_actions.impl,
     code_actions.ltrs,
 }
 
