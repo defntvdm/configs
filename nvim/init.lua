@@ -10,7 +10,6 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.number = true
-vim.o.mouse = true
 vim.o.relativenumber = true
 vim.o.secure = true
 vim.o.shiftwidth = 4

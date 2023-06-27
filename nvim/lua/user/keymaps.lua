@@ -48,13 +48,6 @@ set_km("i", "<f10>", "<nop>", { noremap = true })
 set_km("i", "<f11>", "<nop>", { noremap = true })
 set_km("i", "<f12>", "<nop>", { noremap = true })
 
--- Telescope
-set_km("n", "<leader>ff", ":Telescope fd cwd=./", { noremap = true })
-set_km("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-set_km("n", "<leader>fg", ":Telescope live_grep cwd=./", { noremap = true })
-set_km("n", "<leader>fig", ":Telescope grep_string cwd=./", { noremap = true })
-set_km("n", "<leader>ft", ":Telescope lsp_document_symbols<CR>", opts)
-
 -- markdown-preview.nvim
 set_km("n", "<leader>mm", ":MarkdownPreviewToggle<CR>", opts)
 

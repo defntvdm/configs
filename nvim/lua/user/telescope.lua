@@ -12,6 +12,14 @@ telescope.setup({
     },
 })
 
+local builtin = require("telescope.builtin")
+
+vim.keymap.set("n", "<leader>ff", ":Telescope fd cwd=./", { noremap = true })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep cwd=./", { noremap = true })
+vim.keymap.set("n", "<leader>fig", ":Telescope grep_string cwd=./", { noremap = true })
+vim.keymap.set("n", "<leader>ft", builtin.lsp_document_symbols, { noremap = true, silent = true })
+
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
 telescope.load_extension("goimpl")
