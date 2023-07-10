@@ -124,7 +124,10 @@ packer.startup(function(use)
 
     use({
         "renerocksai/telekasten.nvim",
-        requires = { "nvim-telescope/telescope.nvim" },
+        requires = {
+            "nvim-telescope/telescope.nvim",
+            "renerocksai/calendar-vim",
+        },
     }) -- notes
 
     use({
@@ -139,4 +142,8 @@ packer.startup(function(use)
         tag = "v0.3.0",
         requires = { "nvim-lua/plenary.nvim" },
     }) -- rust crates
+    use({
+        "phaazon/hop.nvim",
+        branch = "v2",
+    }) -- easymotion jumps
 end)
