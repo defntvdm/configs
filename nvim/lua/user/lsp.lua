@@ -28,16 +28,13 @@ vim.keymap.set("n", " q", "<cmd>TroubleToggle<CR>", opts)
 vim.keymap.set({ "n", "v" }, " ca", vim.lsp.buf.code_action, opts)
 vim.keymap.set({ "n", "v" }, " f", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", opts)
 
-local ih = require("lsp-inlayhints")
-
 function _G.custom_attach(client, bufnr)
     local opts = { silent = true, noremap = true, buffer = bufnr }
 
-    -- enable inlay hints
-    ih.on_attach(client, bufnr)
-
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    vim.lsp.inlay_hint(bufnr, true)
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -52,6 +49,9 @@ function _G.custom_attach(client, bufnr)
     vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
     vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint(bufnr, nil)
+    end, opts)
     -- use null-ls
     client.server_capabilities.documentFormattingProvider = false
 

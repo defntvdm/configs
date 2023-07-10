@@ -74,7 +74,6 @@ packer.startup(function(use)
     use("jay-babu/mason-null-ls.nvim")      -- tools installer
     use("jay-babu/mason-nvim-dap.nvim")     -- dap installer
     use("neovim/nvim-lspconfig")            -- lsp config
-    use("lvimuser/lsp-inlayhints.nvim")     -- lsp inlay hints
     use("simrat39/symbols-outline.nvim")    -- symbols from lsp
     use("hrsh7th/cmp-nvim-lsp-signature-help") -- lsp signatures
     use("hrsh7th/nvim-cmp")                 -- Autocompletion plugin
