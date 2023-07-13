@@ -14,7 +14,6 @@ return {
 	require("user.null-ls"),
 	require("user.luasnip"),
 	require("user.lsp"),
-	require("user.symbols-outline"),
 	require("user.cmp"),
 	require("user.trouble"),
 	require("user.dap"),

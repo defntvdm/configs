@@ -159,6 +159,8 @@ return {
 			border = _border,
 		}
 
+		require("barbecue")
+
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local nvim_lsp = require("lspconfig")
 		for name, cfg in pairs(servers) do
