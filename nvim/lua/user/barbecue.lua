@@ -22,5 +22,7 @@ return {
 		{ "<C-u>", up2, noremap = true, silent = true },
 	},
 	lazy = true,
-	opts = {},
+	opts = {
+		theme = "onedark",
+	},
 }

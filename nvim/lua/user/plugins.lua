@@ -24,4 +24,5 @@ return {
 	require("user.harpoon"),
 	require("user.crates"),
 	require("user.hop"),
+	require("user.barbecue"),
 }
