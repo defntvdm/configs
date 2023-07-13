@@ -1,3 +1,6 @@
-require("symbols-outline").setup()
-
-vim.keymap.set("n", "<leader>fr", "<cmd>SymbolsOutline<CR>", { noremap = true, silent = true })
+return {
+	"simrat39/symbols-outline.nvim",
+	keys = {
+		{ "<leader>fr", "<cmd>SymbolsOutline<CR>", noremap = true, silent = true },
+	},
+}

@@ -3,14 +3,22 @@ vim.g.mapleader = "\\"
 local opts = { noremap = true, silent = true }
 set_km("n", "<space>", "<nop>", opts)
 
-set_km("i", "<c-j>", [[<cmd>lua require'luasnip'.jump(1)<CR>]], opts)
-set_km("i", "<c-k>", [[<cmd>lua require'luasnip'.jump(-1)<CR>]], opts)
-set_km("s", "<c-j>", [[<cmd>lua require'luasnip'.jump(1)<CR>]], opts)
-set_km("s", "<c-k>", [[<cmd>lua require'luasnip'.jump(-1)<CR>]], opts)
-set_km("n", "<c-j>", '<c-w>j', opts)
-set_km("n", "<c-k>", '<c-w>k', opts)
-set_km("n", "<c-h>", '<c-w>h', opts)
-set_km("n", "<c-l>", '<c-w>l', opts)
+local function prev()
+	require("luasnip").jump(-1)
+end
+
+local function next()
+	require("luasnip").jump(1)
+end
+
+set_km("i", "<c-j>", next, opts)
+set_km("i", "<c-k>", prev, opts)
+set_km("s", "<c-j>", next, opts)
+set_km("s", "<c-k>", prev, opts)
+set_km("n", "<c-j>", "<c-w>j", opts)
+set_km("n", "<c-k>", "<c-w>k", opts)
+set_km("n", "<c-h>", "<c-w>h", opts)
+set_km("n", "<c-l>", "<c-w>l", opts)
 
 -- tabs
 set_km("n", "<m-1>", "1gt", opts)

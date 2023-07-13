@@ -1,11 +1,28 @@
-require("harpoon").setup({})
+local function add_file()
+	require("harpoon.mark").add_file()
+end
 
-local marks = require("harpoon.mark")
-local ui = require("harpoon.ui")
-local set_km = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local function toggle_menu()
+	require("harpoon.ui").toggle_quick_menu()
+end
 
-set_km("n", " a", marks.add_file, opts)
-set_km("n", " m", ui.toggle_quick_menu, opts)
-set_km("n", "<leader>p", ui.nav_prev, opts)
-set_km("n", "<leader>n", ui.nav_next, opts)
+local function prev()
+	require("harpoon.ui").nav_prev()
+end
+
+local function next()
+	require("harpoon.ui").nav_next()
+end
+
+return {
+	"ThePrimeagen/harpoon",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+	},
+	keys = {
+		{ " a", add_file, noremap = true, silent = true },
+		{ " m", toggle_menu, noremap = true, silent = true },
+		{ "<leader>p", prev, noremap = true, silent = true },
+		{ "<leader>n", next, noremap = true, silent = true },
+	},
+}
