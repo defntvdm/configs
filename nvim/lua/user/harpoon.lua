@@ -22,7 +22,7 @@ return {
 	keys = {
 		{ " a", add_file, noremap = true, silent = true },
 		{ " m", toggle_menu, noremap = true, silent = true },
-		{ "<leader>p", prev, noremap = true, silent = true },
-		{ "<leader>n", next, noremap = true, silent = true },
+		{ " p", prev, noremap = true, silent = true },
+		{ " n", next, noremap = true, silent = true },
 	},
 }
