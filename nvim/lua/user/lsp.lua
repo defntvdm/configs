@@ -52,19 +52,19 @@ function _G.custom_attach(client, bufnr)
 end
 
 local servers = {
-	bashls = nil,
-	bufls = nil,
-	cmake = nil,
-	cssls = nil,
-	dockerls = nil,
-	graphql = nil,
-	html = nil,
-	jsonls = nil,
-	taplo = nil,
-	tsserver = nil,
-	vimls = nil,
-	vuels = nil,
-	yamlls = nil,
+	bashls = {},
+	bufls = {},
+	cmake = {},
+	cssls = {},
+	dockerls = {},
+	graphql = {},
+	html = {},
+	jsonls = {},
+	taplo = {},
+	tsserver = {},
+	vimls = {},
+	vuels = {},
+	yamlls = {},
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
@@ -119,7 +119,6 @@ local servers = {
 			},
 		},
 	},
-
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -164,7 +163,6 @@ return {
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local nvim_lsp = require("lspconfig")
 		for name, cfg in pairs(servers) do
-			cfg = cfg or {}
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities
 			nvim_lsp[name].setup(cfg)

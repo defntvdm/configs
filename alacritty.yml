@@ -2,6 +2,7 @@ env:
   TERM: xterm-256color
 
 window:
+  decorations: "full"
   dimensions:
     columns: 60
     lines: 20
@@ -11,6 +12,9 @@ scrolling:
   multiplier: 10
 
 font:
+  offset:
+    x: -1
+    y: -2
   normal:
     family: JetBrainsMono Nerd Font Mono
     style: Regular

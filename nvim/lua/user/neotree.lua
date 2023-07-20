@@ -10,12 +10,12 @@ local function toggle()
 end
 
 local function find_file()
-	require("neo-tree").reveal_current_file()
+	require("neo-tree.command").execute({ reveal = true })
 end
 
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"kyazdani42/nvim-web-devicons",
@@ -148,7 +148,9 @@ return {
 					--".null-ls_*",
 				},
 			},
-			follow_current_file = false,
+			follow_current_file = {
+				enabled = false,
+			},
 			group_empty_dirs = false,
 			hijack_netrw_behavior = "open_default",
 			use_libuv_file_watcher = false,
@@ -168,7 +170,9 @@ return {
 			},
 		},
 		buffers = {
-			follow_current_file = true,
+			follow_current_file = {
+				enabled = true,
+			},
 			group_empty_dirs = true,
 			show_unloaded = true,
 			window = {
