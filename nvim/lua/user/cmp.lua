@@ -1,11 +1,12 @@
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-nvim-lsp",
+		"onsails/lspkind.nvim",
 	},
 	config = function()
 		local luasnip = require("luasnip")
@@ -17,15 +18,21 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol",
+					maxwidth = 50,
+				}),
+			},
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-u>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.close(),
 				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
+					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
 				["<Tab>"] = function(fallback)

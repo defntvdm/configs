@@ -81,9 +81,10 @@ local servers = {
 			"--background-index",
 			"--clang-tidy",
 			"--header-insertion=never",
+			"--offset-encoding=utf-16",
+			"--completion-style=detailed",
 			"--log=error",
 			"-j=8",
-			"--offset-encoding=utf-16",
 		},
 		filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 	},
@@ -140,6 +141,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"ray-x/lsp_signature.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
@@ -151,6 +153,10 @@ return {
 	},
 	event = "FileType cpp,go,python,rust,html,css,lua,javascript,typescript,javascriptreact,typescriptreact,vue,yaml,json",
 	config = function()
+		-- beautiful signature
+		require("lsp_signature").setup()
+
+		-- autoinstall lsps
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
 		})
