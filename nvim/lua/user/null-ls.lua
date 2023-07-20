@@ -33,7 +33,7 @@ return {
 			formatting.black.with({
 				extra_args = {
 					"-S",
-					"-l120",
+					"-l150",
 					"--fast",
 				},
 			}),
@@ -43,13 +43,43 @@ return {
 			formatting.gofumpt,
 			formatting.clang_format,
 			formatting.prettier.with({
+				filetypes = {
+					"yaml",
+				},
+				extra_args = {
+					"--single-quote",
+					"--jsx-single-quote",
+					"--tab-width=2",
+					"--end-of-line=lf",
+					"--trailing-comma=all",
+					"--print-width=150",
+				},
+			}),
+			formatting.prettier.with({
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"css",
+					"scss",
+					"less",
+					"html",
+					"json",
+					"jsonc",
+					"markdown",
+					"markdown.mdx",
+					"graphql",
+					"handlebars",
+				},
 				extra_args = {
 					"--single-quote",
 					"--jsx-single-quote",
 					"--tab-width=4",
 					"--end-of-line=lf",
 					"--trailing-comma=all",
-					"--print-width=120",
+					"--print-width=150",
 				},
 			}),
 			formatting.stylua,

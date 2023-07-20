@@ -3,18 +3,6 @@ vim.g.mapleader = "\\"
 local opts = { noremap = true, silent = true }
 set_km("n", "<space>", "<nop>", opts)
 
-local function prev()
-	require("luasnip").jump(-1)
-end
-
-local function next()
-	require("luasnip").jump(1)
-end
-
-set_km("i", "<c-j>", next, opts)
-set_km("i", "<c-k>", prev, opts)
-set_km("s", "<c-j>", next, opts)
-set_km("s", "<c-k>", prev, opts)
 set_km("n", "<c-j>", "<c-w>j", opts)
 set_km("n", "<c-k>", "<c-w>k", opts)
 set_km("n", "<c-h>", "<c-w>h", opts)
@@ -55,9 +43,6 @@ set_km("i", "<f9>", "<nop>", { noremap = true })
 set_km("i", "<f10>", "<nop>", { noremap = true })
 set_km("i", "<f11>", "<nop>", { noremap = true })
 set_km("i", "<f12>", "<nop>", { noremap = true })
-
--- markdown-preview.nvim
-set_km("n", "<leader>mm", ":MarkdownPreviewToggle<CR>", opts)
 
 -- replace selected
 set_km("v", "<c-r>", [["hy:%s/<C-r>h//gc<left><left><left>]], { noremap = true })

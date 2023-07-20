@@ -1,5 +1,6 @@
 return {
 	require("user.colorscheme"),
+	require("user.which-key"),
 	require("user.neotree"),
 	require("user.window-picker"),
 	require("user.lualine"),
