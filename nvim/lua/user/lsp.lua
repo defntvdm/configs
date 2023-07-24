@@ -141,7 +141,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"ray-x/lsp_signature.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
@@ -151,11 +150,23 @@ return {
 		{ "]d", vim.diagnostic.goto_next, noremap = true, silent = true },
 		{ " ca", vim.lsp.buf.code_action, mode = { "n", "v" }, noremap = true, silent = true },
 	},
-	event = "FileType cpp,go,python,rust,html,css,lua,javascript,typescript,javascriptreact,typescriptreact,vue,yaml,json",
+	ft = {
+		"cpp",
+		"go",
+		"python",
+		"rust",
+		"html",
+		"css",
+		"lua",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
+		"vue",
+		"yaml",
+		"json",
+	},
 	config = function()
-		-- beautiful signature
-		require("lsp_signature").setup()
-
 		-- autoinstall lsps
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
