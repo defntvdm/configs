@@ -10,10 +10,6 @@ local function fzf_find()
 	require("telescope.builtin").current_buffer_fuzzy_find()
 end
 
-local function undo()
-	require("telescope").extensions.undo.undo()
-end
-
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -26,7 +22,6 @@ return {
 		"edolphin-ydf/goimpl.nvim",
 		"ThePrimeagen/harpoon",
 		"nvim-treesitter/nvim-treesitter",
-		"debugloop/telescope-undo.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -36,7 +31,7 @@ return {
 		{ "<leader>fig", ":Telescope grep_string cwd=./", noremap = true },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true },
-		{ "<leader>u", undo, noremap = true, silent = true },
+		{ "<leader>jl", "<cmd>Telescope jumplist<CR>", noremap = true, silent = true },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
@@ -45,11 +40,9 @@ return {
 		telescope.load_extension("ui-select")
 		telescope.load_extension("goimpl")
 		telescope.load_extension("harpoon")
-		telescope.load_extension("undo")
 	end,
 	opts = {
 		extensions = {
-			undo = {},
 			fzf = {
 				fuzzy = true,
 				override_generic_sorter = true,

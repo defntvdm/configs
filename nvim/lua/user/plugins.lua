@@ -1,4 +1,5 @@
 return {
+	require("user.undotree"),
 	require("user.colorscheme"),
 	require("user.which-key"),
 	require("user.neotree"),

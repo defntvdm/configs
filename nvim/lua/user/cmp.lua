@@ -13,6 +13,17 @@ return {
 
 		local cmp = require("cmp")
 		cmp.setup({
+			experimental = {
+				ghost_text = true,
+			},
+			window = {
+				completion = cmp.config.window.bordered({
+					winhighlight = "",
+				}),
+				documentation = cmp.config.window.bordered({
+					winhighlight = "",
+				}),
+			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -25,8 +36,8 @@ return {
 				}),
 			},
 			mapping = {
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-n>"] = cmp.mapping.select_next_item(),
+				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
+				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
 				["<C-u>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
@@ -37,7 +48,7 @@ return {
 				}),
 				["<Tab>"] = function(fallback)
 					if cmp.visible() then
-						cmp.select_next_item()
+						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 1 })
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
 					else
@@ -46,7 +57,7 @@ return {
 				end,
 				["<S-Tab>"] = function(fallback)
 					if cmp.visible() then
-						cmp.select_prev_item()
+						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 1 })
 					elseif luasnip.jumpable(-1) then
 						luasnip.jump(-1)
 					else
