@@ -6,6 +6,7 @@ return {
 	},
 	lazy = true,
 	opts = {
+		hint = "floating-big-letter",
 		autoselect_one = true,
 		include_current = false,
 		filter_rules = {
@@ -14,6 +15,5 @@ return {
 				buftype = { "terminal", "quickfix" },
 			},
 		},
-		other_win_hl_color = "#e35e4f",
 	},
 }

@@ -1,20 +1,3 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("user.au")
-require("user.keymaps")
-require("lazy").setup("user.plugins")
-
 vim.o.background = "dark"
 vim.o.colorcolumn = "150"
 vim.o.cursorline = true
@@ -45,6 +28,24 @@ vim.cmd([[highlight Comment cterm=italic]])
 
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
 vim.g.user_emmet_leader_key = "<C-e>"
+vim.g.table_mode_disable_mappings = false
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("user.au")
+require("user.keymaps")
+require("lazy").setup("user.plugins")
 
 local local_vimrc = vim.fn.getcwd() .. "/.localnvim"
 if vim.loop.fs_stat(local_vimrc) then

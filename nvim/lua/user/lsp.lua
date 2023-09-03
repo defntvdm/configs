@@ -23,9 +23,8 @@ function _G.custom_attach(client, bufnr)
 	end
 
 	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-	vim.keymap.set("n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+	vim.keymap.set("n", "gD", "<cmd>Telescope lsp_definitions jump_type=tab<CR>", opts)
 	vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -90,12 +89,22 @@ local servers = {
 	},
 	gopls = {
 		cmd = { "gopls", "serve" },
+		filetypes = {
+			"go",
+			"gomod",
+			"gowork",
+			"gotmpl",
+		},
 		settings = {
 			gopls = {
-				usePlaceholders = true,
+				completeUnimported = true,
 				expandWorkspaceToModule = false,
 				semanticTokens = true,
 				staticcheck = true,
+				usePlaceholders = true,
+				analyses = {
+					unusedparams = true,
+				},
 				hints = {
 					assignVariableTypes = true,
 					compositeLiteralFields = true,
@@ -180,9 +189,13 @@ return {
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local nvim_lsp = require("lspconfig")
+		local util = require("lspconfig.util")
 		for name, cfg in pairs(servers) do
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities
+			if name == "gopls" then
+				cfg.root_dir = util.root_pattern("go.work", "go.mod", ".git", "main.go")
+			end
 			nvim_lsp[name].setup(cfg)
 		end
 		vim.cmd("LspStart")

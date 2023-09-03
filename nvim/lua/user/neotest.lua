@@ -27,7 +27,7 @@ return {
 		"rouge8/neotest-rust",
 	},
 	keys = {
-		{ " tfr", run_file_tests, noremap = true, silent = true, nowait = true },
+		{ " tfr", run_file_tests, noremap = true, silent = true, nowait = true, decription = 'Run tests in file' },
 		{ " tr", run_tests, noremap = true, silent = true, nowait = true },
 		{ " to", show_output, noremap = true, silent = true, nowait = true },
 		{ " tt", toggle, noremap = true, silent = true, nowait = true },

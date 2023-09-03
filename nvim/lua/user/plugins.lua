@@ -27,4 +27,5 @@ return {
 	require("user.crates"),
 	require("user.hop"),
 	require("user.barbecue"),
+	require("user.dressing"),
 }

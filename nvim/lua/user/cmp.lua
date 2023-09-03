@@ -29,12 +29,6 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-			formatting = {
-				format = require("lspkind").cmp_format({
-					mode = "symbol",
-					maxwidth = 50,
-				}),
-			},
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
@@ -72,6 +66,21 @@ return {
 				{ name = "path" },
 				{ name = "crates" },
 			},
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol_text",
+					before = function(entry, vim_item)
+						vim_item.menu = ({
+							nvim_lsp = "[LSP]",
+							luasnip = "[SNIP]",
+							buffer = "[BUF]",
+							path = "[PATH]",
+							crates = "[CRAT]",
+						})[entry.source.name]
+						return vim_item
+					end,
+				}),
+			},
 		})
 
 		cmp.setup.cmdline(":", {
@@ -80,12 +89,35 @@ return {
 				{ name = "path" },
 				{ name = "cmdline" },
 			}),
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol_text",
+					before = function(entry, vim_item)
+						vim_item.menu = ({
+							path = "[PATH]",
+							cmdline = "[CMD]",
+						})[entry.source.name]
+						return vim_item
+					end,
+				}),
+			},
 		})
 
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
 				{ name = "buffer" },
+			},
+			formatting = {
+				format = require("lspkind").cmp_format({
+					mode = "symbol_text",
+					before = function(entry, vim_item)
+						vim_item.menu = ({
+							buffer = "[BUF]",
+						})[entry.source.name]
+						return vim_item
+					end,
+				}),
 			},
 		})
 	end,

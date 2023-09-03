@@ -1,13 +1,16 @@
-local function buffers()
-	require("telescope.builtin").buffers()
+local function buffers(opts)
+	local themes = require("telescope.themes")
+	require("telescope.builtin").buffers(themes.get_ivy(opts))
 end
 
-local function lsp_symbols()
-	require("telescope.builtin").lsp_document_symbols()
+local function lsp_symbols(opts)
+	local themes = require("telescope.themes")
+	require("telescope.builtin").lsp_document_symbols(themes.get_ivy(opts))
 end
 
-local function fzf_find()
-	require("telescope.builtin").current_buffer_fuzzy_find()
+local function fzf_find(opts)
+	local themes = require("telescope.themes")
+	require("telescope.builtin").current_buffer_fuzzy_find(themes.get_ivy(opts))
 end
 
 return {
@@ -17,7 +20,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-telescope/telescope-symbols.nvim",
 		"edolphin-ydf/goimpl.nvim",
 		"ThePrimeagen/harpoon",
@@ -25,23 +27,30 @@ return {
 	},
 	cmd = "Telescope",
 	keys = {
-		{ "<leader>ff", ":Telescope fd cwd=./", noremap = true },
+		{ "<leader>ff", ":Telescope fd theme=ivy cwd=./", noremap = true },
 		{ "<leader>fb", buffers, noremap = true, silent = true },
-		{ "<leader>fg", ":Telescope live_grep cwd=./", noremap = true },
-		{ "<leader>fig", ":Telescope grep_string cwd=./", noremap = true },
+		{ "<leader>fg", ":Telescope live_grep theme=ivy cwd=./", noremap = true },
+		{ "<leader>fig", ":Telescope grep_string theme=ivy cwd=./", noremap = true },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true },
-		{ "<leader>jl", "<cmd>Telescope jumplist<CR>", noremap = true, silent = true },
+		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
 		telescope.load_extension("fzf")
-		telescope.load_extension("ui-select")
 		telescope.load_extension("goimpl")
 		telescope.load_extension("harpoon")
 	end,
 	opts = {
+		defaults = {
+			prompt_prefix = " ",
+			path_display = { "smart" },
+			file_ignore_patterns = {
+				".git/",
+				"node_modules/*",
+			},
+		},
 		extensions = {
 			fzf = {
 				fuzzy = true,
@@ -49,7 +58,6 @@ return {
 				override_file_sorter = true,
 				case_mode = "smart_case",
 			},
-			["ui-select"] = {},
 		},
 	},
 }
