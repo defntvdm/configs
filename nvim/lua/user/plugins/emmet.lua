@@ -1,4 +1,5 @@
 return {
 	"mattn/emmet-vim",
-	keys = { "<C-e>", mode = { "n", "i" }, noremap = true },
+	keys = { "<C-e>,", mode = { "n", "i" }, noremap = true },
+	event = "VeryLazy",
 }

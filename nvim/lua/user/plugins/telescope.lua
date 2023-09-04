@@ -31,8 +31,9 @@ return {
 		{ "<leader>fb", buffers, noremap = true, silent = true },
 		{ "<leader>fg", ":Telescope live_grep theme=ivy cwd=./", noremap = true },
 		{ "<leader>fig", ":Telescope grep_string theme=ivy cwd=./", noremap = true },
-		{ "<leader>ft", lsp_symbols, noremap = true, silent = true },
+		{ "<leader>fc", ":Telescope neoclip theme=ivy<CR>", noremap = true },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true },
+		{ "<leader>ft", lsp_symbols, noremap = true, silent = true },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true },
 	},
 	config = function(_, opts)
@@ -41,6 +42,7 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("goimpl")
 		telescope.load_extension("harpoon")
+		telescope.load_extension("neoclip")
 	end,
 	opts = {
 		defaults = {

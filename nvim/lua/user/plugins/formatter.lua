@@ -54,8 +54,16 @@ local function rustfmt()
 end
 
 local function djlint()
+	local util = require("formatter.util")
 	return {
 		exe = "djlint",
+		args = {
+			util.get_current_buffer_file_path(),
+			"--reformat",
+			"--format-css",
+			"--format-js",
+			"-",
+		},
 		stdin = true,
 	}
 end
