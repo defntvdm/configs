@@ -13,6 +13,10 @@ local function fzf_find(opts)
 	require("telescope.builtin").current_buffer_fuzzy_find(themes.get_ivy(opts))
 end
 
+local function tasks(_)
+	require("telescope").extensions.tasks.tasks()
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -24,6 +28,7 @@ return {
 		"edolphin-ydf/goimpl.nvim",
 		"ThePrimeagen/harpoon",
 		"nvim-treesitter/nvim-treesitter",
+		"lpoto/telescope-tasks.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -34,6 +39,7 @@ return {
 		{ "<leader>fc", ":Telescope neoclip theme=ivy<CR>", noremap = true },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true },
+		{ "<leader>fs", tasks, noremap = true, silent = true },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true },
 	},
 	config = function(_, opts)
@@ -43,6 +49,8 @@ return {
 		telescope.load_extension("goimpl")
 		telescope.load_extension("harpoon")
 		telescope.load_extension("neoclip")
+		telescope.load_extension("tasks")
+		-- require("telescope-tasks.generators").default.all()
 	end,
 	opts = {
 		defaults = {
@@ -59,6 +67,14 @@ return {
 				override_generic_sorter = true,
 				override_file_sorter = true,
 				case_mode = "smart_case",
+			},
+			tasks = {
+				theme = "ivy",
+				output = {
+					style = "float", -- "split" | "float" | "tab"
+					layout = "center", -- "left" | "right" | "center" | "below" | "above"
+					scale = 0.4,
+				},
 			},
 		},
 	},
