@@ -23,8 +23,9 @@ vim.o.updatetime = 1000
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.wo.signcolumn = "yes"
-
-vim.cmd([[highlight Comment cterm=italic]])
+vim.opt.laststatus = 3
+vim.cmd("highlight WinSeparator guibg=None")
+vim.cmd("highlight Comment cterm=italic")
 
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
 vim.g.user_emmet_leader_key = "<C-e>"
