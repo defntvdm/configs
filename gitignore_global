@@ -9,4 +9,4 @@ __pycache__
 .mypy_cache
 .vim
 compile_flags.txt
-.localnvim
+.nvim.lua
