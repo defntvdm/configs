@@ -1,7 +1,5 @@
 return {
 	"kylechui/nvim-surround",
-	dependencies = {
-		"jiangmiao/auto-pairs",
-	},
+	event = "VeryLazy",
 	opts = {},
 }

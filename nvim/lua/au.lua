@@ -7,14 +7,6 @@ local events = {
 			end,
 		},
 	},
-	BufEnter = {
-		{
-			pattern = ".localnvim",
-			callback = function()
-				vim.bo.filetype = "vim"
-			end,
-		},
-	},
 }
 
 for event, opts in pairs(events) do

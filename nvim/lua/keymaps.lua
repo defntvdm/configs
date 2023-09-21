@@ -2,10 +2,9 @@ local set_km = vim.keymap.set
 vim.g.mapleader = "\\"
 local opts = { noremap = true, silent = true }
 set_km("n", "<space>", "<nop>", opts)
-
+set_km("n", "<c-h>", "<c-w>h", opts)
 set_km("n", "<c-j>", "<c-w>j", opts)
 set_km("n", "<c-k>", "<c-w>k", opts)
-set_km("n", "<c-h>", "<c-w>h", opts)
 set_km("n", "<c-l>", "<c-w>l", opts)
 
 -- tabs

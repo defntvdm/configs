@@ -16,7 +16,6 @@ return {
 		{ "<leader>fr", toggle, noremap = true, silent = true },
 		{ "<C-u>", up1, noremap = true, silent = true },
 	},
-	lazy = true,
 	opts = {
 		theme = "onedark",
 	},

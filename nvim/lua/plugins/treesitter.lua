@@ -1,14 +1,12 @@
+vim.keymap.set("n", "<leader>tc", "<CMD>TSContextToggle<CR>", { silent = true, noremap = true, desc = "Toggle TS context" })
 return {
 	"nvim-treesitter/nvim-treesitter",
 	dependencies = {
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",
 	},
-	lazy = true,
+	event = "VeryLazy",
 	build = ":TSUpdate",
-	config = function(_, opts)
-		require("nvim-treesitter.configs").setup(opts)
-	end,
 	opts = {
 		ensure_installed = {
 			"bash",

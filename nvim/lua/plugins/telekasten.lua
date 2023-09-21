@@ -95,7 +95,6 @@ return {
 	keys = {
 		{ "<leader>tt", goto_today, noremap = true, silent = true },
 		{ "<leader>tv", switch_vault, noremap = true, silent = true },
-		{ "<leader>tc", show_calendar, noremap = true, silent = true },
 	},
 	opts = config,
 }

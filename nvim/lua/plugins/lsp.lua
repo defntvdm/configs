@@ -1,13 +1,5 @@
 local _border = "rounded"
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = _border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = _border,
-})
-
 vim.diagnostic.config({
 	float = { border = _border },
 })
@@ -23,22 +15,22 @@ function _G.custom_attach(client, bufnr)
 	end
 
 	-- Mappings.
-	vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-	vim.keymap.set("n", "gD", "<cmd>Telescope lsp_definitions jump_type=tab<CR>", opts)
-	vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+	vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions theme=ivy<CR>", opts)
+	vim.keymap.set("n", "gD", "<cmd>Telescope lsp_definitions  theme=ivy jump_type=tab<CR>", opts)
+	vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations theme=ivy<CR>", opts)
+	vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references theme=ivy<CR>", opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("i", "<c-s>", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set("n", " lic", "<cmd>Telescope lsp_incoming_calls<CR>", opts)
-	vim.keymap.set("n", " loc", "<cmd>Telescope lsp_outgoing_calls<CR>", opts)
+	vim.keymap.set("n", " lic", "<cmd>Telescope lsp_incoming_calls theme=ivy<CR>", opts)
+	vim.keymap.set("n", " loc", "<cmd>Telescope lsp_outgoing_calls theme=ivy<CR>", opts)
 	vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
+	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
 	vim.keymap.set("n", "<leader>ih", function()
 		vim.lsp.inlay_hint(bufnr, nil)
 	end, opts)
-	-- use null-ls
+	-- use formatter.nvim
 	client.server_capabilities.documentFormattingProvider = false
 
 	if client.name == "clangd" then
@@ -63,7 +55,7 @@ local servers = {
 	taplo = {},
 	tsserver = {},
 	vimls = {},
-	vuels = {},
+	volar = {},
 	yamlls = {},
 	rust_analyzer = {
 		settings = {
@@ -150,6 +142,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"ray-x/lsp_signature.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
@@ -180,11 +173,9 @@ return {
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
 		})
-
 		require("lspconfig.ui.windows").default_options = {
 			border = _border,
 		}
-
 		require("barbecue")
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
