@@ -8,6 +8,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
 	},
+	event = "VeryLazy",
 	config = function()
 		local luasnip = require("luasnip")
 

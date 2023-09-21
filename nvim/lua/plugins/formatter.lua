@@ -128,7 +128,6 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 	},
-	lazy = true,
 	ft = {
 		"c",
 		"cpp",
