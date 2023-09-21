@@ -68,7 +68,7 @@ local function djlint()
 	}
 end
 
-local function prettier()
+local function prettier4space()
 	local util = require("formatter.util")
 	return {
 		exe = "prettier",
@@ -86,7 +86,7 @@ local function prettier()
 	}
 end
 
-local function prettier2space()
+local function prettier()
 	local util = require("formatter.util")
 	return {
 		exe = "prettier",
@@ -118,8 +118,8 @@ local formatters = {
 	javascriptreact = prettier,
 	typescriptreact = prettier,
 	vue = prettier,
-	yaml = prettier2space,
-	json = prettier,
+	yaml = prettier,
+	json = prettier4space,
 	htmldjango = djlint,
 }
 
