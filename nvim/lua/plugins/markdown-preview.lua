@@ -4,8 +4,8 @@ return {
 	keys = {
 		{ "<leader>mm", "<cmd>MarkdownPreview<CR>", noremap = true, silent = true },
 	},
-	ft = { "markdown", "telekasten" },
+	ft = { "markdown" },
 	config = function()
-		vim.g.mkdp_filetypes = { "markdown", "telekasten" }
+		vim.g.mkdp_filetypes = { "markdown" }
 	end,
 }

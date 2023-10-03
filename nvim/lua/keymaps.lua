@@ -69,3 +69,6 @@ set_km("n", "cp", [[:let @+=expand("%:p:h")<CR>]], { silent = true })
 -- quickfix navigation
 set_km("n", "[q", ":cprev<cr>", { silent = true, noremap = true })
 set_km("n", "]q", ":cnext<cr>", { silent = true, noremap = true })
+
+-- open tmux new window in current file directory
+set_km("n", "<leader>tm", "<cmd>!tmux neww 'cd %:h && zsh'<CR>", { silent = true, noremap = true })

@@ -12,7 +12,7 @@ for name, home in pairs(vaults) do
 	config.vaults[name] = {
 		home = home,
 		take_over_my_home = true,
-		auto_set_filetype = true,
+		auto_set_filetype = false,
 		auto_set_syntax = true,
 		dailies = home .. "/daily",
 		weeklies = home .. "/weekly",
@@ -59,7 +59,7 @@ local group = vim.api.nvim_create_augroup("telekasten_defntvdm", { clear = true 
 local events = {
 	FileType = {
 		{
-			pattern = { "telekasten", "markdown" },
+			pattern = { "markdown" },
 			callback = function()
 				vim.keymap.set("n", "gd", require("telekasten").follow_link, { buffer = 0 })
 				vim.keymap.set("n", "gr", require("telekasten").show_backlinks, { buffer = 0 })

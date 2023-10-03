@@ -61,7 +61,15 @@ local servers = {
 		settings = {
 			["rust-analyzer"] = {
 				checkOnSave = {
-					command = "clippy",
+					allFeatures = true,
+					overrideCommand = {
+						"cargo",
+						"clippy",
+						"--workspace",
+						"--message-format=json",
+						"--all-targets",
+						"--all-features",
+					},
 				},
 			},
 		},
@@ -154,19 +162,20 @@ return {
 	},
 	ft = {
 		"cpp",
+		"css",
 		"go",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"lua",
+        "markdown",
 		"python",
 		"rust",
-		"html",
-		"css",
-		"lua",
-		"javascript",
 		"typescript",
-		"javascriptreact",
 		"typescriptreact",
 		"vue",
 		"yaml",
-		"json",
 	},
 	config = function()
 		-- autoinstall lsps

@@ -1,5 +1,5 @@
 return {
-	"catppuccin/nvim",
+	"dcatppuccin/nvim",
 	priority = 1000,
 	module = "catppuccin",
 	config = function()
@@ -7,11 +7,12 @@ return {
 			flavour = "mocha",
 			integrations = {
 				barbecue = {
-					dim_dirname = true, -- directory name is dimmed by default
+					dim_dirname = true,
 					bold_basename = true,
 					dim_context = true,
 					alt_background = true,
 				},
+                gitsigns = true,
 				harpoon = true,
 				hop = true,
 				indent_blankline = {
@@ -50,7 +51,7 @@ return {
 				treesitter = true,
 				window_picker = true,
 				symbols_outline = true,
-				telekasten = false,
+				telekasten = true,
 				telescope = {
 					enabled = true,
 				},
@@ -58,6 +59,6 @@ return {
 				which_key = true,
 			},
 		})
-		vim.cmd("colorscheme catppuccin-mocha")
+        vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }

@@ -20,6 +20,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"kyazdani42/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
+		"antosha417/nvim-lsp-file-operations",
 	},
 	lazy = true,
 	keys = {
@@ -34,6 +35,10 @@ return {
 			desc = "toggle",
 		},
 	},
+	config = function(_, opts)
+		require("neo-tree").setup(opts)
+		require("lsp-file-operations").setup()
+	end,
 	opts = {
 		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
