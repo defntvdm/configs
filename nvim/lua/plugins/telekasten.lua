@@ -17,7 +17,7 @@ for name, home in pairs(vaults) do
 		dailies = home .. "/daily",
 		weeklies = home .. "/weekly",
 		templates = home .. "/templates",
-		image_subdir = home .. "/images",
+		image_subdir = home .. "/media",
 		extension = ".md",
 		new_note_filename = "title-uuid",
 		uuid_type = "%Y%m%d%H%M",

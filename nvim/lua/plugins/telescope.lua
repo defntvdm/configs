@@ -17,6 +17,10 @@ local function tasks(_)
 	require("telescope").extensions.tasks.tasks()
 end
 
+local function symbols(_)
+    require'telescope.builtin'.symbols{ sources = {'emoji', 'gitmoji'} }
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -29,7 +33,6 @@ return {
 		"ThePrimeagen/harpoon",
 		"nvim-treesitter/nvim-treesitter",
 		"lpoto/telescope-tasks.nvim",
-		"tom-anders/telescope-vim-bookmarks.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -41,6 +44,7 @@ return {
 		{ "<leader>fz", fzf_find, noremap = true, silent = true, desc = "Grep in current file" },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true, desc = "LSP symbols in current file" },
 		{ "<leader>fs", tasks, noremap = true, silent = true, desc = "Tasks" },
+		{ "<leader>fv", symbols, noremap = true, silent = true, desc = "Symbols" },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true, desc = "Jumplist" },
 	},
 	config = function(_, opts)
@@ -51,7 +55,6 @@ return {
 		telescope.load_extension("harpoon")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("tasks")
-		telescope.load_extension("vim_bookmarks")
 		-- require("telescope-tasks.generators").default.all()
 		telescope.load_extension("arc")
 	end,

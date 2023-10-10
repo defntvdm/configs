@@ -1,5 +1,5 @@
 return {
-	"dcatppuccin/nvim",
+	"catppuccin/nvim",
 	priority = 1000,
 	module = "catppuccin",
 	config = function()
