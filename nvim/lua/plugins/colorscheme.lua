@@ -12,7 +12,9 @@ return {
 					dim_context = true,
 					alt_background = true,
 				},
-                gitsigns = true,
+				dashboard = true,
+				dropbar = true,
+				gitsigns = true,
 				harpoon = true,
 				hop = true,
 				indent_blankline = {
@@ -59,6 +61,6 @@ return {
 				which_key = true,
 			},
 		})
-        vim.cmd("colorscheme catppuccin-mocha")
+		vim.cmd("colorscheme catppuccin-mocha")
 	end,
 }

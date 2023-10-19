@@ -169,7 +169,7 @@ return {
 		"javascriptreact",
 		"json",
 		"lua",
-        "markdown",
+		"markdown",
 		"python",
 		"rust",
 		"typescript",

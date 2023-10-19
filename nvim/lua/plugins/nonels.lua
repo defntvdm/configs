@@ -60,6 +60,20 @@ return {
 			formatting.clang_format,
 			formatting.prettier.with({
 				filetypes = {
+					"css",
+					"graphql",
+					"handlebars",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"jsonc",
+					"less",
+					"markdown",
+					"markdown.mdx",
+					"scss",
+					"typescript",
+					"typescriptreact",
+					"vue",
 					"yaml",
 				},
 				extra_args = {
@@ -73,21 +87,7 @@ return {
 			}),
 			formatting.prettier.with({
 				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"typescriptreact",
-					"vue",
-					"css",
-					"scss",
-					"less",
-					"html",
 					"json",
-					"jsonc",
-					"markdown",
-					"markdown.mdx",
-					"graphql",
-					"handlebars",
 				},
 				extra_args = {
 					"--single-quote",

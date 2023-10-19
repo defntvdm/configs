@@ -7,6 +7,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
+		{ "jackieaskins/cmp-emmet", build = "npm run release" },
 	},
 	event = "VeryLazy",
 	config = function()
@@ -61,6 +62,7 @@ return {
 				end,
 			},
 			sources = {
+				{ name = "emmet" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
@@ -77,6 +79,7 @@ return {
 							buffer = "[BUF]",
 							path = "[PATH]",
 							crates = "[CRAT]",
+							emmet_vim = "[EMME]",
 						})[entry.source.name]
 						return vim_item
 					end,

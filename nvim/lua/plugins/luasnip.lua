@@ -16,6 +16,9 @@ return {
 		{ "<c-k>", prev, mode = { "i", "s" }, silent = true, noremap = true },
 	},
 	config = function()
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load({}) -- load friendly-snippets
+		require("luasnip.loaders.from_vscode").lazy_load({ -- load custom snippets
+			paths = { "./snippets" },
+		})
 	end,
 }
