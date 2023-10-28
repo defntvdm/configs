@@ -19,7 +19,7 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.laststatus = 3
-vim.o.mouse = "a"
+vim.o.mouse = "n"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 3
@@ -37,6 +37,11 @@ vim.o.title = true
 vim.o.updatetime = 1000
 vim.scriptencoding = "utf-8"
 vim.wo.signcolumn = "yes"
+
+if vim.g.neovide then
+	vim.g.neovide_scale_factor = 0.9
+	vim.g.neovide_cursor_animate_in_insert_mode = true
+end
 
 vim.cmd("highlight WinSeparator guibg=None")
 

@@ -13,4 +13,10 @@
   hist = log --pretty=format:'%C(yellow)%h %C(bold blue)%ad%C(reset) %s %Cgreen[%an]%C(reset)%C(bold red)%d%C(reset)' --graph --date=short
   type = cat-file -t
   dump = cat-file -p
-
+[merge]
+  tool = "nvim"
+[mergetool]
+  keepBackup = false
+  prompt = false
+[mergetool "nvim"]
+  cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""

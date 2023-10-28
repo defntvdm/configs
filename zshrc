@@ -9,8 +9,8 @@ CASE_SENSITIVE="true"
 plugins=(
   docker
   docker-compose
-  git
   rust
+  git
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-vi-mode
@@ -22,9 +22,11 @@ source $ZSH/oh-my-zsh.sh
 # aliases #
 ###########
 alias http='http -v -s monokai'
-alias tmux='tmux a || tmux'
 alias vim='nvim'
-alias n='nvim'
+alias n='neovide'
+function t() {
+    (tmux a -d -t $1 2>&1 >/dev/null) || (tmux new -s $1)
+}
 
 ##########
 # golang #
@@ -35,6 +37,7 @@ export PATH=$PATH:$GOPATH/bin
 ############
 # Just env #
 ############
+export PATH="$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
 
 ############

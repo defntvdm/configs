@@ -22,6 +22,7 @@ return {
 			"c",
 			"clojure",
 			"cmake",
+			"comment",
 			"cpp",
 			"css",
 			"dockerfile",

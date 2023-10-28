@@ -1,5 +1,7 @@
 return {
 	"Bekaboo/dropbar.nvim",
 	event = "LspAttach",
-	opts = {},
+	opts = {
+		general = { attach_events = { "LspAttach" } },
+	},
 }

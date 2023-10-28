@@ -163,6 +163,7 @@ return {
 	ft = {
 		"cpp",
 		"css",
+		"less",
 		"go",
 		"html",
 		"javascript",
@@ -185,7 +186,6 @@ return {
 		require("lspconfig.ui.windows").default_options = {
 			border = _border,
 		}
-		require("barbecue")
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local nvim_lsp = require("lspconfig")

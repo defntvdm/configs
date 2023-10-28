@@ -17,6 +17,7 @@ return {
 		"rust",
 		"html",
 		"css",
+		"less",
 		"lua",
 		"javascript",
 		"typescript",
