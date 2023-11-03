@@ -18,7 +18,11 @@ local function tasks(_)
 end
 
 local function symbols(_)
-    require'telescope.builtin'.symbols{ sources = {'emoji', 'gitmoji'} }
+	require("telescope.builtin").symbols({ sources = { "emoji", "gitmoji" } })
+end
+
+local function projects(_)
+	require("telescope").extensions.project.project({})
 end
 
 return {
@@ -33,6 +37,7 @@ return {
 		"ThePrimeagen/harpoon",
 		"nvim-treesitter/nvim-treesitter",
 		"lpoto/telescope-tasks.nvim",
+		"nvim-telescope/telescope-project.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -46,6 +51,7 @@ return {
 		{ "<leader>fs", tasks, noremap = true, silent = true, desc = "Tasks" },
 		{ "<leader>fv", symbols, noremap = true, silent = true, desc = "Symbols" },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true, desc = "Jumplist" },
+		{ "<leader>fp", projects, noremap = true, silent = true, desc = "Project" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")
@@ -55,8 +61,8 @@ return {
 		telescope.load_extension("harpoon")
 		telescope.load_extension("neoclip")
 		telescope.load_extension("tasks")
-		-- require("telescope-tasks.generators").default.all()
-		telescope.load_extension("arc")
+		telescope.load_extension("project")
+		require("telescope-tasks.generators").default.all()
 	end,
 	opts = {
 		defaults = {
@@ -78,10 +84,20 @@ return {
 			tasks = {
 				theme = "ivy",
 				output = {
-					style = "float", -- "split" | "float" | "tab"
-					layout = "center", -- "left" | "right" | "center" | "below" | "above"
+					style = "float",
+					layout = "center",
 					scale = 0.4,
 				},
+			},
+			project = {
+				on_project_selected = function(prompt_bufnr)
+					local project_actions = require("telescope._extensions.project.actions")
+					project_actions.change_working_directory(prompt_bufnr, false)
+					local local_vimrc = vim.fn.getcwd() .. "/.nvim.lua"
+					if vim.loop.fs_stat(local_vimrc) then
+						vim.cmd("source " .. local_vimrc)
+					end
+				end,
 			},
 		},
 	},

@@ -1,5 +1,6 @@
 return {
 	"williamboman/mason.nvim",
+	event = "LspAttach",
 	cmd = "Mason",
 	config = function(_, opts)
 		require("telescope") -- init ui-select
