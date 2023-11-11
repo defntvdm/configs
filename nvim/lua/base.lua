@@ -1,6 +1,6 @@
 vim.o.autoread = true
 vim.o.background = "dark"
-vim.o.colorcolumn = "150"
+vim.o.colorcolumn = "+1"
 vim.o.cursorline = true
 vim.o.diffopt = vim.o.diffopt .. ",vertical"
 vim.o.encoding = "utf-8"
@@ -33,6 +33,7 @@ vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.tabstop = 4
 vim.o.termguicolors = true
+vim.o.textwidth = 150
 vim.o.title = true
 vim.o.updatetime = 1000
 vim.scriptencoding = "utf-8"

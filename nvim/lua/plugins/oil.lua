@@ -1,6 +1,6 @@
 return {
 	"stevearc/oil.nvim",
-	dependencies = { "kyazdani42/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		default_file_explorer = true,
 		columns = {

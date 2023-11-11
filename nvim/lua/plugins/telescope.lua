@@ -1,3 +1,8 @@
+local function marks(opts)
+	local themes = require("telescope.themes")
+	require("telescope.builtin").marks(themes.get_ivy(opts))
+end
+
 local function buffers(opts)
 	local themes = require("telescope.themes")
 	require("telescope.builtin").buffers(themes.get_ivy(opts))
@@ -43,6 +48,7 @@ return {
 	keys = {
 		{ "<leader>ff", ":Telescope fd theme=ivy cwd=./", noremap = true, desc = "Find files" },
 		{ "<leader>fb", buffers, noremap = true, silent = true, desc = "Find buffers" },
+		{ "<leader>fm", marks, noremap = true, silent = true, desc = "Find marks" },
 		{ "<leader>fg", ":Telescope live_grep theme=ivy cwd=./", noremap = true, desc = "Live grep" },
 		{ "<leader>fig", ":Telescope grep_string theme=ivy cwd=./", noremap = true, desc = "Grep" },
 		{ "<leader>fc", ":Telescope neoclip theme=ivy<CR>", noremap = true, desc = "Clipboard" },
