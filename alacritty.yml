@@ -14,25 +14,25 @@ scrolling:
 
 font:
   offset:
-    x: -1
-    y: -2
+    x: 1
+    y: 0
   normal:
-    family: JetBrainsMono Nerd Font Mono
+    family: PlemolJP Console NF  # JetBrainsMono Nerd Font Mono
     style: Regular
 
   bold:
-    family: JetBrainsMono Nerd Font Mono
+    family: PlemolJP Console NF  # JetBrainsMono Nerd Font Mono
     style: Bold
 
   italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: PlemolJP Console NF  # JetBrainsMono Nerd Font Mono
     style: Italic
 
   bold_italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: PlemolJP Console NF  # JetBrainsMono Nerd Font Mono
     style: Bold Italic
 
-  size: 14.0
+  size: 15.0
 
 colors:
   primary:

@@ -14,7 +14,6 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldmethod = "expr"
 vim.o.foldtext = require("foldtext")
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h15"
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
@@ -40,7 +39,7 @@ vim.scriptencoding = "utf-8"
 vim.wo.signcolumn = "yes"
 
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font Mono:h13"
+    vim.o.guifont = "PlemolJP Console NF:h15"
 	vim.g.neovide_cursor_animate_in_insert_mode = true
 end
 
