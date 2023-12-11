@@ -22,6 +22,7 @@ return {
 		"less",
 		"lua",
 		"markdown",
+        "php",
 		"python",
 		"rust",
 		"typescript",
@@ -102,6 +103,7 @@ return {
 			}),
 			formatting.stylua,
 			formatting.buf,
+            formatting.phpcbf,
 			-- diagnostics
 			diagnostics.flake8,
 			diagnostics.golangci_lint,

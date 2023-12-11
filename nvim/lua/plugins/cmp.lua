@@ -69,6 +69,9 @@ return {
 				{ name = "path" },
 				{ name = "crates" },
 			},
+            sorting = {
+                priority_weight = 10,
+            },
 			formatting = {
 				format = require("lspkind").cmp_format({
 					mode = "symbol_text",

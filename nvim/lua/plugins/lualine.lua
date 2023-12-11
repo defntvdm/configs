@@ -15,7 +15,11 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "LspInfo" },
+				lualine_b = {
+					"branch",
+					"LspInfo",
+				},
+
 				lualine_c = {
 					{
 						"filename",
@@ -39,6 +43,13 @@ return {
 						end,
 						icon = " LSP:",
 						color = { fg = "#ffffff", gui = "bold" },
+					},
+					{
+						"navic",
+						color_correction = "static",
+						navic_opts = {
+							highlight = true,
+						},
 					},
 				},
 				lualine_x = { "encoding", "fileformat", "filetype" },

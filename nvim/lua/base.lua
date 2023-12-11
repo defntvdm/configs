@@ -39,11 +39,10 @@ vim.scriptencoding = "utf-8"
 vim.wo.signcolumn = "yes"
 
 if vim.g.neovide then
-    vim.o.guifont = "PlemolJP Console NF:h15"
+	vim.o.guifont = "PlemolJP Console NF:h15"
 	vim.g.neovide_cursor_animate_in_insert_mode = true
 end
 
 vim.cmd("highlight WinSeparator guibg=None")
 
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
-vim.g.user_emmet_leader_key = "<C-e>"

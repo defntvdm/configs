@@ -61,6 +61,7 @@ local events = {
 		{
 			pattern = { "markdown" },
 			callback = function()
+                vim.api.nvim_set_hl(0, '@text.note', { link = 'Todo' })
 				vim.keymap.set("n", "gd", require("telekasten").follow_link, { buffer = 0 })
 				vim.keymap.set("n", "gr", require("telekasten").show_backlinks, { buffer = 0 })
 				vim.keymap.set("n", " d", require("telekasten").toggle_todo, { buffer = 0 })

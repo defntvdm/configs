@@ -5,13 +5,21 @@ vim.diagnostic.config({
 })
 
 function _G.custom_attach(client, bufnr)
+	-- enable navic and navbuddy if lsp supports
+	if client.server_capabilities.documentSymbolProvider then
+		local navic = require("nvim-navic")
+		navic.attach(client, bufnr)
+		local navbuddy = require("nvim-navbuddy")
+		navbuddy.attach(client, bufnr)
+	end
+
 	local opts = { silent = true, noremap = true, buffer = bufnr }
 
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	if client.server_capabilities.inlayHintProvider ~= nil then
-		vim.lsp.inlay_hint(bufnr, true)
+		vim.lsp.inlay_hint.enable(bufnr, true)
 	end
 
 	-- Mappings.
@@ -25,10 +33,15 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+    vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<CR>", opts)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
 	vim.keymap.set("n", "<leader>ih", function()
-		vim.lsp.inlay_hint(bufnr, nil)
+		if vim.lsp.inlay_hint.is_enabled() then
+			vim.lsp.inlay_hint.enable(bufnr, false)
+		else
+			vim.lsp.inlay_hint.enable(bufnr, true)
+		end
 	end, opts)
 	-- use formatter.nvim
 	client.server_capabilities.documentFormattingProvider = false
@@ -49,6 +62,7 @@ local servers = {
 	cmake = {},
 	cssls = {},
 	dockerls = {},
+	emmet_language_server = {},
 	graphql = {},
 	html = {},
 	jsonls = {},
@@ -57,6 +71,7 @@ local servers = {
 	vimls = {},
 	volar = {},
 	yamlls = {},
+	phpactor = {},
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
@@ -150,6 +165,8 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"SmiteshP/nvim-navic",
+		"SmiteshP/nvim-navbuddy",
 		"ray-x/lsp_signature.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
@@ -166,11 +183,13 @@ return {
 		"less",
 		"go",
 		"html",
+		"htmldjango",
 		"javascript",
 		"javascriptreact",
 		"json",
 		"lua",
 		"markdown",
+		"php",
 		"python",
 		"rust",
 		"typescript",
@@ -179,7 +198,6 @@ return {
 		"yaml",
 	},
 	config = function()
-		-- autoinstall lsps
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
 		})
