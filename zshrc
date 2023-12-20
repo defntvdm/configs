@@ -35,19 +35,13 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 ############
-# Just env #
-############
-export PATH="$HOME/.local/bin:$PATH"
-export VISUAL="nvim"
-
-############
 # Homebrew #
 ############
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}";
-export MANPATH="/opt/homebrew/share/man:${MANPATH}";
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 export PATH="/opt/homebrew/opt/postgresql@15/bin:"$PATH;
 
@@ -71,6 +65,11 @@ fi
 fpath+=~/.zfunc
 autoload -Uz compinit
 compinit
+############
+# Just env #
+############
+export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$PATH"
+export VISUAL="nvim"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -33,7 +33,7 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-    vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<CR>", opts)
+	vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<CR>", opts)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
 	vim.keymap.set("n", "<leader>ih", function()
@@ -57,6 +57,7 @@ function _G.custom_attach(client, bufnr)
 end
 
 local servers = {
+	ast_grep = {},
 	bashls = {},
 	bufls = {},
 	cmake = {},
@@ -195,6 +196,7 @@ return {
 		"typescript",
 		"typescriptreact",
 		"vue",
+		"xml",
 		"yaml",
 	},
 	config = function()
@@ -205,9 +207,20 @@ return {
 			border = _border,
 		}
 
-		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local nvim_lsp = require("lspconfig")
 		local util = require("lspconfig.util")
+		local configs = require("lspconfig.configs")
+
+		configs.ast_grep = {
+			default_config = {
+				cmd = { "sg", "lsp" },
+				filetypes = { "java" },
+				single_file_support = true,
+				root_dir = util.root_pattern(".git", "sgconfig.yml"),
+			},
+		}
+
+		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		for name, cfg in pairs(servers) do
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities

@@ -22,12 +22,13 @@ return {
 		"less",
 		"lua",
 		"markdown",
-        "php",
+		"php",
 		"python",
 		"rust",
 		"typescript",
 		"typescriptreact",
 		"vue",
+		"xml",
 		"yaml",
 	},
 	keys = {
@@ -77,6 +78,7 @@ return {
 					"typescript",
 					"typescriptreact",
 					"vue",
+                    "xml",
 					"yaml",
 				},
 				extra_args = {
@@ -103,7 +105,8 @@ return {
 			}),
 			formatting.stylua,
 			formatting.buf,
-            formatting.phpcbf,
+			formatting.phpcbf,
+            formatting.xmlformat,
 			-- diagnostics
 			diagnostics.flake8,
 			diagnostics.golangci_lint,

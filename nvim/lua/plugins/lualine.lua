@@ -9,8 +9,8 @@ return {
 			options = {
 				icons_enabled = true,
 				theme = "catppuccin",
-				component_separators = { "", "" },
-				section_separators = { "", "" },
+				component_separators = { "|" },
+				section_separators = { left = "", right = "" },
 				disabled_filetypes = {},
 			},
 			sections = {
@@ -26,25 +26,6 @@ return {
 						path = 1,
 					},
 					{
-						function()
-							local msg = "no LSP"
-							local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-							local clients = vim.lsp.get_active_clients()
-							if next(clients) == nil then
-								return msg
-							end
-							for _, client in ipairs(clients) do
-								local filetypes = client.config.filetypes
-								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-									return client.name
-								end
-							end
-							return msg
-						end,
-						icon = "",
-						color = { fg = "#ffffff", gui = "bold" },
-					},
-					{
 						"navic",
 						color_correction = "static",
 						navic_opts = {
@@ -52,8 +33,30 @@ return {
 						},
 					},
 				},
-				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_y = { "progress" },
+				lualine_x = { "encoding", "fileformat" },
+				lualine_y = {
+					{
+						function()
+							local msg = "no lsp"
+							local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+							local clients = vim.lsp.get_active_clients()
+							for _, client in ipairs(clients) do
+								local filetypes = client.config.filetypes
+								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+									if client.name == "null-ls" and msg ~= "no lsp" then
+										goto continue
+									end
+									msg = client.name
+								end
+								::continue::
+							end
+							return msg
+						end,
+						icon = "",
+						color = { fg = "#ffffff", gui = "bold" },
+					},
+					"filetype",
+				},
 				lualine_z = { "location" },
 			},
 			inactive_sections = {

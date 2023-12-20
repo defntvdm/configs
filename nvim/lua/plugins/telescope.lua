@@ -43,6 +43,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"lpoto/telescope-tasks.nvim",
 		"nvim-telescope/telescope-project.nvim",
+		"Marskey/telescope-sg",
 	},
 	cmd = "Telescope",
 	keys = {
@@ -51,6 +52,7 @@ return {
 		{ "<leader>fm", marks, noremap = true, silent = true, desc = "Find marks" },
 		{ "<leader>fg", ":Telescope live_grep theme=ivy cwd=./", noremap = true, desc = "Live grep" },
 		{ "<leader>fig", ":Telescope grep_string theme=ivy cwd=./", noremap = true, desc = "Grep" },
+		{ "<leader>fa", ":Telescope ast_grep theme=ivy<CR>", noremap = true, desc = "Clipboard" },
 		{ "<leader>fc", ":Telescope neoclip theme=ivy<CR>", noremap = true, desc = "Clipboard" },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true, desc = "Grep in current file" },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true, desc = "LSP symbols in current file" },
@@ -69,6 +71,7 @@ return {
 		telescope.load_extension("tasks")
 		telescope.load_extension("project")
 		require("telescope-tasks.generators").default.all()
+		telescope.load_extension("ast_grep")
 	end,
 	opts = {
 		defaults = {
@@ -81,6 +84,14 @@ return {
 			},
 		},
 		extensions = {
+			ast_grep = {
+				command = {
+					"sg",
+					"--json=stream",
+				},
+				grep_open_files = false,
+				lang = nil,
+			},
 			fzf = {
 				fuzzy = true,
 				override_generic_sorter = true,
