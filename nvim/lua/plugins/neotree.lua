@@ -202,5 +202,12 @@ return {
 				},
 			},
 		},
+		document_symbols = {},
+		sources = {
+			"filesystem",
+			"buffers",
+			"git_status",
+			"document_symbols",
+		},
 	},
 }

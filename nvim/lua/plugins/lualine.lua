@@ -14,10 +14,15 @@ return {
 				disabled_filetypes = {},
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = { {
+					"mode",
+					fmt = function(str)
+						return str:sub(1, 1)
+					end,
+				} },
 				lualine_b = {
 					"branch",
-					"LspInfo",
+					"diff",
 				},
 
 				lualine_c = {
@@ -67,8 +72,18 @@ return {
 				lualine_y = {},
 				lualine_z = {},
 			},
+			extensions = {
+				"fugitive",
+				"lazy",
+				"mason",
+				"neo-tree",
+				"nvim-dap-ui",
+				"oil",
+				"quickfix",
+				"toggleterm",
+				"trouble",
+			},
 			tabline = {},
-			extensions = {},
 		})
 	end,
 }

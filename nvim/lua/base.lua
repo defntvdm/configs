@@ -43,6 +43,4 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_animate_in_insert_mode = true
 end
 
-vim.cmd("highlight WinSeparator guibg=None")
-
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"

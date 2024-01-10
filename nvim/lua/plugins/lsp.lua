@@ -36,6 +36,10 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<CR>", opts)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("n", " e", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set({ "n", "v" }, " ca", vim.lsp.buf.code_action, opts)
 	vim.keymap.set("n", "<leader>ih", function()
 		if vim.lsp.inlay_hint.is_enabled() then
 			vim.lsp.inlay_hint.enable(bufnr, false)
@@ -172,33 +176,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
-	keys = {
-		{ " e", vim.diagnostic.open_float, noremap = true, silent = true },
-		{ "[d", vim.diagnostic.goto_prev, noremap = true, silent = true },
-		{ "]d", vim.diagnostic.goto_next, noremap = true, silent = true },
-		{ " ca", vim.lsp.buf.code_action, mode = { "n", "v" }, noremap = true, silent = true },
-	},
-	ft = {
-		"cpp",
-		"css",
-		"less",
-		"go",
-		"html",
-		"htmldjango",
-		"javascript",
-		"javascriptreact",
-		"json",
-		"lua",
-		"markdown",
-		"php",
-		"python",
-		"rust",
-		"typescript",
-		"typescriptreact",
-		"vue",
-		"xml",
-		"yaml",
-	},
+	ft = defntvdm_filetypes,
 	config = function()
 		require("mason-lspconfig").setup({
 			automatic_installation = true,
@@ -214,7 +192,7 @@ return {
 		configs.ast_grep = {
 			default_config = {
 				cmd = { "sg", "lsp" },
-				filetypes = { "java" },
+				filetypes = defntvdm_filetypes,
 				single_file_support = true,
 				root_dir = util.root_pattern(".git", "sgconfig.yml"),
 			},
@@ -229,6 +207,5 @@ return {
 			end
 			nvim_lsp[name].setup(cfg)
 		end
-		vim.cmd("LspStart")
 	end,
 }

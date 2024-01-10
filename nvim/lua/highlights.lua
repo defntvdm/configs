@@ -26,3 +26,5 @@ vim.api.nvim_set_hl(0, "NavicIconsOperator", { default = true, fg = "#00bbbb" })
 vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", { default = true, fg = "#00bbbb" })
 vim.api.nvim_set_hl(0, "NavicText", { default = true, fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, fg = "#aaaaaa" })
+
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = nil, fg = "#ffffff" })

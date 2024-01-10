@@ -1,22 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
-	ft = {
-		"cpp",
-		"css",
-		"go",
-		"html",
-		"javascript",
-		"javascriptreact",
-		"json",
-		"lua",
-		"markdown",
-		"python",
-		"rust",
-		"typescript",
-		"typescriptreact",
-		"vue",
-		"yaml",
-	},
+	ft = defntvdm_filetypes,
 	main = "ibl",
 	opts = {},
 }

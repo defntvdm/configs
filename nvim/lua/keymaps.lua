@@ -1,11 +1,14 @@
 local set_km = vim.keymap.set
 vim.g.mapleader = "\\"
 local opts = { noremap = true, silent = true }
+
+-- nav
 set_km("n", "<space>", "<nop>", opts)
 set_km("n", "<c-h>", "<c-w>h", opts)
 set_km("n", "<c-j>", "<c-w>j", opts)
 set_km("n", "<c-k>", "<c-w>k", opts)
 set_km("n", "<c-l>", "<c-w>l", opts)
+set_km("i", "jj", "<esc>", opts)
 
 -- tabs
 set_km("n", "<m-1>", "1gt", opts)
@@ -76,7 +79,7 @@ set_km("n", "<leader>tm", "<cmd>!tmux neww 'cd %:h && zsh'<CR>", { silent = true
 -- neovide keymaps
 if vim.g.neovide then
 	set_km("i", "<D-v>", [[<esc>"+pa]], { silent = true, noremap = true })
-    set_km("c", "<D-v>", [[<C-r>+]], { noremap = true })
+	set_km("c", "<D-v>", [[<C-r>+]], { noremap = true })
 	set_km("t", "<D-v>", [[<C-\><C-n>"+pa]], { silent = true, noremap = true })
 	set_km("v", "<D-c>", [["+y]], { silent = true, noremap = true })
 end
