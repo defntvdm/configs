@@ -30,6 +30,10 @@ local function projects(_)
 	require("telescope").extensions.project.project({})
 end
 
+local function resume(_)
+	require("telescope.builtin").resume({})
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -54,6 +58,7 @@ return {
 		{ "<leader>fig", ":Telescope grep_string theme=ivy cwd=./", noremap = true, desc = "Grep" },
 		{ "<leader>fa", ":Telescope ast_grep theme=ivy cwd=./", noremap = true, desc = "Ast Grep" },
 		{ "<leader>fc", ":Telescope neoclip theme=ivy<CR>", noremap = true, desc = "Clipboard" },
+		{ "<leader>fr", resume, noremap = true, silent = true, desc = "Resume telescope" },
 		{ "<leader>fz", fzf_find, noremap = true, silent = true, desc = "Grep in current file" },
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true, desc = "LSP symbols in current file" },
 		{ "<leader>fs", tasks, noremap = true, silent = true, desc = "Tasks" },

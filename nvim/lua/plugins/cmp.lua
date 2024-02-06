@@ -8,6 +8,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"onsails/lspkind.nvim",
 		{ "jackieaskins/cmp-emmet", build = "npm run release" },
+		"ray-x/cmp-treesitter",
 	},
 	event = "VeryLazy",
 	config = function()
@@ -64,14 +65,15 @@ return {
 			sources = {
 				{ name = "emmet" },
 				{ name = "nvim_lsp" },
+				{ name = "treesitter" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "crates" },
 			},
-            sorting = {
-                priority_weight = 10,
-            },
+			sorting = {
+				priority_weight = 10,
+			},
 			formatting = {
 				format = require("lspkind").cmp_format({
 					mode = "symbol_text",
@@ -83,6 +85,7 @@ return {
 							path = "[PATH]",
 							crates = "[CRAT]",
 							emmet_vim = "[EMME]",
+							treesitter = "[TRSI]",
 						})[entry.source.name]
 						return vim_item
 					end,

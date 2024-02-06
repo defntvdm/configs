@@ -1,17 +1,22 @@
 local function add_file()
-	require("harpoon.mark").add_file()
+	require("harpoon"):list():append()
+end
+
+local function remove_file()
+	require("harpoon"):list():remove()
 end
 
 local function toggle_menu()
-	require("harpoon.ui").toggle_quick_menu()
+	local harpoon = require("harpoon")
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end
 
 local function prev()
-	require("harpoon.ui").nav_prev()
+	require("harpoon"):list():prev({ ui_nav_wrap = true })
 end
 
 local function next()
-	require("harpoon.ui").nav_next()
+	require("harpoon"):list():next({ ui_nav_wrap = true })
 end
 
 return {
@@ -19,10 +24,16 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	branch = "harpoon2",
 	keys = {
 		{ " a", add_file, noremap = true, silent = true },
+		{ " r", remove_file, noremap = true, silent = true },
 		{ " m", toggle_menu, noremap = true, silent = true },
 		{ " p", prev, noremap = true, silent = true },
 		{ " n", next, noremap = true, silent = true },
 	},
+	config = function()
+		local harpoon = require("harpoon")
+		harpoon:setup()
+	end,
 }

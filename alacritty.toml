@@ -74,27 +74,23 @@ text = "#1E1E2E"
 TERM = "xterm-256color"
 
 [font]
-size = 15.0
+size = 14.0
 
 [font.bold]
-family = "PlemolJP Console NF"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "PlemolJP Console NF"
+family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "PlemolJP Console NF"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "PlemolJP Console NF"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
-
-[font.offset]
-x = 1
-y = 0
 
 [[keyboard.bindings]]
 chars = "\u001Bb"
