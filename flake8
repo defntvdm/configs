@@ -1,5 +1,0 @@
-[flake8]
-exclude = .git,__pycache__,docs,build,.venv,.env,.idea
-max-complexity = 10
-max-line-length = 150
-ignore = E722
