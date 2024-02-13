@@ -1,0 +1,11 @@
+line-length = 120
+indent-width = 4
+cache-dir = "~/.cache/ruff"
+
+[lint]
+select = ["E", "F", "I", "W"]
+
+[format]
+indent-style = "space"
+docstring-code-format = true
+quote-style = "single"
