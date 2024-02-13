@@ -34,7 +34,7 @@ return {
 			formatting.black.with({
 				extra_args = {
 					"-S",
-					"-l150",
+					"-l120",
 					"--fast",
 				},
 			}),
@@ -59,7 +59,7 @@ return {
 					"typescript",
 					"typescriptreact",
 					"vue",
-                    "xml",
+					"xml",
 					"yaml",
 				},
 				extra_args = {
@@ -87,9 +87,9 @@ return {
 			formatting.stylua,
 			formatting.buf,
 			formatting.phpcbf,
-            formatting.xmlformat,
+			formatting.xmlformat,
 			-- diagnostics
-			diagnostics.flake8,
+			diagnostics.ruff,
 			diagnostics.golangci_lint,
 			diagnostics.eslint_d,
 			-- code_actions
