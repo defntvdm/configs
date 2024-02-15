@@ -75,8 +75,8 @@ return {
 		telescope.load_extension("neoclip")
 		telescope.load_extension("tasks")
 		telescope.load_extension("project")
-		require("telescope-tasks.generators").default.all()
 		telescope.load_extension("ast_grep")
+		-- require("telescope-tasks.generators").default.all()
 	end,
 	opts = {
 		defaults = {
