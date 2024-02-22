@@ -44,7 +44,7 @@ return {
 		},
 		select = {
 			enabled = true,
-			backend = {"telescope", "builtin"},
+			backend = { "telescope", "builtin" },
 
 			trim_prompt = true,
 

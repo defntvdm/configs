@@ -62,7 +62,21 @@ return {
 					},
 					"filetype",
 				},
-				lualine_z = { "location" },
+				lualine_z = {
+					"location",
+					{
+						function(a, b)
+							local line = require("noice").api.status.mode.get(a, b)
+							local m = line:match("recording @%S")
+							if m ~= nil then
+								return m
+							end
+							return ""
+						end,
+						cond = require("noice").api.status.mode.has,
+						color = { fg = "#1e1e2e", gui = "bold" },
+					},
+				},
 			},
 			inactive_sections = {
 				lualine_a = {},
