@@ -47,8 +47,6 @@ function _G.custom_attach(client, bufnr)
 			vim.lsp.inlay_hint.enable(bufnr, true)
 		end
 	end, opts)
-	-- use formatter.nvim
-	client.server_capabilities.documentFormattingProvider = false
 
 	if client.name == "clangd" then
 		vim.keymap.set("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
@@ -118,7 +116,6 @@ local servers = {
 		settings = {
 			gopls = {
 				completeUnimported = true,
-				expandWorkspaceToModule = false,
 				semanticTokens = true,
 				staticcheck = true,
 				usePlaceholders = true,
@@ -199,6 +196,10 @@ return {
 		}
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
+		_G.custom_capabilities.workspace = _G.custom_capabilities.workspace or {}
+		_G.custom_capabilities.workspace.didChangeWatchedFiles = _G.custom_capabilities.workspace.didChangeWatchedFiles
+			or {}
+		_G.custom_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 		for name, cfg in pairs(servers) do
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities
