@@ -21,6 +21,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 		"antosha417/nvim-lsp-file-operations",
+		"3rd/image.nvim",
 	},
 	lazy = true,
 	keys = {
@@ -126,6 +127,7 @@ return {
 				["<"] = "prev_source",
 				[">"] = "next_source",
 				["?"] = "show_help",
+				["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
 			},
 		},
 		nesting_rules = {},

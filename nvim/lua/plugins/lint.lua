@@ -5,16 +5,16 @@ end
 return {
 	"mfussenegger/nvim-lint",
 	event = "VeryLazy",
-	key = {
-		{ " l", lint_file, desc = "Trigger linting for current file" },
+	keys = {
+		{ "<leader>l", lint_file, desc = "Trigger linting for current file" },
 	},
 	config = function()
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			c = { "clangtidy" },
+			c = { "cpplint" },
 			cmake = { "cmakelint" },
-			cpp = { "clangtidy" },
+			cpp = { "cpplint" },
 			css = { { "eslint_d", "eslint" } },
 			go = { "golangcilint" },
 			html = { { "eslint_d", "eslint" } },
@@ -28,8 +28,7 @@ return {
 			python = { "ruff" },
 			typescript = { { "esling_d", "eslint" } },
 			typescriptreact = { { "esling_d", "eslint" } },
-			yaml = { { "yamllint", "eslint" } },
-			["_"] = { "trim_whitespace", "trim_newlines" },
+			yaml = { "yamllint" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp ./alacritty.toml ~/.alacritty.toml
+cp ./wezterm.lua ~/.wezterm.lua
 cp ./clang-format ~/.clang-format
 mkdir -p ~/.config
 cp ./gitconfig ~/.gitconfig

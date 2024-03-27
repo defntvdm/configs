@@ -25,6 +25,7 @@ vim.o.scrolloff = 3
 vim.o.secure = true
 vim.o.shiftwidth = 4
 vim.o.sidescrolloff = 3
+vim.o.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.smarttab = true
 vim.o.splitbelow = true
@@ -36,7 +37,6 @@ vim.o.textwidth = 150
 vim.o.title = true
 vim.o.updatetime = 1000
 vim.scriptencoding = "utf-8"
-vim.wo.signcolumn = "yes"
 
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h14"

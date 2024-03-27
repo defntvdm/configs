@@ -134,10 +134,10 @@ local servers = {
 			},
 		},
 	},
-	pyright = {
-		cmd = { "pyright-langserver", "--stdio" },
+	basedpyright = {
+		cmd = { "basedpyright-langserver", "--stdio" },
 		settings = {
-			python = {
+			basedpyright = {
 				pythonPath = "/Users/defntvdm/.pyenv/shims/python",
 				analysis = {
 					autoSearchPaths = true,
@@ -169,7 +169,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"SmiteshP/nvim-navic",
 		"SmiteshP/nvim-navbuddy",
-		"ray-x/lsp_signature.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 	},
