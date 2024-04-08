@@ -1,8 +1,17 @@
 return {
-	"brenton-leighton/multiple-cursors.nvim",
+	"smoka7/multicursors.nvim",
 	event = "VeryLazy",
-	config = function()
-		require("multiple-cursors").setup()
-		vim.keymap.set({ "n", "i" }, "<leader>.", "<Cmd>MultipleCursorsAddJumpNextMatch<CR>")
-	end,
+	dependencies = {
+		"smoka7/hydra.nvim",
+	},
+	cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+	keys = {
+		{
+			mode = { "v", "n" },
+			"<leader>.",
+			"<cmd>MCstart<cr>",
+			desc = "Create a selection for selected text or word under the cursor",
+		},
+	},
+	opts = {},
 }
