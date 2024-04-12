@@ -1,66 +1,61 @@
 return {
-	"catppuccin/nvim",
+	"EdenEast/nightfox.nvim",
 	priority = 1000,
-	module = "catppuccin",
 	config = function()
-		require("catppuccin").setup({
-			flavour = "mocha",
-			integrations = {
-				barbecue = {
-					dim_dirname = true,
-					bold_basename = true,
-					dim_context = true,
-					alt_background = true,
-				},
-				dashboard = true,
-				dropbar = true,
-				gitsigns = true,
-				harpoon = true,
-				hop = true,
-				indent_blankline = {
-					enabled = true,
-					colored_indent_levels = false,
-				},
-				markdown = true,
-				mason = true,
-				neotree = true,
-				neotest = true,
-				cmp = true,
-				dap = {
-					enabled = true,
-					enable_ui = true,
-				},
-				noice = true,
-				native_lsp = {
-					enabled = true,
-					virtual_text = {
-						errors = { "italic" },
-						hints = { "italic" },
-						warnings = { "italic" },
-						information = { "italic" },
-					},
-					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
-					},
-					inlay_hints = {
-						background = true,
+		require("nightfox").setup({
+			options = {
+				compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+				compile_file_suffix = "_compiled",
+				transparent = false,
+				terminal_colors = true,
+				dim_inactive = false,
+				module_default = true,
+				colorblind = {
+					enable = false,
+					simulate_only = false,
+					severity = {
+						protan = 0,
+						deutan = 0,
+						tritan = 0,
 					},
 				},
-				treesitter_context = true,
-				treesitter = true,
-				window_picker = true,
-				symbols_outline = true,
-				telekasten = true,
-				telescope = {
-					enabled = true,
+				styles = {
+					comments = "italic",
+					conditionals = "NONE",
+					constants = "bold",
+					functions = "NONE",
+					keywords = "bold,italic",
+					numbers = "NONE",
+					operators = "NONE",
+					strings = "NONE",
+					types = "bold",
+					variables = "NONE",
 				},
-				lsp_trouble = true,
-				which_key = true,
+				inverse = {
+					match_paren = false,
+					visual = false,
+					search = false,
+				},
+				modules = {
+					cmp = true,
+					["dap-ui"] = true,
+					gitsigns = true,
+					hop = true,
+					indent_blanklines = true,
+					["lazy.nvim"] = true,
+					lsp_trouble = true,
+					neotree = true,
+					notify = true,
+					signify = true,
+					telescope = true,
+					treesitter = true,
+					whichkey = true,
+				},
 			},
+			palettes = {},
+			specs = {},
+			groups = {},
 		})
-		vim.cmd("colorscheme catppuccin-mocha")
+		vim.cmd("colorscheme nightfox")
 	end,
 }

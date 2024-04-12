@@ -1,5 +1,5 @@
 local function add_file()
-	require("harpoon"):list():append()
+	require("harpoon"):list():add()
 end
 
 local function remove_file()
@@ -27,7 +27,7 @@ return {
 	branch = "harpoon2",
 	keys = {
 		{ " a", add_file, noremap = true, silent = true },
-		{ " r", remove_file, noremap = true, silent = true },
+		{ " d", remove_file, noremap = true, silent = true },
 		{ " m", toggle_menu, noremap = true, silent = true },
 		{ " p", prev, noremap = true, silent = true },
 		{ " n", next, noremap = true, silent = true },

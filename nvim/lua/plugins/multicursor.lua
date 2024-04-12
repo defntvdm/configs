@@ -1,6 +1,6 @@
 return {
 	"smoka7/multicursors.nvim",
-	event = "VeryLazy",
+	event = "InsertEnter",
 	dependencies = {
 		"smoka7/hydra.nvim",
 	},

@@ -8,7 +8,6 @@ return {
 		bufferline.setup({
 			options = {
 				mode = "tabs",
-				highlights = require("catppuccin.groups.integrations.bufferline").get(),
 				themable = true,
 				numbers = "buffer_id",
 				indicator = {

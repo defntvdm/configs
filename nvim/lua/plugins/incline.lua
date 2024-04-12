@@ -21,9 +21,8 @@ return {
 				return {
 					ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
 					" ",
-					{ filename, gui = "italic" },
+					{ filename, gui = modified and "italic,bold" or "" },
 					" ",
-					guibg = modified and "#000000" or "#44406e",
 				}
 			end,
 		})

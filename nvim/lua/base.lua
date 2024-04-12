@@ -4,7 +4,6 @@ vim.o.colorcolumn = "+1"
 vim.o.cursorline = true
 vim.o.diffopt = vim.o.diffopt .. ",vertical"
 vim.o.encoding = "utf-8"
-vim.o.encoding = "utf-8"
 vim.o.expandtab = true
 vim.o.exrc = true
 vim.o.fileencoding = "utf-8"

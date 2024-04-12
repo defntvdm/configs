@@ -4,17 +4,17 @@ end
 
 return {
 	"mfussenegger/nvim-lint",
-	event = "VeryLazy",
 	keys = {
 		{ "<leader>l", lint_file, desc = "Trigger linting for current file" },
 	},
+	ft = defntvdm_filetypes,
 	config = function()
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			c = { "cpplint" },
+			c = {},
 			cmake = { "cmakelint" },
-			cpp = { "cpplint" },
+			cpp = {},
 			css = { { "eslint_d", "eslint" } },
 			go = { "golangcilint" },
 			html = { { "eslint_d", "eslint" } },

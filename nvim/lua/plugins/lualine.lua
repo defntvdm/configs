@@ -8,7 +8,7 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin",
+				theme = "nightfox",
 				component_separators = { "|" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {},

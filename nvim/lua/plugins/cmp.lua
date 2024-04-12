@@ -10,7 +10,7 @@ return {
 		{ "jackieaskins/cmp-emmet", build = "npm run release" },
 		"ray-x/cmp-treesitter",
 	},
-	event = "VeryLazy",
+	event = { "InsertEnter", "CmdlineEnter" },
 	config = function()
 		local luasnip = require("luasnip")
 
