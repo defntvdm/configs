@@ -1,11 +1,9 @@
 return {
 	"williamboman/mason.nvim",
-	event = "LspAttach",
+	dependencies = {
+		"stevearc/dressing.nvim",
+	},
 	cmd = "Mason",
-	config = function(_, opts)
-		require("telescope") -- init ui-select
-		require("mason").setup(opts)
-	end,
 	opts = {
 		ui = {
 			icons = {
