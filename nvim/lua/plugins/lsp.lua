@@ -171,6 +171,7 @@ return {
 		"SmiteshP/nvim-navbuddy",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
+		"aznhe21/actions-preview.nvim",
 	},
 	ft = defntvdm_filetypes,
 	config = function()
@@ -183,16 +184,6 @@ return {
 
 		local nvim_lsp = require("lspconfig")
 		local util = require("lspconfig.util")
-		local configs = require("lspconfig.configs")
-
-		configs.ast_grep = {
-			default_config = {
-				cmd = { "sg", "lsp" },
-				filetypes = defntvdm_filetypes,
-				single_file_support = true,
-				root_dir = util.root_pattern(".git", "sgconfig.yml"),
-			},
-		}
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		_G.custom_capabilities.workspace = _G.custom_capabilities.workspace or {}

@@ -31,7 +31,7 @@ return {
 			markdown = { { "prettierd", "prettier" } },
 			php = { "phpcbf" },
 			proto = { "buf" },
-			python = { "isort", "black" },
+			python = { "isort", "flynt", "black" },
 			rust = { "rustfmt" },
 			sql = { "sqlfmt" },
 			typescript = { { "prettierd", "prettier" } },
@@ -44,6 +44,11 @@ return {
 		formatters = {
 			black = {
 				prepend_args = { "-l", "120", "-S" },
+			},
+			flynt = {
+				command = "flynt",
+				args = { "-" },
+				stdin = true,
 			},
 		},
 	},
