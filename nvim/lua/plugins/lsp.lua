@@ -59,7 +59,6 @@ function _G.custom_attach(client, bufnr)
 end
 
 local servers = {
-	ast_grep = {},
 	bashls = {},
 	bufls = {},
 	cmake = {},
