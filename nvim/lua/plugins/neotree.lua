@@ -23,10 +23,10 @@ return {
 		"antosha417/nvim-lsp-file-operations",
 		"3rd/image.nvim",
 	},
-	lazy = true,
+	event = "VimEnter",
 	keys = {
 		{
-			"ff",
+			"<leader>nf",
 			find_file,
 			desc = "Find file",
 		},
@@ -156,7 +156,7 @@ return {
 				},
 			},
 			follow_current_file = {
-				enabled = false,
+				enabled = true,
 			},
 			group_empty_dirs = false,
 			hijack_netrw_behavior = "open_default",

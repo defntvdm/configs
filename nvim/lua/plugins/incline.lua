@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
+	event = "BufEnter",
 	config = function()
 		local helpers = require("incline.helpers")
 		local devicons = require("nvim-web-devicons")

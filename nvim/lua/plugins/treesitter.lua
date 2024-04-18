@@ -10,7 +10,7 @@ return {
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",
 	},
-	event = "VeryLazy",
+	event = "BufEnter",
 	build = ":TSUpdate",
 	config = function(_, opts)
 		local configs = require("nvim-treesitter.configs")
@@ -22,7 +22,7 @@ return {
 			"c",
 			"clojure",
 			"cmake",
-            "comment",
+			"comment",
 			"cpp",
 			"css",
 			"dockerfile",

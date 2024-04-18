@@ -1,8 +1,7 @@
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = "nvim-tree/nvim-web-devicons",
-	priority = 999,
-	version = "*",
+	event = "VimEnter",
 	opts = {
 		options = {
 			mode = "tabs",
