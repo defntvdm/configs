@@ -13,7 +13,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
-  zsh-vi-mode
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -44,6 +44,23 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 export PATH="/opt/homebrew/opt/postgresql@15/bin:"$PATH;
+export LD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
+export LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
+
+#######
+# FZF #
+#######
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --strip-cwd-prefix --exclude .git'
+_fzf_compgen_path() {
+    fd --hidden --exclude .git . "$1"
+}
+_fzf_compgen_dir() {
+    fd --type d --hidden --exclude .git . "$1"
+}
+source $HOME/.fzf/fzf-git.sh/fzf-git.sh
 
 #########
 # pyenv #
