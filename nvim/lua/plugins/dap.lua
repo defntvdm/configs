@@ -1,10 +1,3 @@
-vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-vim.fn.sign_define(
-	"DapBreakpointCondition",
-	{ text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" }
-)
-vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
-
 local function toggle_breakpoint()
 	require("dap").toggle_breakpoint()
 end
@@ -21,77 +14,7 @@ local function step_into()
 	require("dap").step_into()
 end
 
-local function repl_open()
-	require("dap").repl.open()
-end
-
-local function toggle()
-	require("dapui").toggle()
-end
-
-local function setup_dapui()
-	local dap, dapui = require("dap"), require("dapui")
-
-	dapui.setup({
-		icons = { expanded = "▾", collapsed = "▸" },
-		mappings = {
-			expand = { "<CR>", "l" },
-			open = "o",
-			remove = "d",
-			edit = "e",
-			repl = "r",
-			toggle = "t",
-		},
-		expand_lines = vim.fn.has("nvim-0.7"),
-		layouts = {
-			{
-				elements = {
-					{
-						id = "scopes",
-						size = 0.25,
-					},
-					{ id = "breakpoints", size = 0.25 },
-					{ id = "stacks", size = 0.25 },
-					{ id = "watches", size = 00.25 },
-				},
-				size = 40,
-				position = "left",
-			},
-			{
-				elements = { "repl" },
-				size = 10,
-				position = "bottom",
-			},
-		},
-		floating = {
-			max_height = nil,
-			max_width = nil,
-			border = "single",
-			mappings = {
-				close = { "q", "<Esc>" },
-			},
-		},
-		windows = { indent = 1 },
-		render = {
-			max_type_length = nil, -- Can be integer or nil.
-		},
-	})
-
-	dap.listeners.after.event_initialized["dapui_config"] = function()
-		dapui.open()
-	end
-
-	dap.listeners.before.event_terminated["dapui_config"] = function()
-		dapui.close()
-	end
-
-	dap.listeners.before.event_exited["dapui_config"] = function()
-		dapui.close()
-	end
-end
-
-local function setup_go()
-	local dap = require("dap")
+local function setup_go(dap)
 	dap.adapters.delve = {
 		type = "server",
 		port = "${port}",
@@ -101,7 +24,6 @@ local function setup_go()
 		},
 	}
 
-	-- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
 	dap.configurations.go = {
 		{
 			type = "delve",
@@ -127,16 +49,30 @@ local function setup_go()
 	}
 end
 
-local function setup_py()
-	local dap = require("dap")
-
-	-- pip install debugpy
-
-	dap.adapters.python = {
-		type = "executable",
-		command = "/Users/defntvdm/.local/share/nvim/mason/bin/debugpy",
-		args = {},
-	}
+local function setup_python(dap)
+	dap.adapters.python = function(cb, config)
+		if config.request == "attach" then
+			local port = (config.connect or config).port
+			local host = (config.connect or config).host or "127.0.0.1"
+			cb({
+				type = "server",
+				port = assert(port, "`connect.port` is required for a python `attach` configuration"),
+				host = host,
+				options = {
+					source_filetype = "python",
+				},
+			})
+		else
+			cb({
+				type = "executable",
+				command = "python",
+				args = { "-m", "debugpy.adapter" },
+				options = {
+					source_filetype = "python",
+				},
+			})
+		end
+	end
 
 	dap.configurations.python = {
 		{
@@ -144,67 +80,111 @@ local function setup_py()
 			request = "launch",
 			name = "Launch file",
 			program = "${file}",
-			pythonPath = "/Users/defntvdm/.pyenv/shims/python3",
+			pythonPath = "python",
 		},
 	}
 end
 
-local function setup_rust()
-	local dap = require("dap")
+local function set_signs(dap)
+	vim.fn.sign_define(
+		"DapBreakpoint",
+		{ text = "●", texthl = "", linehl = "debugBreakpoint", numhl = "debugBreakpoint" }
+	)
+	vim.fn.sign_define(
+		"DapBreakpointCondition",
+		{ text = "◆", texthl = "", linehl = "debugBreakpoint", numhl = "debugBreakpoint" }
+	)
+	vim.fn.sign_define("DapStopped", { text = "▶", texthl = "", linehl = "debugPC", numhl = "debugPC" })
+	dap.defaults.fallback.force_external_terminal = true
+end
 
-	-- download https://github.com/vadimcn/vscode-lldb release and unpack to /Users/defntvdm/.dap-adapters/codelldb
-	-- extension folder
-
-	dap.adapters.codelldb = {
-		type = "server",
-		host = "127.0.0.1",
-		port = 13000,
-		executable = {
-			command = "/Users/defntvdm/.local/share/nvim/mason/bin/codelldb",
-			args = { "--port", "13000" },
-			-- detached = false,
+local function setup_ui(dap)
+	local dapui = require("dapui")
+	dapui.setup({
+		layouts = {
+			{
+				elements = {
+					"stacks",
+					{ id = "scopes", size = 0.5 },
+					{ id = "breakpoints", size = 0.15 },
+				},
+				size = 0.33,
+				position = "left",
+			},
+			{
+				elements = {
+					{ id = "repl", size = 0.5 },
+					"console",
+				},
+				size = 0.25,
+				position = "bottom",
+			},
 		},
-	}
-
-	dap.configurations.c = {
-		{
-			type = "codelldb",
-			request = "launch",
-			name = "Launch file",
-			program = function()
-				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			end,
-			cwd = "${workspaceFolder}",
-			stopOnEntry = true,
+		controls = {
+			-- Requires Neovim nightly (or 0.8 when released)
+			enabled = true,
+			-- Display controls in this element
+			element = "repl",
+			icons = {
+				pause = "",
+				play = "",
+				step_into = "",
+				step_over = "",
+				step_out = "",
+				step_back = "",
+				run_last = "↻",
+				terminate = "□",
+			},
 		},
-	}
-
-	dap.configurations.cpp = dap.configurations.c
-	dap.configurations.rust = dap.configurations.c
+	})
+	vim.keymap.set("n", "<F12>", dapui.toggle, { noremap = true, silent = true })
+	dap.listeners.before.attach.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.launch.dapui_config = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated.dapui_config = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited.dapui_config = function()
+		dapui.close()
+	end
 end
 
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"rcarriga/nvim-dap-ui",
-		"jay-babu/mason-nvim-dap.nvim",
+		{ "rcarriga/nvim-dap-ui", tag = "v4.0.0", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	},
 	keys = {
-		{ "<F9>", toggle_breakpoint, noremap = true },
-		{ "<F5>", continue, noremap = true },
-		{ "<F10>", step_over, noremap = true },
-		{ "<F11>", step_into, noremap = true },
-		{ "<F12>", repl_open, noremap = true },
-		{ "<leader>dq", toggle, noremap = true },
+		{
+			"<F5>",
+			continue,
+			desc = "Continue DAP",
+		},
+		{
+			"<F9>",
+			toggle_breakpoint,
+			desc = "Toggle breakpoint",
+		},
+		{
+			"<F10>",
+			step_over,
+			desc = "Step into DAP",
+		},
+		{
+			"<F11>",
+			step_into,
+			desc = "Step over DAP",
+		},
 	},
 	config = function()
-		require("mason-nvim-dap").setup({
-			automatic_installation = true,
-		})
-
-		setup_dapui()
-		setup_go()
-		setup_py()
-		setup_rust()
+		local dap = require("dap")
+		set_signs(dap)
+		setup_go(dap)
+		setup_python(dap)
+		setup_ui(dap)
+		require("telescope").load_extension("dap")
 	end,
 }

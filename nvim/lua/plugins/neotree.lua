@@ -21,7 +21,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 		"antosha417/nvim-lsp-file-operations",
-		"3rd/image.nvim",
 	},
 	event = "VimEnter",
 	keys = {
@@ -127,7 +126,7 @@ return {
 				["<"] = "prev_source",
 				[">"] = "next_source",
 				["?"] = "show_help",
-				["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+				["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
 			},
 		},
 		nesting_rules = {},
@@ -156,7 +155,7 @@ return {
 				},
 			},
 			follow_current_file = {
-				enabled = true,
+				enabled = false,
 			},
 			group_empty_dirs = false,
 			hijack_netrw_behavior = "open_default",

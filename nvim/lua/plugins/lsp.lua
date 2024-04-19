@@ -5,12 +5,10 @@ vim.diagnostic.config({
 })
 
 function _G.custom_attach(client, bufnr)
-	-- enable navic and navbuddy if lsp supports
+	-- enable navic if lsp supports
 	if client.server_capabilities.documentSymbolProvider then
 		local navic = require("nvim-navic")
 		navic.attach(client, bufnr)
-		local navbuddy = require("nvim-navbuddy")
-		navbuddy.attach(client, bufnr)
 	end
 
 	local opts = { silent = true, noremap = true, buffer = bufnr }
@@ -33,7 +31,6 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
 	vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
 	vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-	vim.keymap.set("n", "<leader>nb", "<cmd>Navbuddy<CR>", opts)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
 	vim.keymap.set("n", " e", vim.diagnostic.open_float, opts)
@@ -167,7 +164,6 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"SmiteshP/nvim-navic",
-		"SmiteshP/nvim-navbuddy",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 		"aznhe21/actions-preview.nvim",

@@ -48,6 +48,7 @@ return {
 		"lpoto/telescope-tasks.nvim",
 		"nvim-telescope/telescope-project.nvim",
 		"Marskey/telescope-sg",
+		"nvim-telescope/telescope-dap.nvim",
 	},
 	cmd = "Telescope",
 	keys = {
