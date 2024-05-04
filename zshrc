@@ -3,7 +3,7 @@
 #######
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="mytheme"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 CASE_SENSITIVE="true"
 
 plugins=(
@@ -43,7 +43,6 @@ export HOMEBREW_REPOSITORY="/opt/homebrew";
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-export PATH="/opt/homebrew/opt/postgresql@15/bin:"$PATH;
 export LD_LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
 export LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
 
@@ -66,7 +65,7 @@ source $HOME/.fzf/fzf-git.sh/fzf-git.sh
 # pyenv #
 #########
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

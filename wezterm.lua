@@ -3,13 +3,14 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 config.color_scheme = "nightfox"
 config.default_cursor_style = "SteadyBar"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+local defaultFontFamily = "MesloLGM Nerd Font Mono"
+config.font = wezterm.font(defaultFontFamily)
 config.font_size = 14.0
 config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = false,
-		font = wezterm.font("JetBrainsMono Nerd Font", {
+		font = wezterm.font(defaultFontFamily, {
 			weight = "Bold",
 			italic = false,
 			style = "Normal",
@@ -18,7 +19,7 @@ config.font_rules = {
 	{
 		intensity = "Bold",
 		italic = true,
-		font = wezterm.font("JetBrainsMono Nerd Font", {
+		font = wezterm.font(defaultFontFamily, {
 			weight = "Bold",
 			italic = true,
 		}),
@@ -46,7 +47,7 @@ config.keys = {
 		mods = "CMD",
 		action = act.PromptInputLine({
 			description = "Enter new name for tab",
-			action = wezterm.action_callback(function(window, pane, line)
+			action = wezterm.action_callback(function(window, _, line)
 				if line then
 					window:active_tab():set_title(line)
 				end
