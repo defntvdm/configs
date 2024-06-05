@@ -64,12 +64,12 @@ return {
 			},
 			sources = {
 				{ name = "emmet" },
-				{ name = "nvim_lsp" },
-				{ name = "treesitter" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "crates" },
+				{ name = "nvim_lsp" },
+				{ name = "treesitter" },
 			},
 			sorting = {
 				priority_weight = 10,

@@ -11,7 +11,9 @@ return {
 				theme = "nightfox",
 				component_separators = { "|" },
 				section_separators = { left = "", right = "" },
-				disabled_filetypes = {},
+				disabled_filetypes = {
+					"dashboard",
+				},
 			},
 			sections = {
 				lualine_a = { {

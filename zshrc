@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #######
 # ZSH #
 #######
@@ -9,11 +16,12 @@ CASE_SENSITIVE="true"
 plugins=(
   docker
   docker-compose
-  rust
+  fzf-tab
   git
+  kubectl
+  rust
   zsh-autosuggestions
   zsh-syntax-highlighting
-  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -65,7 +73,7 @@ source $HOME/.fzf/fzf-git.sh/fzf-git.sh
 # pyenv #
 #########
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -81,12 +89,9 @@ fi
 fpath+=~/.zfunc
 autoload -Uz compinit
 compinit
+
 ############
 # Just env #
 ############
 export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

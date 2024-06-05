@@ -203,7 +203,14 @@ return {
 				},
 			},
 		},
-		document_symbols = {},
+		document_symbols = {
+			window = {
+				positon = "float",
+				mappings = {
+					["r"] = "rename",
+				},
+			},
+		},
 		sources = {
 			"filesystem",
 			"buffers",

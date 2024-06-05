@@ -8,7 +8,6 @@ set_km("n", "<c-h>", "<c-w>h", opts)
 set_km("n", "<c-j>", "<c-w>j", opts)
 set_km("n", "<c-k>", "<c-w>k", opts)
 set_km("n", "<c-l>", "<c-w>l", opts)
-set_km("i", "jj", "<esc>", opts)
 
 -- tabs
 set_km("n", "<m-1>", "1gt", opts)

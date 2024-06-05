@@ -13,11 +13,8 @@ function _G.custom_attach(client, bufnr)
 
 	local opts = { silent = true, noremap = true, buffer = bufnr }
 
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
 	if client.server_capabilities.inlayHintProvider ~= nil then
-		vim.lsp.inlay_hint.enable(bufnr, true)
+		vim.lsp.inlay_hint.enable(true)
 	end
 
 	-- Mappings.
@@ -39,9 +36,9 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set({ "n", "v" }, " ca", require("actions-preview").code_actions, opts)
 	vim.keymap.set("n", "<leader>ih", function()
 		if vim.lsp.inlay_hint.is_enabled() then
-			vim.lsp.inlay_hint.enable(bufnr, false)
+			vim.lsp.inlay_hint.enable(false)
 		else
-			vim.lsp.inlay_hint.enable(bufnr, true)
+			vim.lsp.inlay_hint.enable(true)
 		end
 	end, opts)
 
@@ -97,7 +94,7 @@ local servers = {
 			"--offset-encoding=utf-16",
 			"--completion-style=detailed",
 			"--log=error",
-			"-j=8",
+			"-j=4",
 		},
 		filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 	},
@@ -154,6 +151,9 @@ local servers = {
 				diagnostics = {
 					globals = { "vim" },
 				},
+				completion = {
+					callSnippet = "Replace",
+				},
 			},
 		},
 	},
@@ -167,6 +167,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 		"aznhe21/actions-preview.nvim",
+		"folke/neodev.nvim",
 	},
 	ft = defntvdm_filetypes,
 	config = function()

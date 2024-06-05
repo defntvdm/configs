@@ -34,6 +34,11 @@ local function resume(_)
 	require("telescope.builtin").resume({})
 end
 
+local function find_files()
+	local themes = require("telescope.themes")
+	require("telescope.builtin").fd(themes.get_ivy({ hidden = true }))
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
@@ -52,7 +57,8 @@ return {
 	},
 	cmd = "Telescope",
 	keys = {
-		{ "<leader>ff", ":Telescope fd theme=ivy cwd=./", noremap = true, desc = "Find files" },
+		{ "<leader>ff", ":Telescope fd theme=ivy cwd=./", noremap = true, desc = "Find files in subdir" },
+		{ "<leader>fd", find_files, noremap = true, silent = true, desc = "Find files" },
 		{ "<leader>fb", buffers, noremap = true, silent = true, desc = "Find buffers" },
 		{ "<leader>fm", marks, noremap = true, silent = true, desc = "Find marks" },
 		{ "<leader>fg", ":Telescope live_grep theme=ivy cwd=./", noremap = true, desc = "Live grep" },

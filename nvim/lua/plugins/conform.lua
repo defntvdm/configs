@@ -13,6 +13,7 @@ return {
 		{
 			" f",
 			format,
+			mode = { "n", "v" },
 			desc = "Find file",
 		},
 	},
@@ -28,10 +29,10 @@ return {
 			json = { { "prettierd", "prettier" } },
 			less = { { "prettierd", "prettier" } },
 			lua = { "stylua" },
-			markdown = { { "prettierd", "prettier" } },
+			markdown = { { "prettierd", "prettier" }, "mdformat" },
 			php = { "phpcbf" },
 			proto = { "buf" },
-			python = { "isort", "flynt", "black" },
+			python = { "darker" },
 			rust = { "rustfmt" },
 			sql = { "sqlfmt" },
 			typescript = { { "prettierd", "prettier" } },
@@ -42,12 +43,8 @@ return {
 			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
 		formatters = {
-			black = {
-				prepend_args = { "-l", "120", "-S" },
-			},
-			flynt = {
-				command = "flynt",
-				args = { "-" },
+			darker = {
+				args = { "-l", "120", "-S", "-i", "-f", "-d", "--stdin-filename", "$FILENAME" },
 				stdin = true,
 			},
 		},
