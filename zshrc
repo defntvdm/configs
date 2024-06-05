@@ -57,6 +57,7 @@ export LIBRARY_PATH="${HOMEBREW_PREFIX}/lib"
 #######
 # FZF #
 #######
+export PATH="$HOME/.fzf/bin:$PATH"
 eval "$(fzf --zsh)"
 export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -72,6 +73,7 @@ source $HOME/.fzf/fzf-git.sh/fzf-git.sh
 #########
 # pyenv #
 #########
+export PATH="$HOME/.pyenv/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PATH"
 eval "$(pyenv init --path)"
