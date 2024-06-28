@@ -38,9 +38,9 @@ vim.o.updatetime = 1000
 vim.scriptencoding = "utf-8"
 
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font:h14"
-	vim.g.neovide_cursor_animate_in_insert_mode = true
-	vim.g.neovide_cursor_vfx_mode = "ripple"
+    vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+    vim.g.neovide_cursor_animate_in_insert_mode = true
+    vim.g.neovide_cursor_vfx_mode = "ripple"
 end
 
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"

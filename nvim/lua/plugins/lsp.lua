@@ -15,6 +15,15 @@ function _G.custom_attach(client, bufnr)
 
 	if client.server_capabilities.inlayHintProvider ~= nil then
 		vim.lsp.inlay_hint.enable(true)
+		vim.keymap.set("n", "<leader>ih", function()
+			if vim.lsp.inlay_hint.is_enabled() then
+				vim.lsp.inlay_hint.enable(false)
+				vim.notify("Inlay hints disabled")
+			else
+				vim.lsp.inlay_hint.enable(true)
+				vim.notify("Inlay hints enabled")
+			end
+		end, opts)
 	end
 
 	-- Mappings.
@@ -34,11 +43,13 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 	vim.keymap.set({ "n", "v" }, " ca", require("actions-preview").code_actions, opts)
-	vim.keymap.set("n", "<leader>ih", function()
-		if vim.lsp.inlay_hint.is_enabled() then
-			vim.lsp.inlay_hint.enable(false)
+	vim.keymap.set("n", "<leader>tl", function()
+		if vim.diagnostic.is_enabled() then
+			vim.diagnostic.enable(false)
+			vim.notify("Diagnostic disabled")
 		else
-			vim.lsp.inlay_hint.enable(true)
+			vim.diagnostic.enable(true)
+			vim.notify("Diagnostic enabled")
 		end
 	end, opts)
 
