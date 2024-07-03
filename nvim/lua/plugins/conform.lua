@@ -1,10 +1,10 @@
 local function format()
 	require("conform").format({
+		timeout_ms = 5000,
 		lsp_fallback = true,
-		callback = function()
-			print("Formatted")
-		end,
-	})
+	}, function()
+		vim.notify("Formatted")
+	end)
 end
 
 return {
@@ -14,10 +14,11 @@ return {
 			" f",
 			format,
 			mode = { "n", "v" },
-			desc = "Find file",
+			desc = "Format",
 		},
 	},
 	opts = {
+		format_on_save = nil,
 		formatters_by_ft = {
 			c = { "clang_format" },
 			cpp = { "clang_format" },
@@ -48,5 +49,6 @@ return {
 				stdin = true,
 			},
 		},
+		notify_on_error = true,
 	},
 }
