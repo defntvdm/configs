@@ -23,7 +23,6 @@ return {
 			json = { "jsonlint" },
 			less = { "eslint_d" },
 			markdown = { "markdownlint" },
-			php = { "php" },
 			proto = { "buf_lint" },
 			python = { "ruff" },
 			typescript = { "eslint_d" },

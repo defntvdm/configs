@@ -26,10 +26,6 @@ local function symbols(_)
 	require("telescope.builtin").symbols({ sources = { "emoji", "gitmoji" } })
 end
 
-local function projects(_)
-	require("telescope").extensions.project.project({})
-end
-
 local function resume(_)
 	require("telescope.builtin").resume({})
 end
@@ -71,7 +67,6 @@ return {
 		{ "<leader>fs", tasks, noremap = true, silent = true, desc = "Tasks" },
 		{ "<leader>fv", symbols, noremap = true, silent = true, desc = "Symbols" },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true, desc = "Jumplist" },
-		{ "<leader>fp", projects, noremap = true, silent = true, desc = "Project" },
 	},
 	config = function(_, opts)
 		local telescope = require("telescope")

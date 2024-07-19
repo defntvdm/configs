@@ -78,7 +78,6 @@ local servers = {
 	vimls = {},
 	volar = {},
 	yamlls = {},
-	phpactor = {},
 	rust_analyzer = {
 		settings = {
 			["rust-analyzer"] = {
