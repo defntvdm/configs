@@ -26,6 +26,10 @@ local function symbols(_)
 	require("telescope.builtin").symbols({ sources = { "emoji", "gitmoji" } })
 end
 
+local function projects(_)
+	require("telescope").extensions.project.project({})
+end
+
 local function resume(_)
 	require("telescope.builtin").resume({})
 end

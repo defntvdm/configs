@@ -54,38 +54,6 @@ for name, home in pairs(vaults) do
 	}
 end
 
-local os = require("os")
-local time_fmt = "%Y-%m-%d %H:%M:%S"
-local time_fmt_pattern = "START_TIME: (%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)"
-
-local function next_state()
-	local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-	local line = vim.api.nvim_buf_get_lines(0, row - 1, row, true)[1]
-	if line:match("- %[") == nil or line:match("DONE_TIME") ~= nil then
-		return
-	end
-	if line:match("START_TIME") == nil then
-		line = line .. " START_TIME: " .. os.date(time_fmt)
-		vim.api.nvim_buf_set_lines(0, row - 1, row, false, { line })
-		return
-	end
-	local year, month, day, hour, min, sec = line:match(time_fmt_pattern)
-	local ts_struct = { year = year, month = month, day = day, hour = hour, min = min, sec = sec }
-	local start_ts = os.time(ts_struct)
-	local elapsed = os.time() - start_ts
-	line = line .. " DONE_TIME: " .. os.date(time_fmt) .. " ELAPSED: "
-	if math.floor(elapsed / 3600) ~= 0 then
-		line = line .. math.floor(elapsed / 3600) .. "h"
-		elapsed = elapsed % 3600
-	end
-	if math.floor(elapsed / 60) ~= 0 then
-		line = line .. math.floor(elapsed / 60) .. "m"
-		elapsed = elapsed % 60
-	end
-	line = line .. elapsed .. "s"
-	vim.api.nvim_buf_set_lines(0, row - 1, row, false, { line })
-end
-
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown" },
 	callback = function()
@@ -94,7 +62,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", " d", require("telekasten").toggle_todo, { buffer = 0 })
 		vim.keymap.set("n", " c", require("telekasten").show_calendar, { buffer = 0 })
 		vim.keymap.set("n", " y", require("telekasten").yank_notelink, { buffer = 0 })
-		vim.keymap.set("n", " s", next_state, { buffer = 0 })
 	end,
 	group = vim.api.nvim_create_augroup("telekasten_defntvdm", { clear = true }),
 })

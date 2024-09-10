@@ -24,7 +24,7 @@ return {
 			less = { "eslint_d" },
 			markdown = { "markdownlint" },
 			proto = { "buf_lint" },
-			python = { "ruff" },
+			python = { "ruff", "mypy" },
 			typescript = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			yaml = { "yamllint" },
@@ -34,9 +34,7 @@ return {
 
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
-			callback = function()
-				lint.try_lint()
-			end,
+			callback = lint_file,
 		})
 	end,
 }

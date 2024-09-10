@@ -40,8 +40,12 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
 	vim.keymap.set("n", " e", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "[d", function()
+		vim.diagnostic.jump({ count = -1 })
+	end, opts)
+	vim.keymap.set("n", "]d", function()
+		vim.diagnostic.jump({ count = 1 })
+	end, opts)
 	vim.keymap.set({ "n", "v" }, " ca", require("actions-preview").code_actions, opts)
 	vim.keymap.set("n", "<leader>tl", function()
 		if vim.diagnostic.is_enabled() then
@@ -63,111 +67,145 @@ function _G.custom_attach(client, bufnr)
 	end
 end
 
-local servers = {
-	bashls = {},
-	bufls = {},
-	cmake = {},
-	cssls = {},
-	dockerls = {},
-	emmet_language_server = {},
-	graphql = {},
-	html = {},
-	jsonls = {},
-	taplo = {},
-	tsserver = {},
-	vimls = {},
-	volar = {},
-	yamlls = {},
-	rust_analyzer = {
-		settings = {
-			["rust-analyzer"] = {
-				checkOnSave = {
-					allFeatures = true,
-					overrideCommand = {
-						"cargo",
-						"clippy",
-						"--workspace",
-						"--message-format=json",
-						"--all-targets",
-						"--all-features",
+local function get_servers()
+	return {
+		bashls = {},
+		bufls = {},
+		cmake = {},
+		cssls = {},
+		dockerls = {},
+		emmet_language_server = {},
+		graphql = {},
+		html = {},
+		jinja_lsp = {
+			filetypes = { "jinja", "htmldjango" },
+		},
+		jsonls = {
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas(),
+					validate = { enable = true },
+				},
+			},
+		},
+		kotlin_language_server = {},
+		taplo = {},
+		tsserver = {},
+		vimls = {},
+		volar = {},
+		yamlls = {
+			settings = {
+				yaml = {
+					validate = true,
+					schemaStore = {
+						enable = false,
+						url = "",
+					},
+					schemas = require("schemastore").yaml.schemas(),
+				},
+			},
+		},
+		rust_analyzer = {
+			settings = {
+				["rust-analyzer"] = {
+					checkOnSave = {
+						allFeatures = true,
+						overrideCommand = {
+							"cargo",
+							"clippy",
+							"--workspace",
+							"--message-format=json",
+							"--all-targets",
+							"--all-features",
+						},
 					},
 				},
 			},
 		},
-	},
-	clangd = {
-		cmd = {
-			"clangd",
-			"--background-index",
-			"--clang-tidy",
-			"--header-insertion=never",
-			"--offset-encoding=utf-16",
-			"--completion-style=detailed",
-			"--log=error",
-			"-j=4",
+		clangd = {
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--header-insertion=never",
+				"--offset-encoding=utf-16",
+				"--completion-style=detailed",
+				"--log=error",
+				"-j=4",
+			},
+			filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 		},
-		filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-	},
-	gopls = {
-		cmd = { "gopls", "serve" },
-		filetypes = {
-			"go",
-			"gomod",
-			"gowork",
-			"gotmpl",
-		},
-		settings = {
-			gopls = {
-				completeUnimported = true,
-				semanticTokens = true,
-				staticcheck = true,
-				usePlaceholders = true,
-				analyses = {
-					unusedparams = true,
-				},
-				hints = {
-					assignVariableTypes = true,
-					compositeLiteralFields = true,
-					compositeLiteralTypes = true,
-					constantValues = true,
-					functionTypeParameters = true,
-					parameterNames = true,
-					rangeVariableTypes = true,
+		gopls = {
+			cmd = { "gopls", "serve" },
+			filetypes = {
+				"go",
+				"gomod",
+				"gowork",
+				"gotmpl",
+			},
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					semanticTokens = true,
+					staticcheck = true,
+					usePlaceholders = true,
+					analyses = {
+						unusedparams = true,
+					},
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValues = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
 				},
 			},
 		},
-	},
-	basedpyright = {
-		cmd = { "basedpyright-langserver", "--stdio" },
-		settings = {
-			basedpyright = {
-				pythonPath = "/Users/defntvdm/.pyenv/shims/python",
-				analysis = {
-					autoSearchPaths = true,
-					diagnosticMode = "workspace",
-					useLibraryCodeForTypes = true,
+		basedpyright = {
+			cmd = { "basedpyright-langserver", "--stdio" },
+			settings = {
+				python = {
+					pythonPath = "/Users/defntvdm/.pyenv/shims/python",
+				},
+				basedpyright = {
+					analysis = {
+						autoSearchPaths = true,
+						diagnosticMode = "workspace",
+						useLibraryCodeForTypes = true,
+						typeCheckingMode = false,
+					},
 				},
 			},
 		},
-	},
-	lua_ls = {
-		settings = {
-			Lua = {
-				["workspace.library"] = {
-					["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua"] = true,
-					["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim"] = true,
-					["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim/lsp"] = true,
-				},
-				diagnostics = {
-					globals = { "vim" },
-				},
-				completion = {
-					callSnippet = "Replace",
+		ruff = {
+			init_options = {
+				settings = {
+					configuration = "~/.config/nvim/presets/ruff.toml",
 				},
 			},
 		},
-	},
-}
+		lua_ls = {
+			settings = {
+				Lua = {
+					["workspace.library"] = {
+						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua"] = true,
+						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim"] = true,
+						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim/lsp"] = true,
+					},
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		},
+	}
+end
 
 return {
 	"neovim/nvim-lspconfig",
@@ -178,6 +216,7 @@ return {
 		"williamboman/mason.nvim",
 		"aznhe21/actions-preview.nvim",
 		"folke/neodev.nvim",
+		"b0o/schemastore.nvim",
 	},
 	ft = defntvdm_filetypes,
 	config = function()
@@ -196,7 +235,7 @@ return {
 		_G.custom_capabilities.workspace.didChangeWatchedFiles = _G.custom_capabilities.workspace.didChangeWatchedFiles
 			or {}
 		_G.custom_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-		for name, cfg in pairs(servers) do
+		for name, cfg in pairs(get_servers()) do
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities
 			if name == "gopls" then

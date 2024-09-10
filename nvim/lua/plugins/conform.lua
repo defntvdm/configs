@@ -1,7 +1,7 @@
 local function format()
 	require("conform").format({
-		timeout_ms = 5000,
-		lsp_fallback = true,
+		async = true,
+		lsp_format = "fallback",
 	}, function()
 		vim.notify("Formatted")
 	end)
@@ -22,30 +22,35 @@ return {
 		formatters_by_ft = {
 			c = { "clang_format" },
 			cpp = { "clang_format" },
-			css = { { "prettierd", "prettier" } },
+			css = { "prettierd" },
 			go = { "goimports", "gofumpt" },
-			html = { { "prettierd", "prettier" } },
-			javascript = { { "prettierd", "prettier" } },
-			javascriptreact = { { "prettierd", "prettier" } },
-			json = { { "prettierd", "prettier" } },
-			less = { { "prettierd", "prettier" } },
+			html = { "prettierd" },
+			htmldjango = { "djlint" },
+			javascript = { "prettierd" },
+			javascriptreact = { "prettierd" },
+			json = { "prettierd" },
+			less = { "prettierd" },
 			lua = { "stylua" },
-			markdown = { { "prettierd", "prettier" }, "mdformat" },
+			markdown = { "prettierd" },
 			php = { "phpcbf" },
 			proto = { "buf" },
-			python = { "darker" },
+			python = { "isort", "black" },
 			rust = { "rustfmt" },
 			sql = { "sqlfmt" },
-			typescript = { { "prettierd", "prettier" } },
-			typescriptreact = { { "prettierd", "prettier" } },
+			typescript = { "prettierd" },
+			typescriptreact = { "prettierd" },
 			vue = {},
 			xml = { "xmlformat" },
-			yaml = { { "prettierd", "prettier" } },
+			yaml = { "prettierd" },
 			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
 		formatters = {
 			darker = {
 				args = { "-l", "120", "-S", "-i", "-f", "-d", "--stdin-filename", "$FILENAME" },
+				stdin = true,
+			},
+			black = {
+				prepend_args = { "-l", "120", "-S" },
 				stdin = true,
 			},
 		},
