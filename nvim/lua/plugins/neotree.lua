@@ -161,7 +161,7 @@ return {
 				},
 			},
 			follow_current_file = {
-				enabled = false,
+				enabled = true,
 			},
 			group_empty_dirs = false,
 			hijack_netrw_behavior = "open_default",

@@ -4,7 +4,7 @@ return {
 	event = "VeryLazy",
 	opts = {
 		size = 15,
-		open_mapping = "<F2>",
+		open_mapping = "<f2>",
 		start_in_insert = true,
 		direction = "horizontal",
 		hide_numbers = true,

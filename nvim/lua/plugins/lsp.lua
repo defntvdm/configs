@@ -6,7 +6,7 @@ vim.diagnostic.config({
 
 function _G.custom_attach(client, bufnr)
 	-- enable navic if lsp supports
-	if client.server_capabilities.documentSymbolProvider then
+	if client.server_capabilities.documentSymbolProvider and client.name ~= "volar" then
 		local navic = require("nvim-navic")
 		navic.attach(client, bufnr)
 	end
@@ -68,7 +68,9 @@ function _G.custom_attach(client, bufnr)
 end
 
 local function get_servers()
+	local util = require("lspconfig.util")
 	return {
+		ansiblels = {},
 		bashls = {},
 		bufls = {},
 		cmake = {},
@@ -90,7 +92,16 @@ local function get_servers()
 		},
 		kotlin_language_server = {},
 		taplo = {},
-		tsserver = {},
+		ts_ls = {
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+			},
+		},
 		vimls = {},
 		volar = {},
 		yamlls = {
@@ -143,6 +154,7 @@ local function get_servers()
 				"gowork",
 				"gotmpl",
 			},
+			root_dir = util.root_pattern("go.work", "go.mod", ".git", "main.go"),
 			settings = {
 				gopls = {
 					completeUnimported = true,
@@ -228,7 +240,6 @@ return {
 		}
 
 		local nvim_lsp = require("lspconfig")
-		local util = require("lspconfig.util")
 
 		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		_G.custom_capabilities.workspace = _G.custom_capabilities.workspace or {}
@@ -238,9 +249,6 @@ return {
 		for name, cfg in pairs(get_servers()) do
 			cfg.on_attach = custom_attach
 			cfg.capabilities = custom_capabilities
-			if name == "gopls" then
-				cfg.root_dir = util.root_pattern("go.work", "go.mod", ".git", "main.go")
-			end
 			nvim_lsp[name].setup(cfg)
 		end
 	end,
