@@ -70,6 +70,7 @@ return {
 		{ "<leader>ft", lsp_symbols, noremap = true, silent = true, desc = "LSP symbols in current file" },
 		{ "<leader>fs", tasks, noremap = true, silent = true, desc = "Tasks" },
 		{ "<leader>fv", symbols, noremap = true, silent = true, desc = "Symbols" },
+		{ "<leader>fp", projects, noremap = true, silent = true, desc = "Projects" },
 		{ "<leader>jl", "<cmd>Telescope jumplist theme=ivy<CR>", noremap = true, silent = true, desc = "Jumplist" },
 	},
 	config = function(_, opts)
