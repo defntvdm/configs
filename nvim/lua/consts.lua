@@ -13,6 +13,7 @@ _G.defntvdm_filetypes = {
 	"php",
 	"python",
 	"rust",
+    "scss",
 	"typescript",
 	"typescriptreact",
 	"vue",

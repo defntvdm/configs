@@ -36,11 +36,11 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/Yandex.Disk.localized/LIFE",
+				path = "~/yandex_disk/LIFE",
 			},
 			{
 				name = "work",
-				path = "~/Yandex.Disk.localized/Yandex Team (NDA)/WORK",
+				path = "~/yandex_disk/Yandex Team (NDA)/WORK",
 			},
 		},
 		notes_subdir = "notes",

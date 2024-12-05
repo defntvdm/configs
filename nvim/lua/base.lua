@@ -44,4 +44,4 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_vfx_mode = "ripple"
 end
 
-vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
+vim.g.python3_host_prog = "/home/defntvdm/.pyenv/shims/python3"

@@ -30,8 +30,6 @@ set_km("n", "¶", "7gt", opts)
 set_km("n", "•", "8gt", opts)
 set_km("n", "ª", "9gt", opts)
 set_km("n", "º", "<cmd>tablast<CR>", opts)
-set_km("n", "<tab>", "<cmd>tabnext<CR>", opts)
-set_km("n", "<S-tab>", "<cmd>tabprev<CR>", opts)
 
 -- noop
 set_km("i", "<f1>", "<nop>", { noremap = true })

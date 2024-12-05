@@ -180,7 +180,7 @@ local function get_servers()
 			cmd = { "basedpyright-langserver", "--stdio" },
 			settings = {
 				python = {
-					pythonPath = "/Users/defntvdm/.pyenv/shims/python",
+					pythonPath = "/home/defntvdm/.pyenv/shims/python",
 				},
 				basedpyright = {
 					analysis = {
