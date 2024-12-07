@@ -70,6 +70,7 @@ return {
 				{ name = "crates" },
 				{ name = "nvim_lsp" },
 				{ name = "treesitter" },
+				{ name = "lazydev", group_index = 0 },
 			},
 			sorting = {
 				priority_weight = 10,

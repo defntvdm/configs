@@ -72,7 +72,7 @@ local function get_servers()
 	return {
 		ansiblels = {},
 		bashls = {},
-		bufls = {},
+		buf_ls = {},
 		cmake = {},
 		cssls = {},
 		dockerls = {},
@@ -227,7 +227,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
 		"aznhe21/actions-preview.nvim",
-		"folke/neodev.nvim",
+		"folke/lazydev.nvim",
 		"b0o/schemastore.nvim",
 	},
 	ft = defntvdm_filetypes,

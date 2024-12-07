@@ -45,3 +45,11 @@ if vim.g.neovide then
 end
 
 vim.g.python3_host_prog = "/home/defntvdm/.pyenv/shims/python3"
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight copied text",
+	group = vim.api.nvim_create_augroup("defntvdm_yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
