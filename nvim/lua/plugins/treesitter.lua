@@ -34,6 +34,7 @@ return {
 			"gomod",
 			"html",
 			"http",
+			"hyprlang",
 			"java",
 			"javascript",
 			"json",
