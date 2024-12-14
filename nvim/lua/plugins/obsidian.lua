@@ -1,6 +1,7 @@
 return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
+	enabled = false,
 	event = "VeryLazy",
 	cmd = {
 		"ObsidianWorkspace",

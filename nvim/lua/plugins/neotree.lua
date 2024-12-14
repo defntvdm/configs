@@ -26,7 +26,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
-		"antosha417/nvim-lsp-file-operations",
 	},
 	event = "VimEnter",
 	keys = {
@@ -42,8 +41,16 @@ return {
 		},
 	},
 	config = function(_, opts)
+		local function on_move(data)
+			Snacks.rename.on_rename_file(data.source, data.destination)
+		end
+		local events = require("neo-tree.events")
+		opts.event_handlers = opts.event_handlers or {}
+		vim.list_extend(opts.event_handlers, {
+			{ event = events.FILE_MOVED, handler = on_move },
+			{ event = events.FILE_RENAMED, handler = on_move },
+		})
 		require("neo-tree").setup(opts)
-		require("lsp-file-operations").setup()
 	end,
 	opts = {
 		close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
