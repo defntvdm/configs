@@ -53,3 +53,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	desc = "Highlight copied text",
+	group = vim.api.nvim_create_augroup("defntvdm_term_open", { clear = true }),
+	callback = function()
+		vim.o.number = false
+		vim.o.relativenumber = false
+	end,
+})
