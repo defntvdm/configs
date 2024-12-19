@@ -140,7 +140,7 @@ local function get_servers()
 				"--background-index",
 				"--clang-tidy",
 				"--header-insertion=never",
-				"--offset-encoding=utf-16",
+				"--offset-encoding=utf-8",
 				"--completion-style=detailed",
 				"--log=error",
 				"-j=4",
@@ -223,7 +223,6 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		"SmiteshP/nvim-navic",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
@@ -242,7 +241,7 @@ return {
 
 		local nvim_lsp = require("lspconfig")
 
-		_G.custom_capabilities = require("cmp_nvim_lsp").default_capabilities()
+		_G.custom_capabilities = require("blink.cmp").get_lsp_capabilities()
 		_G.custom_capabilities.workspace = _G.custom_capabilities.workspace or {}
 		_G.custom_capabilities.workspace.didChangeWatchedFiles = _G.custom_capabilities.workspace.didChangeWatchedFiles
 			or {}
