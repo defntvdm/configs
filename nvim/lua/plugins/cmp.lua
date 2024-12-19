@@ -6,7 +6,10 @@ return {
 	},
 	build = "cargo build --release",
 	opts = {
-		keymap = { preset = "enter" },
+		keymap = {
+			preset = "default",
+			["<C-e>"] = { "select_and_accept" },
+		},
 		appearance = {
 			nerd_font_variant = "mono",
 		},
@@ -44,8 +47,17 @@ return {
 			end,
 		},
 		sources = {
-			cmdline = {},
 			default = { "lsp", "path", "luasnip", "buffer" },
+			cmdline = function()
+				local type = vim.fn.getcmdtype()
+				if type == "/" or type == "?" then
+					return { "buffer" }
+				end
+				if type == ":" then
+					return { "cmdline", "path" }
+				end
+				return {}
+			end,
 		},
 		signature = { enabled = false },
 	},
