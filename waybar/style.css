@@ -41,10 +41,11 @@
 #clock,
 #battery,
 #pulseaudio,
+#language,
 #custom-lock,
 #custom-power {
   background-color: @surface0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   margin: 3px 0;
 }
 

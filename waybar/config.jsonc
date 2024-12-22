@@ -14,6 +14,7 @@
         "pulseaudio",
         "backlight",
         "battery",
+        "hyprland/language",
         "clock",
         "tray",
         "custom/lock",
@@ -24,9 +25,13 @@
         "all-outputs": true,
         "format": "{name}"
     },
+    "hyprland/language": {
+        "format-en": "en",
+        "format-ru": "ru",
+    },
     "tray": {
         "icon-size": 21,
-        "spacing": 10,
+        "spacing": 14,
     },
     "custom/music": {
         "format": "  {}",
@@ -38,7 +43,7 @@
         "max-length": 50,
     },
     "clock": {
-        "timezone": "Asia/Dubai",
+        "timezone": "Asia/Yekaterinburg",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%d/%m/%Y}",
         "format": "{:%H:%M}",
@@ -63,27 +68,20 @@
             "warning": 30,
             "critical": 15,
         },
+        "format-alt": "{capacity}% {icon}",
         "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
-        "format-alt": "{icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-        ],
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format": "{icon} {volume}%",
         "format-muted": "",
         "format-icons": {
