@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pamixer --default-source -t
+
+~/.config/hypr/scripts/sync_mic_status

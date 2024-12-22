@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$(pamixer --default-source --get-mute)" = "false" ]; then
+    brightnessctl s 0 -d '*::micmute'
+else
+    brightnessctl s 1 -d '*::micmute'
+fi
