@@ -88,7 +88,9 @@
 }
 
 #custom-lock {
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 1rem;
+  margin-right: 3px;
+  padding-right: 1rem;
   color: @lavender;
 }
 
