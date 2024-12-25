@@ -44,11 +44,17 @@ return {
 		},
 		select = {
 			enabled = true,
-			backend = { "telescope", "builtin" },
+			backend = { "fzf_lua", "builtin", "nui" },
 
 			trim_prompt = true,
 
 			telescope = nil,
+			fzf_lua = {
+				winopts = {
+					height = 0.5,
+					width = 0.5,
+				},
+			},
 
 			builtin = {
 				border = "rounded",

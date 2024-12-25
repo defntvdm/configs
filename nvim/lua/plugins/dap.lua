@@ -185,6 +185,5 @@ return {
 		setup_go(dap)
 		setup_python(dap)
 		setup_ui(dap)
-		require("telescope").load_extension("dap")
 	end,
 }

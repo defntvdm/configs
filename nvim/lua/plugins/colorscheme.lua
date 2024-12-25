@@ -44,8 +44,10 @@ return {
 				cmp = false,
 				blink_cmp = true,
 				flash = true,
+				fzf = true,
 				gitsigns = true,
 				harpoon = true,
+				lsp_trouble = true,
 				markdown = true,
 				mason = true,
 				navic = true,
@@ -78,10 +80,6 @@ return {
 				window_picker = true,
 				render_markdown = true,
 				snacks = true,
-				telescope = {
-					enabled = true,
-				},
-				lsp_trouble = true,
 				which_key = true,
 			},
 		})

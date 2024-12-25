@@ -17,7 +17,7 @@ $$ |  $$ |$$   ____|$$ |      $$ |  $$ | $$ |$$\ \$$$  /  $$ |  $$ |$$ | $$ | $$
 \$$$$$$$ |\$$$$$$$\ $$ |      $$ |  $$ | \$$$$  | \$  /   \$$$$$$$ |$$ | $$ | $$ |
  \_______| \_______|\__|      \__|  \__|  \____/   \_/     \_______|\__| \__| \__|]],
 				keys = {
-					{ icon = " ", key = "f", desc = "Find File", action = ":Telescope fd theme=ivy" },
+					{ icon = " ", key = "f", desc = "Find File", action = ":FzfLua files" },
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
 						icon = " ",
