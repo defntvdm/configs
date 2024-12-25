@@ -31,7 +31,6 @@ $$ |  $$ |$$   ____|$$ |      $$ |  $$ | $$ |$$\ \$$$  /  $$ |  $$ |$$ | $$ | $$
 						desc = "Config",
 						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 					},
-					{ icon = " ", key = "p", desc = "Projects", action = ":Telescope project" },
 					{
 						icon = "󰒲 ",
 						key = "L",

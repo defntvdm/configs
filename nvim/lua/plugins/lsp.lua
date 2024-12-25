@@ -64,7 +64,9 @@ function _G.custom_attach(client, bufnr)
 	vim.keymap.set("n", "]d", function()
 		vim.diagnostic.jump({ count = 1 })
 	end, opts)
-	vim.keymap.set({ "n", "v" }, " ca", require("actions-preview").code_actions, opts)
+	vim.keymap.set({ "n", "v" }, " ca", function()
+		require("fzf-lua").lsp_code_actions({ previewer = "codeaction_native" })
+	end, opts)
 	vim.keymap.set("n", "<leader>tl", function()
 		if vim.diagnostic.is_enabled() then
 			vim.diagnostic.enable(false)
@@ -244,7 +246,6 @@ return {
 		"SmiteshP/nvim-navic",
 		"williamboman/mason-lspconfig.nvim",
 		"williamboman/mason.nvim",
-		"aznhe21/actions-preview.nvim",
 		"folke/lazydev.nvim",
 		"b0o/schemastore.nvim",
 	},
