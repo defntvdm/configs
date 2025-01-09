@@ -197,13 +197,13 @@ local function get_servers()
 				},
 			},
 		},
-		basedpyright = {
-			cmd = { "basedpyright-langserver", "--stdio" },
+		pyright = {
+			cmd = { "pyright-langserver", "--stdio" },
 			settings = {
 				python = {
 					pythonPath = "/home/defntvdm/.pyenv/shims/python",
 				},
-				basedpyright = {
+				pyright = {
 					analysis = {
 						autoSearchPaths = true,
 						diagnosticMode = "workspace",

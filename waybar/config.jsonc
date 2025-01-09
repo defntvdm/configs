@@ -13,6 +13,7 @@
     "clock",
     "tray",
     "custom/lock",
+    "custom/power",
   ],
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -69,8 +70,13 @@
     "on-click": "pavucontrol",
   },
   "custom/lock": {
-    "tooltip": false,
+    "tooltip-format": "Lock",
     "on-click": "hyprlock",
     "format": "",
+  },
+  "custom/power": {
+    "tooltip-format": "Shutdown",
+    "on-click": "shutdown now",
+    "format": "⏼",
   },
 }

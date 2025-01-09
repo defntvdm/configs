@@ -2,13 +2,13 @@ local lsp = require("lspconfig")
 
 local pythonPath = "/home/defntvdm/.pyenv/versions/<VERSION>/bin/python"
 
-lsp.basedpyright.setup({
-	cmd = { "basedpyright-langserver", "--stdio" },
+lsp.pyright.setup({
+	cmd = { "pyright-langserver", "--stdio" },
 	settings = {
 		python = {
 			pythonPath = pythonPath,
 		},
-		basedpyright = {
+		pyright = {
 			analysis = {
 				autoSearchPaths = true,
 				diagnosticMode = "workspace",
