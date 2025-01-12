@@ -20,3 +20,7 @@
   prompt = false
 [mergetool "nvim"]
   cmd = "nvim -d -c \"wincmd l\" -c \"norm ]c\" \"$LOCAL\" \"$MERGED\" \"$REMOTE\""
+[http]
+  sslVerify = false
+[credential]
+  helper = store
