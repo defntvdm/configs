@@ -75,13 +75,6 @@ set_km("n", "]q", ":cnext<cr>", { silent = true, noremap = true })
 -- open tmux new window in current file directory
 set_km("n", "<leader>tm", "<cmd>!tmux neww 'cd %:h && zsh'<CR>", { silent = true, noremap = true })
 
--- terminal
-set_km("n", "<space>st", function()
-	vim.cmd.new()
-	vim.cmd.term()
-	vim.api.nvim_win_set_height(0, 15)
-end, { silent = true, noremap = true })
-
 -- neovide keymaps
 if vim.g.neovide then
 	set_km("i", "<D-v>", [[<esc>"+pa]], { silent = true, noremap = true })
