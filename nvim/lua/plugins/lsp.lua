@@ -83,7 +83,7 @@ function _G.custom_attach(client, bufnr)
 	end
 
 	if client.name == "gopls" then
-		vim.keymap.set("n", " im", "<cmd>Telescope goimpl<CR>", opts)
+		vim.keymap.set("n", " im", require("fzf-goimpl").impl, opts)
 	end
 end
 

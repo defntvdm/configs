@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"AckslD/nvim-neoclip.lua",
+		"defntvdm/fzf-goimpl.nvim",
 	},
 	lazy = false,
 	keys = {
