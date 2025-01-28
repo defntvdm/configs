@@ -1,17 +1,9 @@
-local _border = "rounded"
-
-vim.diagnostic.config({
-	float = { border = _border },
-})
-
 function _G.custom_attach(client, bufnr)
 	-- enable navic if lsp supports
 	if client.server_capabilities.documentSymbolProvider and client.name ~= "volar" then
 		local navic = require("nvim-navic")
 		navic.attach(client, bufnr)
 	end
-
-	local opts = { silent = true, noremap = true, buffer = bufnr }
 
 	if client.server_capabilities.inlayHintProvider ~= nil then
 		vim.lsp.inlay_hint.enable(true)
@@ -23,67 +15,83 @@ function _G.custom_attach(client, bufnr)
 				vim.lsp.inlay_hint.enable(true)
 				vim.notify("Inlay hints enabled")
 			end
-		end, opts)
+		end, { silent = true, noremap = true, buffer = bufnr, desc = "Toggle inlay hints" })
 	end
 
 	-- Mappings.
 	vim.keymap.set("n", "gd", function()
 		require("fzf-lua").lsp_definitions()
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Definition" })
 	vim.keymap.set("n", "gD", function()
 		local actions = require("fzf-lua").actions
 		require("fzf-lua").lsp_definitions({
 			jump_to_single_result_action = actions.file_tabedit,
 		})
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Definition in new tab" })
 	vim.keymap.set("n", "gy", function()
 		require("fzf-lua").lsp_typedefs()
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Typdefs" })
 	vim.keymap.set("n", "gi", function()
 		require("fzf-lua").lsp_implementations()
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Implementations" })
 	vim.keymap.set("n", "gr", function()
 		require("fzf-lua").lsp_references()
-	end, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "References" })
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, { silent = true, noremap = true, buffer = bufnr, desc = "Hover" })
 	vim.keymap.set("n", " lic", function()
 		require("fzf-lua").lsp_incoming_calls()
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Incoming calls" })
 	vim.keymap.set("n", " loc", function()
 		require("fzf-lua").lsp_outgoing_calls()
-	end, opts)
-	vim.keymap.set("n", " wa", vim.lsp.buf.add_workspace_folder, opts)
-	vim.keymap.set("n", " wr", vim.lsp.buf.remove_workspace_folder, opts)
-	vim.keymap.set("n", " wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-	vim.keymap.set("n", " rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help, opts)
-	vim.keymap.set("n", " e", vim.diagnostic.open_float, opts)
-	vim.keymap.set("n", "[d", function()
-		vim.diagnostic.jump({ count = -1 })
-	end, opts)
-	vim.keymap.set("n", "]d", function()
-		vim.diagnostic.jump({ count = 1 })
-	end, opts)
-	vim.keymap.set({ "n", "v" }, " ca", function()
-		require("fzf-lua").lsp_code_actions({ previewer = "codeaction_native" })
-	end, opts)
-	vim.keymap.set("n", "<leader>tl", function()
-		if vim.diagnostic.is_enabled() then
-			vim.diagnostic.enable(false)
-			vim.notify("Diagnostic disabled")
-		else
-			vim.diagnostic.enable(true)
-			vim.notify("Diagnostic enabled")
-		end
-	end, opts)
+	end, { silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" })
+	vim.keymap.set(
+		"n",
+		" wa",
+		vim.lsp.buf.add_workspace_folder,
+		{ silent = true, noremap = true, buffer = bufnr, desc = "Add workspace folder" }
+	)
+	vim.keymap.set(
+		"n",
+		" wr",
+		vim.lsp.buf.remove_workspace_folder,
+		{ silent = true, noremap = true, buffer = bufnr, desc = "Remove workspace folder" }
+	)
+	vim.keymap.set(
+		"n",
+		" wl",
+		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+		{ silent = true, noremap = true, buffer = bufnr, desc = "Print workspace folder" }
+	)
+	vim.keymap.set("n", " rn", vim.lsp.buf.rename, { silent = true, noremap = true, buffer = bufnr, desc = "Rename" })
+	vim.keymap.set(
+		"i",
+		"<c-k>",
+		vim.lsp.buf.signature_help,
+		{ silent = true, noremap = true, buffer = bufnr, desc = "Signature help" }
+	)
 
 	if client.name == "clangd" then
-		vim.keymap.set("n", "<M-o>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
-		vim.keymap.set("n", "ø", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
+		vim.keymap.set(
+			"n",
+			"<M-o>",
+			"<cmd>ClangdSwitchSourceHeader<CR>",
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+		)
+		vim.keymap.set(
+			"n",
+			"ø",
+			"<cmd>ClangdSwitchSourceHeader<CR>",
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+		)
 	end
 
 	if client.name == "gopls" then
-		vim.keymap.set("n", " im", require("fzf-goimpl").impl, opts)
+		vim.keymap.set(
+			"n",
+			" im",
+			require("fzf-goimpl").impl,
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+		)
 	end
 end
 
@@ -204,11 +212,13 @@ local function get_servers()
 					pythonPath = "/home/defntvdm/.pyenv/shims/python",
 				},
 				pyright = {
+					disableOrganizeImports = true,
 					analysis = {
+						ignore = { "**", "*" }, -- ruff for analyses
 						autoSearchPaths = true,
 						diagnosticMode = "workspace",
 						useLibraryCodeForTypes = true,
-						typeCheckingMode = false,
+						typeCheckingMode = "off",
 					},
 				},
 			},
@@ -255,7 +265,7 @@ return {
 			automatic_installation = true,
 		})
 		require("lspconfig.ui.windows").default_options = {
-			border = _border,
+			border = "rounded",
 		}
 
 		local nvim_lsp = require("lspconfig")

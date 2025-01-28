@@ -34,7 +34,7 @@ return {
 			markdown = { "prettier" },
 			php = { "phpcbf" },
 			proto = { "buf" },
-			python = { "isort", "black" },
+			python = { "ruff_fix", "isort", "black" },
 			rust = { "rustfmt" },
 			sql = { "sqlfmt" },
 			typescript = { "prettier" },

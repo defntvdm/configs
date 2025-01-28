@@ -82,3 +82,32 @@ if vim.g.neovide then
 	set_km("t", "<D-v>", [[<C-\><C-n>"+pa]], { silent = true, noremap = true })
 	set_km("v", "<D-c>", [["+y]], { silent = true, noremap = true })
 end
+
+-- diagnostic
+vim.diagnostic.config({
+	float = { border = "rounded" },
+	virtual_lines = true,
+})
+set_km("n", " e", vim.diagnostic.open_float, { silent = true, noremap = true, desc = "Float diagnostic" })
+set_km("n", "[d", function()
+	vim.diagnostic.jump({ count = -1 })
+end, { silent = true, noremap = true, desc = "Prev diagnostic" })
+set_km("n", "]d", function()
+	vim.diagnostic.jump({ count = 1 })
+end, { silent = true, noremap = true, desc = "Next diagnostic" })
+set_km({ "n", "v" }, " ca", function()
+	require("fzf-lua").lsp_code_actions({ previewer = "codeaction_native" })
+end, { silent = true, noremap = true, desc = "Code action" })
+set_km("n", "<leader>tL", function()
+	if vim.diagnostic.is_enabled() then
+		vim.diagnostic.enable(false)
+		vim.notify("Diagnostic disabled")
+	else
+		vim.diagnostic.enable(true)
+		vim.notify("Diagnostic enabled")
+	end
+end, { silent = true, noremap = true, desc = "Toggle diagnostic" })
+set_km("n", "<leader>tl", function()
+	local new_config = not vim.diagnostic.config().virtual_lines
+	vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = "Toggle virtual_lines diagnostic" })
