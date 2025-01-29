@@ -75,13 +75,13 @@ function _G.custom_attach(client, bufnr)
 			"n",
 			"<M-o>",
 			"<cmd>ClangdSwitchSourceHeader<CR>",
-			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Switch to header/source" }
 		)
 		vim.keymap.set(
 			"n",
 			"ø",
 			"<cmd>ClangdSwitchSourceHeader<CR>",
-			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Switch to header/source" }
 		)
 	end
 
@@ -90,7 +90,7 @@ function _G.custom_attach(client, bufnr)
 			"n",
 			" im",
 			require("fzf-goimpl").impl,
-			{ silent = true, noremap = true, buffer = bufnr, desc = "Outgoing calls" }
+			{ silent = true, noremap = true, buffer = bufnr, desc = "Go impl" }
 		)
 	end
 end
