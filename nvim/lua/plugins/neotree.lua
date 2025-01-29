@@ -1,16 +1,5 @@
 vim.g.neo_tree_remove_legacy_commands = 1
 
-vim.diagnostic.config({
-	signs = {
-		text = {
-			[vim.diagnostic.severity.ERROR] = "",
-			[vim.diagnostic.severity.WARN] = "",
-			[vim.diagnostic.severity.INFO] = "",
-			[vim.diagnostic.severity.HINT] = "",
-		},
-	},
-})
-
 local function toggle()
 	require("neo-tree.command").execute({ toggle = true })
 end

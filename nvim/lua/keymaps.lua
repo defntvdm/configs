@@ -86,7 +86,16 @@ end
 -- diagnostic
 vim.diagnostic.config({
 	float = { border = "rounded" },
-	virtual_lines = true,
+	virtual_lines = false,
+	virtual_text = true,
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
 })
 set_km("n", " e", vim.diagnostic.open_float, { silent = true, noremap = true, desc = "Float diagnostic" })
 set_km("n", "[d", function()
@@ -109,5 +118,5 @@ set_km("n", "<leader>tL", function()
 end, { silent = true, noremap = true, desc = "Toggle diagnostic" })
 set_km("n", "<leader>tl", function()
 	local new_config = not vim.diagnostic.config().virtual_lines
-	vim.diagnostic.config({ virtual_lines = new_config })
+	vim.diagnostic.config({ virtual_lines = new_config, virtual_text = not new_config })
 end, { desc = "Toggle virtual_lines diagnostic" })
