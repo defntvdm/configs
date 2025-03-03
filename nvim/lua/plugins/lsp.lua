@@ -247,6 +247,8 @@ local function get_servers()
 				},
 			},
 		},
+		tflint = {},
+		terraformls = {},
 	}
 end
 

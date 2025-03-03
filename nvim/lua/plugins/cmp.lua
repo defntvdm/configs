@@ -35,9 +35,9 @@ return {
 		snippets = {
 			preset = "luasnip",
 		},
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-			cmdline = function()
+		cmdline = {
+			enabled = true,
+			sources = function()
 				local type = vim.fn.getcmdtype()
 				if type == "/" or type == "?" then
 					return { "buffer" }
@@ -47,6 +47,9 @@ return {
 				end
 				return {}
 			end,
+		},
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer" },
 		},
 		signature = { enabled = false },
 	},
