@@ -6,6 +6,11 @@ return {
 	},
 	build = "cargo build --release",
 	opts = {
+		fuzzy = {
+			prebuilt_binaries = {
+				ignore_version_mismatch = true,
+			},
+		},
 		keymap = {
 			preset = "default",
 			["<C-e>"] = { "select_and_accept" },
