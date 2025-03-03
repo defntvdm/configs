@@ -1,8 +1,5 @@
 return {
 	"williamboman/mason.nvim",
-	dependencies = {
-		"stevearc/dressing.nvim",
-	},
 	cmd = "Mason",
 	opts = {
 		ui = {
