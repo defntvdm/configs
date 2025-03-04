@@ -21,7 +21,7 @@ return {
 		completion = {
 			accept = {
 				auto_brackets = {
-					enabled = true,
+					enabled = false,
 				},
 			},
 			menu = {
@@ -42,6 +42,10 @@ return {
 		},
 		cmdline = {
 			enabled = true,
+			keymap = {
+				preset = "default",
+				["<C-e>"] = { "select_and_accept" },
+			},
 			sources = function()
 				local type = vim.fn.getcmdtype()
 				if type == "/" or type == "?" then
@@ -52,6 +56,14 @@ return {
 				end
 				return {}
 			end,
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+				ghost_text = {
+					enabled = true,
+				},
+			},
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
