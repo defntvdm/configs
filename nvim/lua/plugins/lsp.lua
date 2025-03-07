@@ -6,7 +6,7 @@ function _G.custom_attach(client, bufnr)
 	end
 
 	if client.server_capabilities.inlayHintProvider ~= nil then
-		vim.lsp.inlay_hint.enable(true)
+		vim.lsp.inlay_hint.enable(false)
 		vim.keymap.set("n", "<leader>ih", function()
 			if vim.lsp.inlay_hint.is_enabled() then
 				vim.lsp.inlay_hint.enable(false)
