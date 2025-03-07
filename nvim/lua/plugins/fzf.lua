@@ -111,11 +111,13 @@ return {
 		},
 	},
 	config = function()
-		require("fzf-lua").setup({
+		local fzf_lua = require("fzf-lua")
+		fzf_lua.setup({
 			"telescope",
 			treesitter = {
 				enable = true,
 			},
 		})
+		fzf_lua.register_ui_select()
 	end,
 }
