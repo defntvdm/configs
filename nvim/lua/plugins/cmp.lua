@@ -4,11 +4,14 @@ return {
 		"rafamadriz/friendly-snippets",
 		"saghen/blink.compat",
 	},
+	version = "*",
 	build = "cargo build --release",
 	opts = {
 		fuzzy = {
+			implementation = "rust",
 			prebuilt_binaries = {
-				ignore_version_mismatch = true,
+				force_version = nil,
+				-- ignore_version_mismatch = true,
 			},
 		},
 		keymap = {
