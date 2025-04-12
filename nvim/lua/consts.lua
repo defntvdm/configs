@@ -15,6 +15,7 @@ _G.defntvdm_filetypes = {
 	"rust",
 	"scss",
 	"terraform",
+	"tf",
 	"typescript",
 	"typescriptreact",
 	"vue",

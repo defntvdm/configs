@@ -2,6 +2,119 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
+	keys = {
+		{ "<leader>ff", ":SnacksFiles ./", noremap = true, desc = "Find files in subdir" },
+		{
+			"<leader>fd",
+			function()
+				Snacks.picker.files()
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Find files",
+			silent = true,
+		},
+		{
+			"<leader>fh",
+			function()
+				Snacks.picker.help()
+			end,
+			noremap = true,
+			mode = "n",
+			silent = true,
+			desc = "Find vim help",
+		},
+		{
+			"<leader>fb",
+			function()
+				Snacks.picker.buffers()
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Find buffers",
+			silent = true,
+		},
+		{
+			"<leader>fm",
+			function()
+				Snacks.picker.marks()
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Find marks",
+			silent = true,
+		},
+		{ "<leader>fg", ":SnacksGrep ./", noremap = true, desc = "Live grep" },
+		{
+			"<leader>fr",
+			function()
+				Snacks.picker.resume()
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Resume picker",
+			silent = true,
+		},
+		{
+			"<leader>fz",
+			function()
+				Snacks.picker.lines()
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Grep in current file",
+			silent = true,
+		},
+		{
+			"<leader>ft",
+			function()
+				Snacks.picker.lsp_symbols()
+			end,
+			noremap = true,
+			desc = "LSP symbols in current file",
+			mode = "n",
+			silent = true,
+		},
+		{
+			"<leader>fw",
+			function()
+				Snacks.picker.lsp_workspace_symbols()
+			end,
+			noremap = true,
+			desc = "LSP symbols in workspace",
+			mode = "n",
+			silent = true,
+		},
+		{
+			"<leader>jl",
+			function()
+				Snacks.picker.jumps()
+			end,
+			noremap = true,
+			desc = "Jumplist",
+			mode = "n",
+			silent = true,
+		},
+		{
+			"<leader>fc",
+			function()
+				Snacks.picker.registers()
+			end,
+			mode = "n",
+			noremap = true,
+			silent = true,
+			desc = "Clipboard",
+		},
+	},
+	config = function(_, opts)
+		require("snacks").setup(opts)
+		vim.api.nvim_create_user_command("SnacksFiles", function(args)
+			Snacks.picker.files({ cwd = args.args })
+		end, { nargs = "+" })
+		vim.api.nvim_create_user_command("SnacksGrep", function(args)
+			Snacks.picker.grep({ cwd = args.args })
+		end, { nargs = "+" })
+	end,
 	opts = {
 		bigfile = { enabled = true },
 		dashboard = {
@@ -20,14 +133,14 @@ return {
 						icon = " ",
 						key = "f",
 						desc = "Find File",
-						action = ":FzfLua files",
+						action = ":SnacksFiles ./",
 					},
 					{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 					{
 						icon = " ",
 						key = "g",
 						desc = "Find Text",
-						action = ":lua Snacks.dashboard.pick('live_grep')",
+						action = ":SnacksGrep ./",
 					},
 					{
 						icon = " ",
@@ -50,6 +163,7 @@ return {
 		input = { enabled = true },
 		notifier = { enabled = true, top_down = false },
 		quickfile = { enabled = true },
+		picker = { ui_select = true, layout = { preset = "telescope" } },
 		rename = { enabled = true },
 		terminal = { enabled = true },
 		words = { enabled = true },
