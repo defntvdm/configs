@@ -1,5 +1,5 @@
 return {
 	"folke/flash.nvim",
-	event = {"BufEnter", "CmdlineEnter"},
+	event = { "BufEnter", "CmdlineEnter" },
 	opts = {},
 }

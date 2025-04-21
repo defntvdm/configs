@@ -45,6 +45,7 @@ return {
 			silent = true,
 		},
 		{ "<leader>fg", ":SnacksGrep ./", noremap = true, desc = "Live grep" },
+		{ "<leader>fv", ":SnacksGrepWord ./", noremap = true, desc = "Live grep word" },
 		{
 			"<leader>fr",
 			function()
@@ -113,6 +114,9 @@ return {
 		end, { nargs = "+" })
 		vim.api.nvim_create_user_command("SnacksGrep", function(args)
 			Snacks.picker.grep({ cwd = args.args })
+		end, { nargs = "+" })
+		vim.api.nvim_create_user_command("SnacksGrepWord", function(args)
+			Snacks.picker.grep_word({ cwd = args.args })
 		end, { nargs = "+" })
 	end,
 	opts = {
