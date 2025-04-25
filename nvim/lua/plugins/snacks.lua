@@ -106,6 +106,16 @@ return {
 			silent = true,
 			desc = "Clipboard",
 		},
+		{
+			"<leader>fq",
+			function()
+				Snacks.picker.qflist()
+			end,
+			mode = "n",
+			noremap = true,
+			silent = true,
+			desc = "QuckFix",
+		},
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)
@@ -150,7 +160,9 @@ return {
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = function()
+							Snacks.dashboard.pick("files", { cwd = vim.fn.stdpath("config") })
+						end,
 					},
 					{
 						icon = "󰒲 ",
@@ -160,6 +172,24 @@ return {
 						enabled = package.loaded.lazy ~= nil,
 					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+					{
+						icon = " ",
+						key = "p",
+						desc = "Projects",
+						action = function()
+							Snacks.picker.projects({
+								dev = { "~/", "~/project", "~/projects" },
+								patterns = { ".git", ".nvim.lua" },
+								confirm = {
+									"cd",
+									function()
+										pcall(vim.cmd.source, ".nvim.lua")
+									end,
+									"close",
+								},
+							})
+						end,
+					},
 				},
 			},
 		},
