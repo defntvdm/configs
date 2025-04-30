@@ -1,6 +1,6 @@
 local lsp = require("lspconfig")
 
-local pythonPath = "/home/defntvdm/.pyenv/versions/<VERSION>/bin/python"
+local pythonPath = "/Users/defntvdm/.pyenv/versions/<VERSION>/bin/python"
 
 lsp.basedpyright.setup({
     settings = {

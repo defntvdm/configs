@@ -201,7 +201,7 @@ local function get_servers()
 		basedpyright = {
 			settings = {
 				python = {
-					pythonPath = "/home/defntvdm/.pyenv/shims/python",
+					pythonPath = "/Users/defntvdm/.pyenv/shims/python",
 				},
 				basedpyright = {
 					disableOrganizeImports = true,
