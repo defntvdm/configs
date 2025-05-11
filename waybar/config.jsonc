@@ -6,6 +6,9 @@
   "modules-left": ["hyprland/workspaces", "hyprland/scratchpad"],
   "modules-center": ["custom/music"],
   "modules-right": [
+    "power-profiles-daemon",
+    "cpu",
+    "memory",
     "pulseaudio",
     "backlight",
     "battery",
@@ -15,6 +18,24 @@
     "custom/lock",
     "custom/power",
   ],
+  "cpu": {
+    "format": " {usage}%",
+    "states": {
+      "idle": 0,
+      "normal": 5,
+      "warning": 50,
+      "critical": 90,
+    },
+  },
+  "memory": {
+    "format": " {percentage}%",
+    "states": {
+      "idle": 0,
+      "normal": 20,
+      "warning": 70,
+      "critical": 90,
+    },
+  },
   "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
@@ -36,6 +57,17 @@
     "exec": "playerctl metadata --format='{{ title }}'",
     "on-click": "playerctl play-pause",
     "max-length": 50,
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "{profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "󰾅",
+      "performance": "󰓅",
+      "balanced": "󰾅",
+      "power-saver": "󰾆",
+    },
   },
   "clock": {
     "timezone": "Asia/Yekaterinburg",
@@ -67,7 +99,7 @@
     "format-icons": {
       "default": ["", "", " "],
     },
-    "on-click": "pavucontrol",
+    "on-click": "pwvucontrol",
   },
   "custom/lock": {
     "tooltip-format": "Lock",

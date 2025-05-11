@@ -38,6 +38,9 @@
 #custom-music,
 #tray,
 #backlight,
+#cpu,
+#memory,
+#power-profiles-daemon,
 #clock,
 #battery,
 #pulseaudio,
@@ -47,6 +50,37 @@
   background-color: @surface0;
   padding: 0.5rem 0.7rem;
   margin: 3px 0;
+}
+
+#power-profiles-daemon {
+  border-radius: 1rem 0 0 1rem;
+}
+
+#memory {
+  border-radius: 0 1rem 1rem 0;
+}
+
+#cpu.idle,
+#memory.idle {
+  color: @text;
+}
+
+#cpu.normal,
+#memory.normal,
+#power-profiles-daemon.power-saver {
+  color: @green;
+}
+
+#cpu.warning,
+#memory.warning,
+#power-profiles-daemon.balanced {
+  color: @yellow;
+}
+
+#cpu.critical,
+#memory.critical,
+#power-profiles-daemon.performance {
+  color: @red;
 }
 
 #clock {

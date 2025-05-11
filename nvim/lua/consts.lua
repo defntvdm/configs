@@ -1,4 +1,5 @@
 _G.defntvdm_filetypes = {
+	"c",
 	"cpp",
 	"css",
 	"go",

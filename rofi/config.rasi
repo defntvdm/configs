@@ -14,4 +14,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "/Users/defntvdm/.config/rofi/cattpuccin-macchiato"
+@theme "/home/defntvdm/.config/rofi/cattpuccin-macchiato"

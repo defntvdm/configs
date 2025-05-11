@@ -205,19 +205,10 @@ return {
 				},
 			},
 		},
-		document_symbols = {
-			window = {
-				positon = "float",
-				mappings = {
-					["r"] = "rename",
-				},
-			},
-		},
 		sources = {
 			"filesystem",
 			"buffers",
 			"git_status",
-			"document_symbols",
 		},
 	},
 }

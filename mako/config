@@ -1,12 +1,11 @@
-# Colors
-
 background-color=#24273a
+border-color=#7dc4e4
+default-timeout=5000
+font=JetBrainsMono NerdFont 12
+height=100
+progress-color=over #363a4f
 text-color=#cad3f5
 width=350
-height=100
-border-color=#7dc4e4
-progress-color=over #363a4f
-font=JetBrainsMono NerdFont 12
 
 [urgency=high]
 border-color=#f5a97f
