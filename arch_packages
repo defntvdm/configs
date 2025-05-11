@@ -84,10 +84,11 @@ pipewire-jack
 pipewire-pulse
 pipewire-session-manager
 pkgconf
-python-tpm2-pytss
 playerctl
+power-profiles-daemon
 pwvucontrol
 python
+python-tpm2-pytss
 qrencode
 qt5ct
 qt6ct
