@@ -119,6 +119,9 @@ return {
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)
+		vim.api.nvim_create_user_command("SnacksIcons", function()
+			Snacks.picker.icons()
+		end, {})
 		vim.api.nvim_create_user_command("SnacksFiles", function(args)
 			Snacks.picker.files({ cwd = args.args })
 		end, { nargs = "+" })
