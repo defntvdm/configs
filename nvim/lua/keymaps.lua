@@ -1,4 +1,5 @@
 local set_km = vim.keymap.set
+local del_km = vim.keymap.del
 vim.g.mapleader = "\\"
 local opts = { noremap = true, silent = true }
 
@@ -118,3 +119,9 @@ set_km("n", "<leader>tl", function()
 	local new_config = not vim.diagnostic.config().virtual_lines
 	vim.diagnostic.config({ virtual_lines = new_config, virtual_text = not new_config })
 end, { desc = "Toggle virtual_lines diagnostic" })
+
+-- remove default lsp keymaps
+del_km("n", "grr")
+del_km("n", "grn")
+del_km("n", "gri")
+del_km("n", "gra")

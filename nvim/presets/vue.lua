@@ -1,9 +1,9 @@
-local lsp = require("lspconfig")
+require("lspconfig")
 
 local data_path = vim.fn.stdpath("data")
 local location = data_path .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
-lsp.ts_ls.setup({
+vim.lsp.config("ts_ls", {
 	filetypes = {
 		"javascript",
 		"javascriptreact",
@@ -21,12 +21,8 @@ lsp.ts_ls.setup({
 			},
 		},
 	},
-	on_attach = custom_attach,
-	capabilities = custom_capabilities,
 })
 
-lsp.volar.setup({
+vim.lsp.config("volar", {
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
-	on_attach = custom_attach,
-	capabilities = custom_capabilities,
 })

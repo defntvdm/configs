@@ -1,6 +1,5 @@
-local lsp = require("lspconfig")
-
-lsp.clangd.setup({
+require("lspconfig")
+vim.lsp.config("clangd", {
 	cmd = {
 		"clangd",
 		"--background-index",
@@ -12,6 +11,4 @@ lsp.clangd.setup({
 		"-j=8",
 		"--compile-commands-dir=<INSERT_PATH_HERE>",
 	},
-	on_attach = custom_attach,
-	capabilities = custom_capabilities,
 })
