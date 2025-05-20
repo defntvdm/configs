@@ -2,8 +2,12 @@ local function format()
 	require("conform").format({
 		async = true,
 		lsp_format = "fallback",
-	}, function()
-		vim.notify("Formatted")
+	}, function(err)
+		if err == nil then
+			vim.notify("Formatted")
+		else
+			vim.notify("Formatter failed, see logs")
+		end
 	end)
 end
 

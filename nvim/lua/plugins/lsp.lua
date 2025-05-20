@@ -87,12 +87,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		if client.name == "gopls" then
-			vim.keymap.set(
-				"n",
-				" im",
-				require("fzf-goimpl").impl,
-				{ silent = true, noremap = true, buffer = bufnr, desc = "Go impl" }
-			)
 		end
 	end,
 })
