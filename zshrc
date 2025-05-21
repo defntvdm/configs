@@ -1,34 +1,44 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+########
+# p10k #
+########
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#######
-# ZSH #
-#######
-export ZSH="$HOME/.oh-my-zsh"
+#########
+# zinit #
+#########
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-CASE_SENSITIVE="true"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 
-plugins=(
-  docker
-  docker-compose
-  fzf-tab
-  git
-  kubectl
-  rust
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
+zi light-mode for \
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust
 
-source $ZSH/oh-my-zsh.sh
+zi light junegunn/fzf
+zi light Aloxaf/fzf-tab
+zi light zsh-users/zsh-autosuggestions
+zi light zsh-users/zsh-autosuggestions
+zi light zsh-users/zsh-syntax-highlighting
+
+zi ice depth=1
+zi light romkatv/powerlevel10k
 
 ###########
 # aliases #
 ###########
+alias ls='ls --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -la --color=auto'
 alias http='http -v -s monokai'
 alias vim='nvim'
 alias n='neovide'
