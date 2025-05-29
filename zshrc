@@ -1,3 +1,8 @@
+HISTFILE=~/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt share_history
+
 ########
 # p10k #
 ########
@@ -24,11 +29,13 @@ zi light-mode for \
   zdharma-continuum/zinit-annex-patch-dl \
   zdharma-continuum/zinit-annex-rust
 
-zi light junegunn/fzf
-zi light Aloxaf/fzf-tab
 zi light zsh-users/zsh-autosuggestions
 zi light zsh-users/zsh-autosuggestions
-zi light zsh-users/zsh-syntax-highlighting
+zi light zdharma-continuum/fast-syntax-highlighting
+zi light zdharma-continuum/history-search-multi-word
+
+zi ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
+zi load docker/compose
 
 zi ice depth=1
 zi light romkatv/powerlevel10k
@@ -84,14 +91,7 @@ _fzf_compgen_dir() {
     fd --type d --hidden --exclude .git . "$1"
 }
 source $HOME/.fzf/fzf-git.sh/fzf-git.sh
-
-################
-# ssh add keys #
-################
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-  eval `ssh-agent -s`
-  ssh-add ~/.ssh/id_ed25519
-fi
+zi light Aloxaf/fzf-tab
 
 fpath+=~/.zfunc
 autoload -Uz compinit
