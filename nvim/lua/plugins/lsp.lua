@@ -85,14 +85,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				{ silent = true, noremap = true, buffer = bufnr, desc = "Switch to header/source" }
 			)
 		end
-
-		if client.name == "gopls" then
-		end
 	end,
 })
 
 local function get_servers()
 	return {
+		cssls = {},
+		tailwindcss = {},
 		jinja_lsp = {
 			filetypes = { "jinja", "htmldjango" },
 		},
@@ -104,6 +103,7 @@ local function get_servers()
 				},
 			},
 		},
+		taplo = {},
 		ts_ls = {
 			filetypes = {
 				"javascript",
@@ -233,6 +233,7 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
+	enabled = not vim.g.vscode,
 	dependencies = {
 		"SmiteshP/nvim-navic",
 		"williamboman/mason-lspconfig.nvim",

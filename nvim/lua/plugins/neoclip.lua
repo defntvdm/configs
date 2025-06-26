@@ -1,5 +1,6 @@
 return {
 	"AckslD/nvim-neoclip.lua",
+	enabled = not vim.g.vscode,
 	lazy = true,
 	keys = {
 		{

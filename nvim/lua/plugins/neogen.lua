@@ -4,6 +4,7 @@ end
 
 return {
 	"danymat/neogen",
+	enabled = not vim.g.vscode,
 	ft = defntvdm_filetypes,
 	keys = {
 		{

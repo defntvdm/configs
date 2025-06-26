@@ -4,6 +4,7 @@ end
 
 return {
 	"mfussenegger/nvim-lint",
+	enabled = not vim.g.vscode,
 	keys = {
 		{ "<leader>l", lint_file, desc = "Trigger linting for current file" },
 	},

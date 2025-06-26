@@ -1,8 +1,10 @@
 return {
 	"saghen/blink.cmp",
+	enabled = not vim.g.vscode,
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		"saghen/blink.compat",
+		"Kaiser-Yang/blink-cmp-avante",
 	},
 	version = "*",
 	build = "cargo build --release",
@@ -15,8 +17,9 @@ return {
 			},
 		},
 		keymap = {
-			preset = "default",
-			["<C-e>"] = { "select_and_accept" },
+			preset = "super-tab",
+			["<C-d>"] = { "scroll_documentation_down" },
+			["<C-u>"] = { "scroll_documentation_up" },
 		},
 		appearance = {
 			nerd_font_variant = "mono",
@@ -40,6 +43,9 @@ return {
 			ghost_text = {
 				enabled = true,
 			},
+			trigger = {
+				prefetch_on_insert = false,
+			},
 		},
 		snippets = {
 			preset = "luasnip",
@@ -47,8 +53,9 @@ return {
 		cmdline = {
 			enabled = true,
 			keymap = {
-				preset = "default",
-				["<C-e>"] = { "select_and_accept" },
+				preset = "super-tab",
+				["<C-d>"] = { "scroll_documentation_down" },
+				["<C-u>"] = { "scroll_documentation_up" },
 			},
 			sources = function()
 				local type = vim.fn.getcmdtype()
@@ -71,7 +78,23 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
+				avante = {
+					module = "blink-cmp-avante",
+					name = "Avante",
+					opts = {},
+				},
+			},
+			per_filetype = {
+				AvanteInput = { "avante", "path", "snippets", "buffer" },
+			},
 		},
+
 		signature = { enabled = false },
 	},
 	opts_extend = { "sources.default" },

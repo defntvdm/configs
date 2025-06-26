@@ -154,6 +154,7 @@ end
 
 return {
 	"mfussenegger/nvim-dap",
+	enabled = not vim.g.vscode,
 	dependencies = {
 		{ "rcarriga/nvim-dap-ui", tag = "v4.0.0", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	},

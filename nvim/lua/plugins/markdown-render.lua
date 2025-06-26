@@ -1,6 +1,7 @@
 return {
 	{
 		"vhyrro/luarocks.nvim",
+		enabled = not vim.g.vscode,
 		lazy = true,
 		opts = {
 			rocks = { "magick" },
@@ -8,6 +9,7 @@ return {
 	},
 	{
 		"3rd/image.nvim",
+		enabled = not vim.g.vscode,
 		dependencies = {
 			"vhyrro/luarocks.nvim",
 		},
@@ -49,7 +51,8 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown" },
+		enabled = not vim.g.vscode,
+		ft = { "markdown", "Avante" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",

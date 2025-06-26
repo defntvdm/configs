@@ -1,5 +1,6 @@
 return {
 	"mikavilpas/yazi.nvim",
+	enabled = not vim.g.vscode,
 	event = "VeryLazy",
 	dependencies = {
 		"folke/snacks.nvim",

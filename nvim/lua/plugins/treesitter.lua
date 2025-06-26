@@ -1,11 +1,12 @@
 vim.keymap.set(
 	"n",
 	"<leader>tc",
-	"<CMD>TSContextToggle<CR>",
+	"<CMD>TSContext toggle<CR>",
 	{ silent = true, noremap = true, desc = "Toggle TS context" }
 )
 return {
 	"nvim-treesitter/nvim-treesitter",
+	enabled = not vim.g.vscode,
 	dependencies = {
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",

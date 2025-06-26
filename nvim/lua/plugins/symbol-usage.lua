@@ -2,6 +2,7 @@ local SymbolKind = vim.lsp.protocol.SymbolKind
 
 return {
 	"Wansmer/symbol-usage.nvim",
+	enabled = not vim.g.vscode,
 	event = "LspAttach",
 	keys = {
 		{

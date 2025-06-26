@@ -13,6 +13,7 @@ end
 
 return {
 	"stevearc/conform.nvim",
+	enabled = not vim.g.vscode,
 	keys = {
 		{
 			" f",

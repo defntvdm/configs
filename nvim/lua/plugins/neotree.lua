@@ -8,8 +8,13 @@ local function find_file()
 	require("neo-tree.command").execute({ reveal = true })
 end
 
+local function git_status()
+	require("neo-tree.command").execute({ source = "git_status", position = "float"})
+end
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	enabled = not vim.g.vscode,
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -27,6 +32,11 @@ return {
 			"<C-n>",
 			toggle,
 			desc = "toggle",
+		},
+		{
+			"<C-g>",
+			git_status,
+			desc = "git status in neotree",
 		},
 	},
 	config = function(_, opts)

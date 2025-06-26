@@ -1,5 +1,6 @@
 return {
 	"s1n7ax/nvim-window-picker",
+	enabled = not vim.g.vscode,
 	version = "2.*",
 	dependencies = {
 		"nvim-neo-tree/neo-tree.nvim",

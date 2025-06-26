@@ -1,5 +1,6 @@
 return {
 	"yorickpeterse/nvim-pqf",
+	enabled = not vim.g.vscode,
 	event = "VeryLazy",
 	opts = {
 		signs = {

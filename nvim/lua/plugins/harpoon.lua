@@ -21,6 +21,7 @@ end
 
 return {
 	"ThePrimeagen/harpoon",
+	enabled = not vim.g.vscode,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

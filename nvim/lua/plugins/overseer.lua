@@ -1,5 +1,6 @@
 return {
 	"stevearc/overseer.nvim",
+	enabled = not vim.g.vscode,
 	keys = {
 		{
 			"<leader>or",
