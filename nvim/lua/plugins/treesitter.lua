@@ -1,6 +1,6 @@
 vim.keymap.set(
 	"n",
-	"<leader>tc",
+	"<leader>tt",
 	"<CMD>TSContext toggle<CR>",
 	{ silent = true, noremap = true, desc = "Toggle TS context" }
 )
