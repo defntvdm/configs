@@ -46,19 +46,32 @@ end
 
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
 
+local myaugroup = vim.api.nvim_create_augroup("defntvdm_custom", { clear = true })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight copied text",
-	group = vim.api.nvim_create_augroup("defntvdm_yank", { clear = true }),
+	group = myaugroup,
 	callback = function()
 		vim.hl.on_yank()
 	end,
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
-	desc = "Open terminal",
-	group = vim.api.nvim_create_augroup("defntvdm_term_open", { clear = true }),
+vim.api.nvim_create_autocmd("InsertEnter", {
+	desc = "Switch relativenumber off",
+	group = myaugroup,
 	callback = function()
-		vim.o.number = false
-		vim.o.relativenumber = false
+		if vim.o.number then
+			vim.o.relativenumber = false
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+	desc = "Switch relativenumber on",
+	group = myaugroup,
+	callback = function()
+		if vim.o.number then
+			vim.o.relativenumber = true
+		end
 	end,
 })

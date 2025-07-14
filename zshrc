@@ -100,8 +100,11 @@ compinit
 ############
 # Just env #
 ############
-export PATH="$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
+export OPENROUTER_API_KEY=$(cat ~/.openrouter_key)
+export YANDEX_CLOUD_API_KEY=$(cat ~/.yandex_cloud_ai_key)
+export SOURCE_CRAFT_TOKEN=$(cat ~/.sourcecrafttoken)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -5,6 +5,8 @@ return {
 		"rafamadriz/friendly-snippets",
 		"saghen/blink.compat",
 		"Kaiser-Yang/blink-cmp-avante",
+		-- { dir = "/home/defntvdm/projects/blink-cmp-soruce-craft", opts = {} },
+		{ "defntvdm/blink-cmp-soruce-craft", opts = {} },
 	},
 	version = "*",
 	build = "cargo build --release",
@@ -77,7 +79,7 @@ return {
 			},
 		},
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "source_craft" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
@@ -88,6 +90,18 @@ return {
 					module = "blink-cmp-avante",
 					name = "Avante",
 					opts = {},
+				},
+				source_craft = {
+					module = "source_craft.source",
+					name = "SourceCraft",
+					opts = {
+						token = vim.env.SOURCE_CRAFT_TOKEN,
+					},
+					async = true,
+					timeout_ms = 2000,
+					score_offset = 100,
+					min_keyword_length = 0,
+					max_items = 1,
 				},
 			},
 			per_filetype = {

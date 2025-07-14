@@ -2,9 +2,7 @@ return {
 	{
 		"ravitemer/mcphub.nvim",
 		lazy = true,
-		build = "bundled_build.lua",
 		opts = {
-			use_bundled_binary = true,
 			extensions = {
 				avante = {
 					make_slash_commands = true,
@@ -31,9 +29,9 @@ return {
 			providers = {
 				openrouter = {
 					__inherited_from = "openai",
-					endpoint = "https://openrouter.ai/api/v1",
-					api_key_name = "OPENROUTER_API_KEY",
-					model = "deepseek/deepseek-chat-v3-0324:free",
+					endpoint = "https://llm.api.cloud.yandex.net/v1",
+					api_key_name = "YANDEX_CLOUD_API_KEY",
+					model = "gpt://b1gjjsq1ndd2nlebntmu/qwen3-235b-a22b-fp8/latest",
 				},
 			},
 			system_prompt = function()
