@@ -1,3 +1,5 @@
+# intel-ucode
+amd-ucode
 amdvlk
 autoconf
 automake
@@ -40,12 +42,10 @@ hyprlock
 hyprpaper
 hyprpolkitagent
 hyprshot
-intel-ucode
 iptables
 keepassxc
 kitty
 less
-linux
 linux-api-headers
 linux-firmware
 linux-firmware-whence

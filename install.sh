@@ -1,41 +1,37 @@
 #!/bin/bash
 
 set -xe
-
-test -d /Users || sudo ln -s /home /Users
-
-echo Installing pyenv
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-
-echo Installing oh-my-zsh and plugins
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
-cp ./zshrc ~/.zshrc
-source ~/.zshrc
-
-echo Installing nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-echo Installing fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-git clone --depth 1 https://github.com/junegunn/fzf-git.sh.git ~/.fzf/fzf-git.sh
-
-echo Install yandex cloud cli
-curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-yc init
-
-nvm install --latest
-
-cp ./wezterm.lua ~/.wezterm.lua
-cp ./clang-format ~/.clang-format
+# init config dir
 mkdir -p ~/.config
-cp ./gitconfig ~/.gitconfig
-cp ./gitignore_global ~/.gitignore_global
-cp ./tmux.conf ~/.tmux.conf
-cp -r nvim ~/.config/nvim
-cp ./ruff.toml ~/.ruff.toml
+
+# rm if exists
+rm -rf ~/.clang-format
+rm -rf ~/.config/hypr
+rm -rf ~/.config/kitty
+rm -rf ~/.config/mako
+rm -rf ~/.config/nvim
+rm -rf ~/.config/rofi
+rm -rf ~/.config/waybar
+rm -rf ~/.gitconfig
+rm -rf ~/.gitignore_global
+rm -rf ~/.ruff.toml
+rm -rf ~/.tmux.conf
+rm -rf ~/.zprofile
+rm -rf ~/.zshrc
+sudo rm -rf /etc/greetd/*
+
+# create symlinks
+ln -s /home/defntvdm/configs/clang-format ~/.clang-format
+ln -s /home/defntvdm/configs/gitconfig ~/.gitconfig
+ln -s /home/defntvdm/configs/gitignore_global ~/.gitignore_global
+ln -s /home/defntvdm/configs/hypr ~/.config/hypr
+ln -s /home/defntvdm/configs/kitty ~/.config/kitty
+ln -s /home/defntvdm/configs/mako ~/.config/mako
+ln -s /home/defntvdm/configs/nvim ~/.config/nvim
+ln -s /home/defntvdm/configs/rofi ~/.config/rofi
+ln -s /home/defntvdm/configs/ruff.toml ~/.ruff.toml
+ln -s /home/defntvdm/configs/tmux.conf ~/.tmux.conf
+ln -s /home/defntvdm/configs/waybar ~/.config/waybar
+ln -s /home/defntvdm/configs/zprofile ~/.zprofile
+ln -s /home/defntvdm/configs/zshrc ~/.zshrc
+sudo cp -r /home/defntvdm/configs/greetd /etc/
