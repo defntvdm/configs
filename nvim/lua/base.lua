@@ -75,3 +75,5 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 		end
 	end,
 })
+
+vim.lsp.document_color.enable(true, nil, { style = "virtual" })
