@@ -117,6 +117,16 @@ return {
 			silent = true,
 			desc = "QuckFix",
 		},
+		{
+			"<leader>lc",
+			function()
+				Snacks.picker.lsp_config()
+			end,
+			mode = "n",
+			noremap = true,
+			silent = true,
+			desc = "LspConfig",
+		},
 	},
 	config = function(_, opts)
 		require("snacks").setup(opts)

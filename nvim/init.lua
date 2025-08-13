@@ -17,5 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("consts")
 require("base")
+require("aucmds")
 require("keymaps")
 require("lazy").setup("plugins")
