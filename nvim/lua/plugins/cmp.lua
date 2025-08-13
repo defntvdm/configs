@@ -98,7 +98,7 @@ return {
 						token = vim.env.SOURCE_CRAFT_TOKEN,
 					},
 					async = true,
-					timeout_ms = 2000,
+					timeout_ms = 1000,
 					score_offset = 100,
 					min_keyword_length = 0,
 					max_items = 1,

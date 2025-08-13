@@ -4,12 +4,12 @@ local function toggle()
 	require("neo-tree.command").execute({ toggle = true })
 end
 
-local function find_file()
-	require("neo-tree.command").execute({ reveal = true })
+local function git_status()
+	require("neo-tree.command").execute({ toggle = true, source = "git_status", position = "float" })
 end
 
-local function git_status()
-	require("neo-tree.command").execute({ source = "git_status", position = "float"})
+local function document_symbols()
+	require("neo-tree.command").execute({ toggle = true, source = "document_symbols", position = "right" })
 end
 
 return {
@@ -24,19 +24,19 @@ return {
 	event = "VimEnter",
 	keys = {
 		{
-			"<leader>nf",
-			find_file,
-			desc = "Find file",
-		},
-		{
 			"<C-n>",
 			toggle,
-			desc = "toggle",
+			desc = "toggle neo-tree",
 		},
 		{
 			"<C-g>",
 			git_status,
-			desc = "git status in neotree",
+			desc = "git_status in neotree",
+		},
+		{
+			"<space>o",
+			document_symbols,
+			desc = "document_symbols in neotree",
 		},
 	},
 	config = function(_, opts)
@@ -105,41 +105,13 @@ return {
 			},
 		},
 		window = {
-			position = "left",
+			position = "right",
 			width = 40,
 			mapping_options = {
 				noremap = true,
 				nowait = true,
 			},
-			mappings = {
-				["<space>"] = {
-					"toggle_node",
-					nowait = false,
-				},
-				["l"] = "open_with_window_picker",
-				["<cr>"] = "open_with_window_picker",
-				["s"] = "split_with_window_picker",
-				["v"] = "vsplit_with_window_picker",
-				["t"] = "open_tabnew",
-				["h"] = "close_node",
-				["a"] = {
-					"add",
-					config = {
-						show_path = "none",
-					},
-				},
-				["d"] = "delete",
-				["r"] = "rename",
-				["y"] = "copy_to_clipboard",
-				["x"] = "cut_to_clipboard",
-				["p"] = "paste_from_clipboard",
-				["q"] = "close_window",
-				["R"] = "refresh",
-				["<"] = "prev_source",
-				[">"] = "next_source",
-				["?"] = "show_help",
-				["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
-			},
+			mappings = {},
 		},
 		nesting_rules = {},
 		filesystem = {
@@ -184,6 +156,33 @@ return {
 					["<c-x>"] = "clear_filter",
 					["[g"] = "prev_git_modified",
 					["]g"] = "next_git_modified",
+					["<space>"] = {
+						"toggle_node",
+						nowait = false,
+					},
+					["l"] = "open_with_window_picker",
+					["<cr>"] = "open_with_window_picker",
+					["s"] = "split_with_window_picker",
+					["v"] = "vsplit_with_window_picker",
+					["t"] = "open_tabnew",
+					["h"] = "close_node",
+					["a"] = {
+						"add",
+						config = {
+							show_path = "none",
+						},
+					},
+					["d"] = "delete",
+					["r"] = "rename",
+					["y"] = "copy_to_clipboard",
+					["x"] = "cut_to_clipboard",
+					["p"] = "paste_from_clipboard",
+					["q"] = "close_window",
+					["R"] = "refresh",
+					["<"] = "prev_source",
+					[">"] = "next_source",
+					["?"] = "show_help",
+					["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = false } },
 				},
 			},
 		},
@@ -215,10 +214,24 @@ return {
 				},
 			},
 		},
+		document_symbols = {
+			follow_cursor = false,
+			client_filters = "first",
+			window = {
+				position = "right",
+				mappings = {
+					["h"] = "close_node",
+					["H"] = "close_all_nodes",
+					["l"] = "toggle_node",
+					["L"] = "expand_all_nodes",
+				},
+			},
+		},
 		sources = {
 			"filesystem",
 			"buffers",
 			"git_status",
+			"document_symbols",
 		},
 	},
 }

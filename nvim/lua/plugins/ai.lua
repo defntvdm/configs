@@ -25,9 +25,9 @@ return {
 			"ravitemer/mcphub.nvim",
 		},
 		opts = {
-			provider = "openrouter",
+			provider = "yandex_qwen",
 			providers = {
-				openrouter = {
+				yandex_qwen = {
 					__inherited_from = "openai",
 					endpoint = "https://llm.api.cloud.yandex.net/v1",
 					api_key_name = "YANDEX_CLOUD_API_KEY",
@@ -43,19 +43,8 @@ return {
 					require("mcphub.extensions.avante").mcp_tool(),
 				}
 			end,
-			disabled_tools = {
-				"list_files",
-				"search_files",
-				"read_file",
-				"create_file",
-				"rename_file",
-				"delete_file",
-				"create_dir",
-				"rename_dir",
-				"delete_dir",
-				"bash",
-			},
 			input = {
+				height = 10,
 				provider = "snacks",
 				provider_opts = {
 					title = "Avante Input",
