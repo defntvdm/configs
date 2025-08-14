@@ -105,7 +105,6 @@ end, { silent = true, noremap = true, desc = "Prev diagnostic" })
 set_km("n", "]d", function()
 	vim.diagnostic.jump({ count = 1 })
 end, { silent = true, noremap = true, desc = "Next diagnostic" })
-set_km({ "n", "v" }, " ca", vim.lsp.buf.code_action, { silent = true, noremap = true, desc = "Code action" })
 set_km("n", "<leader>tL", function()
 	if vim.diagnostic.is_enabled() then
 		vim.diagnostic.enable(false)

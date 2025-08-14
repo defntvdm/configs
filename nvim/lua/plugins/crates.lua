@@ -1,7 +1,6 @@
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "Cargo.toml" },
 	callback = function()
-		vim.print("kokoko")
 		vim.keymap.set("n", "<leader>ct", require("crates").toggle, { noremap = true, silent = true, desc = "Crates Toggle" })
 		vim.keymap.set("n", "<leader>cr", require("crates").reload, { noremap = true, silent = true, desc = "Crates Reload" })
 		vim.keymap.set("n", "<leader>cf", require("crates").show_features_popup, { noremap = true, silent = true, desc = "Crates Features" })

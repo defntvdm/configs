@@ -2,7 +2,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		local bufnr = ev.buf
-		-- enable navic if lsp supports
+
 		if client.server_capabilities.documentSymbolProvider and client.name ~= "volar" then
 			local navic = require("nvim-navic")
 			navic.attach(client, bufnr)
@@ -11,14 +11,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client.server_capabilities.inlayHintProvider ~= nil then
 			vim.lsp.inlay_hint.enable(false)
 			vim.keymap.set("n", "<leader>ih", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 				if vim.lsp.inlay_hint.is_enabled() then
-					vim.lsp.inlay_hint.enable(false)
-					vim.notify("Inlay hints disabled")
-				else
-					vim.lsp.inlay_hint.enable(true)
 					vim.notify("Inlay hints enabled")
+				else
+					vim.notify("Inlay hints disabled")
 				end
 			end, { silent = true, noremap = true, buffer = bufnr, desc = "Toggle inlay hints" })
+		end
+
+		if client.server_capabilities.codeLensProvider then
+			vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+				buffer = bufnr,
+				callback = vim.lsp.codelens.refresh,
+			})
+			vim.lsp.codelens.refresh({ bufnr = bufnr })
+			vim.keymap.set(
+				"n",
+				" cl",
+				vim.lsp.codelens.run,
+				{ silent = true, noremap = true, buffer = bufnr, desc = "Run codelens" }
+			)
+		end
+
+		if client.server_capabilities.codeActionProvider then
+			vim.keymap.set(
+				{ "n", "v" },
+				" ca",
+				vim.lsp.buf.code_action,
+				{ silent = true, noremap = true, buffer = bufnr, desc = "Code action" }
+			)
 		end
 
 		-- Mappings.
@@ -140,6 +162,12 @@ local function get_servers()
 							"--all-features",
 						},
 					},
+					lens = {
+						enable = true,
+					},
+					inlayHints = {
+						enable = true,
+					},
 				},
 			},
 		},
@@ -182,6 +210,11 @@ local function get_servers()
 						functionTypeParameters = true,
 						parameterNames = true,
 						rangeVariableTypes = true,
+					},
+					codelens = {
+						generate = true,
+						gc_details = true,
+						test = true,
 					},
 				},
 			},

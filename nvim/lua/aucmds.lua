@@ -1,13 +1,5 @@
 local myaugroup = vim.api.nvim_create_augroup("defntvdm_custom", { clear = true })
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "BufEnter" }, {
-	desc = "Refresh codeLens",
-	group = myaugroup,
-	callback = function()
-		vim.lsp.codelens.refresh({ bufn = 0 })
-	end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight copied text",
 	group = myaugroup,
