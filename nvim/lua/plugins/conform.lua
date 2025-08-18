@@ -62,6 +62,9 @@ return {
 			prettier = {
 				prepend_args = { "--jsx-single-quote", "--single-quote", "--line-width", "120" },
 			},
+			djlint = {
+				prepend_args = { "--indent", "2" },
+			},
 		},
 		notify_on_error = true,
 	},

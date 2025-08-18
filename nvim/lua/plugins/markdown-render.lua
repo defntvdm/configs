@@ -9,7 +9,7 @@ return {
 	},
 	{
 		"3rd/image.nvim",
-		enabled = not vim.g.vscode,
+		enabled = not vim.g.vscode and not vim.g.neovide,
 		dependencies = {
 			"vhyrro/luarocks.nvim",
 		},

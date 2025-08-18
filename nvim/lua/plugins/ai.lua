@@ -31,7 +31,7 @@ return {
 					__inherited_from = "openai",
 					endpoint = "https://llm.api.cloud.yandex.net/v1",
 					api_key_name = "YANDEX_CLOUD_API_KEY",
-					model = "gpt://b1gjjsq1ndd2nlebntmu/qwen3-235b-a22b-fp8/latest",
+					model = "gpt://b1gjjsq1ndd2nlebntmu/gpt-oss-20b/latest",
 				},
 			},
 			system_prompt = function()

@@ -4,6 +4,7 @@ _G.defntvdm_filetypes = {
 	"css",
 	"go",
 	"html",
+	"htmldjango",
 	"javascript",
 	"javascriptreact",
 	"json",

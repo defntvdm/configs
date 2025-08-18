@@ -62,6 +62,11 @@ set_km("v", "˚", [[:m '<-2<CR>gv=gv]], opts)
 -- copy/paste using system clipboard
 set_km("v", "<c-c>c", '"+y', { noremap = true })
 set_km("n", "<c-v>v", '"+P', { noremap = true })
+if vim.g.neovide then
+	set_km("v", "<m-c>", '"+y', { noremap = true })
+	set_km("n", "<m-v>", '"+P', { noremap = true })
+	set_km("i", "<m-v>", '<esc>"+pi<right>', { noremap = true })
+end
 
 -- new tab
 set_km("n", "<c-t>", "<cmd>tabnew<CR>", { silent = true })
