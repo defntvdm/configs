@@ -6,7 +6,7 @@ return {
 	config = function()
 		local palettes = require("catppuccin.palettes").get_palette("macchiato")
 		require("bufferline").setup({
-			highlights = require("catppuccin.groups.integrations.bufferline").get({
+			highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
 				styles = { "italic", "bold" },
 				custom = {
 					all = {

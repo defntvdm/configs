@@ -34,7 +34,7 @@ return {
 			desc = "git_status in neotree",
 		},
 		{
-			"<space>o",
+			"<leader>oo",
 			document_symbols,
 			desc = "document_symbols in neotree",
 		},

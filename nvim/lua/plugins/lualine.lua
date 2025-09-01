@@ -17,17 +17,19 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { {
-					"mode",
-					fmt = function(str)
-						return str:sub(1, 1)
-					end,
-				} },
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(str)
+							return str:sub(1, 1)
+						end,
+					},
+				},
 				lualine_b = {
+					"diagnostics",
 					"branch",
 					"diff",
 				},
-
 				lualine_c = {
 					{
 						"filename",
@@ -89,6 +91,7 @@ return {
 				"neo-tree",
 				"nvim-dap-ui",
 				"oil",
+				"overseer",
 				"quickfix",
 				"toggleterm",
 				"trouble",
