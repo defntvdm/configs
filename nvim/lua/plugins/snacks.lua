@@ -6,6 +6,20 @@ return {
 	keys = {
 		{ "<leader>ff", ":SnacksFiles ./", noremap = true, desc = "Find files in subdir" },
 		{
+			"<leader>fa",
+			function()
+				local cwd = vim.fn.expand("%:h")
+                vim.print(cwd)
+				if cwd ~= "" then
+					vim.fn.feedkeys(":SnacksFiles ./" .. cwd, "n")
+				end
+			end,
+			mode = "n",
+			noremap = true,
+			desc = "Find files",
+			silent = true,
+		},
+		{
 			"<leader>fd",
 			function()
 				Snacks.picker.files()
@@ -70,7 +84,27 @@ return {
 		{
 			"<leader>ft",
 			function()
-				Snacks.picker.lsp_symbols()
+				Snacks.picker.lsp_symbols({
+					tree = true,
+					filter = {
+						default = {
+							"Class",
+							"Constructor",
+							"Enum",
+							"Field",
+							"Function",
+							"Interface",
+							"Method",
+							"Module",
+							"Namespace",
+							"Package",
+							"Property",
+							"Struct",
+							"Trait",
+							"Variable",
+						},
+					},
+				})
 			end,
 			noremap = true,
 			desc = "LSP symbols in current file",

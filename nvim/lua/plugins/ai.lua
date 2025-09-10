@@ -25,13 +25,19 @@ return {
 			"ravitemer/mcphub.nvim",
 		},
 		opts = {
-			provider = "yandex_qwen",
+			provider = "qwen_code",
 			providers = {
 				yandex_qwen = {
 					__inherited_from = "openai",
 					endpoint = "https://llm.api.cloud.yandex.net/v1",
 					api_key_name = "YANDEX_CLOUD_API_KEY",
 					model = "gpt://b1gjjsq1ndd2nlebntmu/gpt-oss-20b/latest",
+				},
+				qwen_code = {
+					__inherited_from = "openai",
+					api_key_name = "QWEN_CODE_API_KEY",
+					endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+					model = "qwen-coder-plus-latest",
 				},
 			},
 			system_prompt = function()
