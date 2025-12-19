@@ -219,23 +219,7 @@ local function get_servers()
 				},
 			},
 		},
-		basedpyright = {
-			settings = {
-				python = {
-					pythonPath = "/home/defntvdm/.pyenv/shims/python",
-				},
-				basedpyright = {
-					disableOrganizeImports = true,
-					analysis = {
-						ignore = { "*" }, -- mypy for analyses
-						autoSearchPaths = true,
-						diagnosticMode = "workspace",
-						useLibraryCodeForTypes = true,
-						typeCheckingMode = "off",
-					},
-				},
-			},
-		},
+		ty = {},
 		lua_ls = {
 			settings = {
 				Lua = {
@@ -261,7 +245,7 @@ local function get_servers()
 		},
 		tflint = {},
 		terraformls = {},
-	}
+	}, { "basedpyright", "ruff" }
 end
 
 return {
@@ -288,9 +272,11 @@ return {
 		custom_capabilities.workspace.didChangeWatchedFiles = custom_capabilities.workspace.didChangeWatchedFiles or {}
 		custom_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
-		for name, cfg in pairs(get_servers()) do
+		local enabled, disabled = get_servers()
+		for name, cfg in pairs(enabled) do
 			cfg.capabilities = custom_capabilities
 			vim.lsp.config(name, cfg)
 		end
+		vim.lsp.enable(disabled, false)
 	end,
 }

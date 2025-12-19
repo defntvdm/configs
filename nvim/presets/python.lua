@@ -1,23 +1,6 @@
 require("lspconfig")
 
-local pythonPath = "/Users/defntvdm/.pyenv/versions/<VERSION>/bin/python"
-
-vim.lsp.config("basedpyright", {
-	settings = {
-		python = {
-			pythonPath = pythonPath,
-		},
-		basedpyright = {
-			analysis = {
-				autoSearchPaths = true,
-				diagnosticMode = "workspace",
-				useLibraryCodeForTypes = true,
-				ignore = { "*" },
-				typeCheckingMode = "off",
-			},
-		},
-	},
-})
+local pythonPath = "./.venv/bin/python"
 
 local dap = require("dap")
 

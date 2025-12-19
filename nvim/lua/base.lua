@@ -41,7 +41,7 @@ vim.o.wrap = true
 vim.scriptencoding = "utf-8"
 
 if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 	vim.o.mouse = "a"
 end
 
