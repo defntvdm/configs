@@ -1,0 +1,92 @@
+{
+    "Note warning": {
+        "prefix": "warn",
+        "body": [
+            "{% note warning ${0:\"title\"} %}",
+            "",
+            "${1: // Your note}",
+            "",
+            "{% endnote %}"
+        ]
+    },
+    "Note tip": {
+        "prefix": "tip",
+        "body": [
+            "{% note tip ${0:\"title\"} %}",
+            "",
+            "${1: // Your note}",
+            "",
+            "{% endnote %}"
+        ]
+    },
+    "Note info": {
+        "prefix": "info",
+        "body": [
+            "{% note info ${0:\"title\"} %}",
+            "",
+            "${1: // Your note}",
+            "",
+            "{% endnote %}"
+        ]
+    },
+    "Note alert": {
+        "prefix": "alert",
+        "body": [
+            "{% note alert ${0:\"title\"} %}",
+            "",
+            "${1: // Your note}",
+            "",
+            "{% endnote %}"
+        ]
+    },
+    "Cut": {
+        "prefix": "cut",
+        "body": [
+            "{% cut ${0:\"title\"} %}",
+            "",
+            "${1: Body}",
+            "",
+            "{% endcut %}"
+        ]
+    },
+    "Cut with group": {
+        "prefix": "cutg",
+        "body": [
+            "{% cut ${0:\"title\"} %}{name=${1: groupname}}",
+            "",
+            "${2: Body}",
+            "",
+            "{% endcut %}"
+        ]
+    },
+    "Tabs": {
+        "prefix": "tab",
+        "body": [
+            "{% list tabs %}",
+            "",
+            "${0: Body}",
+            "",
+            "{% endlist %}"
+        ]
+    },
+    "Tabs accordion": {
+        "prefix": "taba",
+        "body": [
+            "{% list tabs accordion %}",
+            "",
+            "${0: Body}",
+            "",
+            "{% endlist %}"
+        ]
+    },
+    "Tabs with group": {
+        "prefix": "tabg",
+        "body": [
+            "{% list tabs group=${0: groupname} %}",
+            "",
+            "${1: Body}",
+            "",
+            "{% endlist %}"
+        ]
+    }
+}
