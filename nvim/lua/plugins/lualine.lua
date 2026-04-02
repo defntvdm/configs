@@ -3,13 +3,14 @@ return {
 	enabled = not vim.g.vscode,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"catppuccin/nvim",
 	},
 	event = "VimEnter",
 	config = function()
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin",
+				theme = "catppuccin-nvim",
 				component_separators = { "|" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {

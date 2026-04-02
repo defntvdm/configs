@@ -38,6 +38,25 @@ return {
 				operators = {},
 				-- miscs = {}, -- Uncomment to turn off hard-coded styles
 			},
+			lsp_styles = {
+				virtual_text = {
+					errors = { "italic" },
+					hints = { "italic" },
+					warnings = { "italic" },
+					information = { "italic" },
+					ok = { "italic" },
+				},
+				underlines = {
+					errors = { "underline" },
+					hints = { "underline" },
+					warnings = { "underline" },
+					information = { "underline" },
+					ok = { "underline" },
+				},
+				inlay_hints = {
+					background = true,
+				},
+			},
 			color_overrides = {},
 			custom_highlights = {},
 			default_integrations = true,
@@ -55,36 +74,18 @@ return {
 				neotree = true,
 				neotest = true,
 				noice = true,
-				native_lsp = {
-					enabled = true,
-					virtual_text = {
-						errors = { "italic" },
-						hints = { "italic" },
-						warnings = { "italic" },
-						information = { "italic" },
-						ok = { "italic" },
-					},
-					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
-						ok = { "underline" },
-					},
-					inlay_hints = {
-						background = true,
-					},
-				},
 				nvim_surround = true,
 				treesitter_context = true,
 				treesitter = true,
 				window_picker = true,
 				render_markdown = true,
-				snacks = true,
+				snacks = {
+					enabled = true,
+				},
 				which_key = true,
 			},
 		})
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-nvim")
 	end,
 }
