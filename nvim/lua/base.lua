@@ -19,6 +19,7 @@ vim.o.incsearch = true
 vim.o.laststatus = 3
 vim.o.listchars = "eol:$"
 vim.o.mouse = ""
+vim.o.mouse = "a"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 3
@@ -40,13 +41,11 @@ vim.o.updatetime = 1000
 vim.o.wrap = true
 vim.scriptencoding = "utf-8"
 
-if vim.g.neovide then
-	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
-	vim.o.mouse = "a"
-end
-
 vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
 
-if vim.fn.has("nvim-0.12") == 1 then
-	vim.lsp.document_color.enable(true, nil, { style = "virtual" })
+vim.lsp.document_color.enable(true, nil, { style = "virtual" })
+
+if vim.g.neovide then
+	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 end
+
