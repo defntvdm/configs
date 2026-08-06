@@ -215,7 +215,7 @@ local function get_servers()
 				},
 			},
 		},
-		ty = {},
+		basedpyright = {},
 		lua_ls = {
 			settings = {
 				Lua = {

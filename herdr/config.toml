@@ -1,0 +1,12 @@
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[terminal]
+default_shell = "/bin/zsh"
+
+[update]
+channel = "stable"
+
+[keys]
+prefix = "ctrl+x"

@@ -34,9 +34,6 @@ zi light zsh-users/zsh-autosuggestions
 zi light zdharma-continuum/fast-syntax-highlighting
 zi light zdharma-continuum/history-search-multi-word
 
-zi ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
-zi load docker/compose
-
 zi ice depth=1
 zi light romkatv/powerlevel10k
 
@@ -48,7 +45,8 @@ alias la='ls -a --color=auto'
 alias ll='ls -la --color=auto'
 alias http='http -v -s monokai'
 alias vim='nvim'
-alias n='neovide'
+alias n='neovide --fork --frame=none'
+alias oc='opencode'
 function t() {
     (tmux a -d -t $1 2>&1 >/dev/null) || (tmux new -s $1)
 }
@@ -102,9 +100,6 @@ compinit
 ############
 export PATH="$HOME/.cargo/bin:$HOME/.local/share/nvim/mason/bin:$HOME/.local/bin:$PATH"
 export VISUAL="nvim"
-export OPENROUTER_API_KEY=$(cat ~/.openrouter_key)
-export YANDEX_CLOUD_API_KEY=$(cat ~/.yandex_cloud_ai_key)
-export SOURCE_CRAFT_TOKEN=$(cat ~/.sourcecrafttoken)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

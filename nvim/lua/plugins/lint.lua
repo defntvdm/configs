@@ -35,7 +35,7 @@ return {
 			less = { "eslint_d" },
 			markdown = { "markdownlint" },
 			proto = { "buf_lint" },
-			python = { "mypy" },
+			python = { "ruff" },
 			typescript = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			yaml = { "yamllint" },

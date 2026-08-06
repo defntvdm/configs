@@ -8,6 +8,7 @@ _G.defntvdm_filetypes = {
 	"javascript",
 	"javascriptreact",
 	"json",
+	"jsonc",
 	"kotlin",
 	"less",
 	"lua",
