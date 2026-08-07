@@ -41,11 +41,12 @@ vim.o.updatetime = 1000
 vim.o.wrap = true
 vim.scriptencoding = "utf-8"
 
-vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
-
-vim.lsp.document_color.enable(true, nil, { style = "virtual" })
-
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 end
 
+vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
+
+if vim.fn.has("nvim-0.12") == 1 then
+	vim.lsp.document_color.enable(true, nil, { style = "virtual" })
+end

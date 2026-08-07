@@ -62,6 +62,9 @@ return {
 					"filetype",
 				},
 				lualine_z = {
+					{
+						require("opencode").statusline,
+					},
 					"location",
 					{
 						function(a, b)
