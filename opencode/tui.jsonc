@@ -1,9 +1,14 @@
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "catppuccin-macchiato",
+  "theme": "catppucin-macchiato",
+  "leader_timeout": 2000,
+  "mouse": true,
   "keybinds": {
     "leader": "ctrl+b",
   },
-  "leader_timeout": 2000,
-  "mouse": true,
+  "attention": {
+    "enabled": true,
+    "notifications": true,
+    "sound": true,
+  },
 }
