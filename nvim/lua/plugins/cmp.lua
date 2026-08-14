@@ -5,7 +5,6 @@ return {
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		"saghen/blink.compat",
-		-- { dir = "/home/defntvdm/projects/blink-cmp-soruce-craft", opts = {} },
 		{ "defntvdm/blink-cmp-soruce-craft", opts = {} },
 	},
 	version = "*",

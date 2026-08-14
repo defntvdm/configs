@@ -216,6 +216,7 @@ local function get_servers()
 			},
 		},
 		basedpyright = {},
+		ruff = {},
 		lua_ls = {
 			settings = {
 				Lua = {
@@ -241,7 +242,7 @@ local function get_servers()
 		},
 		tflint = {},
 		terraformls = {},
-	}, { "basedpyright", "ruff" }
+	}, { "pyright", "ty", "ruff" }
 end
 
 return {
