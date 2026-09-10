@@ -121,7 +121,9 @@ local function get_servers()
 				},
 			},
 		},
-		taplo = {},
+		tombi = {
+			root_markers = { ".tombi.toml" },
+		},
 		ts_ls = {
 			filetypes = {
 				"javascript",

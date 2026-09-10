@@ -8,13 +8,12 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	enabled = not vim.g.vscode,
 	dependencies = {
-		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",
 	},
 	event = "BufEnter",
 	build = ":TSUpdate",
 	config = function(_, opts)
-		local configs = require("nvim-treesitter.configs")
+		local configs = require("nvim-treesitter.config")
 		configs.setup(opts)
 	end,
 	opts = {

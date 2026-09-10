@@ -1,22 +1,62 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "mode": {
+  "agent": {
     "build": {
-      "model": "openai/gpt-5.6-terra",
+      "model": "openai/gpt-5.6-sol",
+      "variant": "high",
     },
     "plan": {
       "model": "openai/gpt-5.6-sol",
+      "variant": "high",
     },
   },
-  "plugin": ["opencode-agent-skills", "opencode-snip"],
+  "plugin": ["opencode-agent-skills"],
   "shell": "/bin/zsh",
   "disabled_providers": ["opencode"],
   "share": "disabled",
   "autoupdate": "notify",
   "snapshot": true,
+  "provider": {
+    "openai": {
+      "models": {
+        "gpt-6-astra": {
+          "limit": {
+            "context": 640000,
+            "input": 512000,
+            "output": 128000,
+          },
+        },
+        "gpt-5.6-sol": {
+          "limit": {
+            "context": 640000,
+            "input": 512000,
+            "output": 128000,
+          },
+        },
+        "gpt-5.6-terra": {
+          "limit": {
+            "context": 640000,
+            "input": 512000,
+            "output": 128000,
+          },
+        },
+        "gpt-5.6-luna": {
+          "limit": {
+            "context": 640000,
+            "input": 512000,
+            "output": 128000,
+          },
+        },
+      },
+    },
+  },
   "permission": {
     "external_directory": {
       "*": "ask",
+      "~/PLANS/*": "allow",
+      "/tmp/opencode/*": "allow",
+      "~/.config/opencode/*": "allow",
+      "~/.config/nvim/*": "allow",
       "~/.ssh/*": "deny",
       ".env": "deny",
     },
@@ -29,9 +69,12 @@
     "bash": {
       "*": "ask",
       "git *": "allow",
+      "uv *": "allow",
       "hunk *": "allow",
+      "jq *": "allow",
     },
   },
+  "instructions": ["~/.config/opencode/rules/dont_use_tmp.md"],
   "compaction": {
     "auto": true,
     "prune": true,
