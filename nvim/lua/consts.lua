@@ -19,7 +19,7 @@ _G.defntvdm_filetypes = {
 	"scss",
 	"terraform",
 	"tf",
-    "toml",
+	"toml",
 	"typescript",
 	"typescriptreact",
 	"vue",

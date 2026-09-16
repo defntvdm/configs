@@ -1,5 +1,3 @@
-require("lspconfig")
-
 local pythonPath = "./.venv/bin/python"
 
 local dap = require("dap")

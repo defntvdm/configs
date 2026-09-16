@@ -2,7 +2,7 @@ vim.o.autoread = true
 vim.o.background = "dark"
 vim.o.colorcolumn = "+1"
 vim.o.cursorline = true
-vim.o.diffopt = vim.o.diffopt .. ",vertical"
+vim.opt.diffopt:append("vertical")
 vim.o.encoding = "utf-8"
 vim.o.expandtab = true
 vim.o.exrc = true
@@ -18,7 +18,6 @@ vim.o.ignorecase = true
 vim.o.incsearch = true
 vim.o.laststatus = 3
 vim.o.listchars = "eol:$"
-vim.o.mouse = ""
 vim.o.mouse = "a"
 vim.o.number = true
 vim.o.relativenumber = true
@@ -39,13 +38,16 @@ vim.o.textwidth = 150
 vim.o.title = true
 vim.o.updatetime = 1000
 vim.o.wrap = true
-vim.scriptencoding = "utf-8"
-
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h16"
 end
 
-vim.g.python3_host_prog = "/Users/defntvdm/.pyenv/shims/python3"
+-- No configured plugin uses remote providers. Disable their discovery to avoid
+-- startup work and health-check errors for packages that are not installed.
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 if vim.fn.has("nvim-0.12") == 1 then
 	vim.lsp.document_color.enable(true, nil, { style = "virtual" })

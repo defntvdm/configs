@@ -58,8 +58,6 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"3rd/image.nvim",
 		},
-		opts = {
-			only_render_image_at_cursor = true,
-		},
+		opts = {},
 	},
 }

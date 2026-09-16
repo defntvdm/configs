@@ -8,10 +8,9 @@ return {
 		{
 			"<leader>fa",
 			function()
-				local cwd = vim.fn.expand("%:h")
-                vim.print(cwd)
+				local cwd = vim.fn.expand("%:p:h")
 				if cwd ~= "" then
-					vim.fn.feedkeys(":SnacksFiles ./" .. cwd, "n")
+					Snacks.picker.files({ cwd = cwd })
 				end
 			end,
 			mode = "n",

@@ -1,18 +1,23 @@
 vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("defntvdm_lsp_attach", { clear = true }),
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		local bufnr = ev.buf
+		if not client then
+			return
+		end
 
-		if client.server_capabilities.documentSymbolProvider and client.name ~= "volar" then
+		if client.server_capabilities.documentSymbolProvider and client.name ~= "vue_ls" then
 			local navic = require("nvim-navic")
 			navic.attach(client, bufnr)
 		end
 
-		if client.server_capabilities.inlayHintProvider ~= nil then
-			vim.lsp.inlay_hint.enable(false)
+		if client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
 			vim.keymap.set("n", "<leader>ih", function()
-				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-				if vim.lsp.inlay_hint.is_enabled() then
+				local filter = { bufnr = bufnr }
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(filter), filter)
+				if vim.lsp.inlay_hint.is_enabled(filter) then
 					vim.notify("Inlay hints enabled")
 				else
 					vim.notify("Inlay hints disabled")
@@ -107,6 +112,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local function get_servers()
+	local vue_language_server_path = vim.fn.stdpath("data")
+		.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
 	return {
 		cssls = {},
 		tailwindcss = {},
@@ -128,12 +136,22 @@ local function get_servers()
 			filetypes = {
 				"javascript",
 				"javascriptreact",
-				"javascript.jsx",
 				"typescript",
 				"typescriptreact",
-				"typescript.tsx",
+				"vue",
+			},
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_language_server_path,
+						languages = { "vue" },
+						configNamespace = "typescript",
+					},
+				},
 			},
 		},
+		vue_ls = {},
 		yamlls = {
 			settings = {
 				yaml = {
@@ -149,8 +167,8 @@ local function get_servers()
 		rust_analyzer = {
 			settings = {
 				["rust-analyzer"] = {
-					checkOnSave = {
-						allFeatures = true,
+					checkOnSave = true,
+					check = {
 						overrideCommand = {
 							"cargo",
 							"clippy",
@@ -161,9 +179,6 @@ local function get_servers()
 						},
 					},
 					lens = {
-						enable = true,
-					},
-					inlayHints = {
 						enable = true,
 					},
 				},
@@ -222,17 +237,6 @@ local function get_servers()
 		lua_ls = {
 			settings = {
 				Lua = {
-					["workspace.library"] = {
-						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua"] = true,
-						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim"] = true,
-						["/opt/homebrew/Cellar/neovim/CUSTOM/share/nvim/runtime/lua/vim/lsp"] = true,
-						["/home/defntvdm/.local/share/nvim/runtime/lua"] = true,
-						["/home/defntvdm/.local/share/nvim/runtime/lua/vim"] = true,
-						["/home/defntvdm/.local/share/nvim/runtime/lua/vim/lsp"] = true,
-						["/usr/share/nvim/runtime/lua"] = true,
-						["/usr/share/nvim/runtime/lua/vim"] = true,
-						["/usr/share/nvim/runtime/lua/vim/lsp"] = true,
-					},
 					diagnostics = {
 						globals = { "vim" },
 					},
@@ -244,7 +248,7 @@ local function get_servers()
 		},
 		tflint = {},
 		terraformls = {},
-	}, { "pyright", "ty", "ruff" }
+	}
 end
 
 return {
@@ -252,30 +256,29 @@ return {
 	enabled = not vim.g.vscode,
 	dependencies = {
 		"SmiteshP/nvim-navic",
-		"williamboman/mason-lspconfig.nvim",
-		"williamboman/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
 		"folke/lazydev.nvim",
 		"b0o/schemastore.nvim",
 	},
 	ft = defntvdm_filetypes,
 	config = function()
-		require("mason-lspconfig").setup({
-			automatic_installation = true,
-		})
-		require("lspconfig.ui.windows").default_options = {
-			border = "rounded",
-		}
-
 		local custom_capabilities = require("blink.cmp").get_lsp_capabilities()
 		custom_capabilities.workspace = custom_capabilities.workspace or {}
 		custom_capabilities.workspace.didChangeWatchedFiles = custom_capabilities.workspace.didChangeWatchedFiles or {}
 		custom_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 
-		local enabled, disabled = get_servers()
-		for name, cfg in pairs(enabled) do
+		local servers = get_servers()
+		for name, cfg in pairs(servers) do
 			cfg.capabilities = custom_capabilities
 			vim.lsp.config(name, cfg)
 		end
-		vim.lsp.enable(disabled, false)
+
+		require("mason-lspconfig").setup({
+			ensure_installed = vim.tbl_keys(servers),
+			automatic_enable = {
+				exclude = { "ty" },
+			},
+		})
 	end,
 }

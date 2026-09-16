@@ -2,6 +2,6 @@ return {
 	"mbbill/undotree",
 	enabled = not vim.g.vscode,
 	keys = {
-		{ "<leader>u", vim.cmd.UndotreeToggle, "n", noremap = true, silent = true },
+		{ "<leader>u", vim.cmd.UndotreeToggle, mode = "n", noremap = true, silent = true },
 	},
 }

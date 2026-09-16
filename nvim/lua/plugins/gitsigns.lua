@@ -39,7 +39,7 @@ return {
 			col = 1,
 		},
 		on_attach = function(bufnr)
-			local gs = package.loaded.gitsigns
+			local gs = require("gitsigns")
 
 			local function map(mode, l, r, opts)
 				opts = opts or {}
@@ -48,8 +48,12 @@ return {
 			end
 
 			-- Navigation
-			map("n", "]h", gs.next_hunk, { expr = true })
-			map("n", "[h", gs.prev_hunk, { expr = true })
+			map("n", "]h", function()
+				gs.nav_hunk("next")
+			end)
+			map("n", "[h", function()
+				gs.nav_hunk("prev")
+			end)
 
 			-- Actions
 			map("n", "<leader>hs", gs.stage_hunk)

@@ -156,7 +156,7 @@ return {
 	"mfussenegger/nvim-dap",
 	enabled = not vim.g.vscode,
 	dependencies = {
-		{ "rcarriga/nvim-dap-ui", tag = "v4.0.0", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+		{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 	},
 	keys = {
 		{
@@ -172,12 +172,12 @@ return {
 		{
 			"<F10>",
 			step_over,
-			desc = "Step into DAP",
+			desc = "Step over DAP",
 		},
 		{
 			"<F11>",
 			step_into,
-			desc = "Step over DAP",
+			desc = "Step into DAP",
 		},
 	},
 	config = function()

@@ -35,7 +35,8 @@ return {
 			less = { "eslint_d" },
 			markdown = { "markdownlint" },
 			proto = { "buf_lint" },
-			python = { "ruff" },
+			-- Ruff diagnostics are provided by the native Ruff LSP server.
+			python = {},
 			typescript = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
 			yaml = { "yamllint" },

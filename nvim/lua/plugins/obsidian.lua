@@ -1,25 +1,25 @@
 return {
-	"epwalsh/obsidian.nvim",
+	"obsidian-nvim/obsidian.nvim",
 	version = "*",
 	enabled = false,
 	event = "VeryLazy",
 	cmd = {
-		"ObsidianWorkspace",
+		"Obsidian",
 	},
 	keys = {
 		{
 			" on",
-			":ObsidianNew notes/",
+			":Obsidian new notes/",
 			desc = "Create new note",
 		},
 		{
 			" ot",
-			"<cmd>ObsidianToday<cr>",
+			"<cmd>Obsidian today<cr>",
 			desc = "Go to today note",
 		},
 		{
 			" os",
-			"<cmd>ObsidianSearch<cr>",
+			"<cmd>Obsidian search<cr>",
 			desc = "Search note",
 		},
 	},
@@ -27,6 +27,7 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	opts = {
+		legacy_commands = false,
 		ui = {
 			enable = false,
 			checkboxes = {
@@ -66,29 +67,33 @@ return {
 			},
 		},
 		completion = {
-			nvim_cmp = true,
+			nvim_cmp = false,
+			blink = true,
 			min_chars = 2,
+		},
+		picker = {
+			name = "snacks.pick",
 		},
 		new_notes_location = "notes_subdir",
 		mappings = {
 			["gd"] = {
-				action = "<cmd>ObsidianFollowLink<cr>",
+				action = "<cmd>Obsidian follow_link<cr>",
 				opts = { noremap = false, buffer = true, silent = true, desc = "Follow link" },
 			},
 			[" toc"] = {
-				action = "<cmd>ObsidianTOC<cr>",
+				action = "<cmd>Obsidian toc<cr>",
 				opts = { noremap = true, buffer = true, silent = true, desc = "Show table of content" },
 			},
 			[" d"] = {
-				action = "<cmd>ObsidianToggleCheckbox<cr>",
+				action = "<cmd>Obsidian toggle_checkbox<cr>",
 				opts = { noremap = true, silent = true, buffer = true, desc = "Toggle checkbox" },
 			},
 			[" on"] = {
-				action = ":ObsidianNew notes/",
+				action = ":Obsidian new notes/",
 				opts = { noremap = true, desc = "Create new note" },
 			},
 			[" os"] = {
-				action = "<cmd>ObsidianSearch<cr>",
+				action = "<cmd>Obsidian search<cr>",
 				opts = { noremap = true, desc = "Search note" },
 			},
 		},
@@ -99,6 +104,8 @@ return {
 			local path = spec.dir / (spec.title .. "_" .. tostring(spec.id))
 			return path:with_suffix(".md")
 		end,
-		preferred_link_style = "wiki",
+		link = {
+			style = "wiki",
+		},
 	},
 }
